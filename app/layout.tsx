@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Courier_Prime, Fredoka, Sora } from "next/font/google";
 import "./globals.css";
-//import Navbar from "./ui/navbar";
-//import Footer from "./ui/footer";
+import Navbar from "./ui/navbar";
+import Footer from "./ui/footer";
 
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
@@ -68,9 +68,9 @@ export default function RootLayout({
       <body
         className={`${courierPrime.variable} ${fredoka.variable} ${sora.variable} antialiased`}
       >
-        {/*<Navbar />*/}
+        <Navbar />
         {children}
-        {/*<Footer />*/}
+        <Footer />
       </body>
     </html>
   );
