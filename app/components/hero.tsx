@@ -6,10 +6,10 @@ import Button from "../ui/button";
 
 const Hero = () => {
   return (
-    <div className=" font-fredoka flex md:flex-row flex-col items-center h-screen md:p-20 p-10 gap-10 bg-[#EEF7F6] rounded-b-[80px]">
-      <div className=" md:w-1/2 w-full  space-y-8">
+    <div className=" font-fredoka flex md:flex-row flex-col items-center md:h-screen h-fit md:p-20 p-10 gap-10 bg-[#EEF7F6] rounded-b-[80px]">
+      <div className=" md:w-1/2 w-full  md:space-y-8 space-y-6">
         <div className=" space-y-5">
-          <h2 className=" md:text-6xl text-5xl text-center md:text-start leading-20 font-semibold text-[#234E49] font-sora">
+          <h2 className=" md:text-6xl text-5xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
             One subscription. Everything Fitness
           </h2>
           <p className=" text-center md:text-start mx-auto md:mx-0 w-9/12 text-neutral-700 text-base">
@@ -30,33 +30,41 @@ const Hero = () => {
             Get Started
           </Button>
         </div>
-        <div className=" flex items-center mt-7 ">
-          <div className=" justify-center md:justify-start flex flex-row items-center gap-4 border-r border-[#234E49]/60 pr-4 ">
+        <div className=" flex flex-col md:flex-row space-y-3.5 items-center mt-7 ">
+          <div className=" justify-center md:justify-start flex flex-row items-center gap-4 md:border-r border-none md:border-[#234E49]/60 pr-4 ">
             <div className=" flex  -space-x-3.5">
               <img
                 src="https://tapback.co/api/avatar/johndoe"
                 alt=""
-                className="rounded-full border-2 border-[#234E49]/40 backdrop-blur-sm w-12 h-12"
+                className="rounded-full border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
               />
               <img
                 src="https://tapback.co/api/avatar/abdullahi"
                 alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm w-12 h-12"
+                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
               />
               <img
                 src="https://tapback.co/api/avatar/joy"
                 alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm w-12 h-12"
+                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
               />
             </div>
             <div className=" flex flex-col  items-start justify-start">
-              <span className=" text-3xl font-semibold font-sora">10k</span>
-              <span className=" text-sm font-fredoka">Happy Users </span>
+              <span className=" md:text-3xl text-2xl font-semibold font-sora">
+                10k
+              </span>
+              <span className=" md:text-sm text-xs font-fredoka">
+                Happy Users{" "}
+              </span>
             </div>
           </div>
-          <div className=" flex items-center p-4  gap-2.5 cursor-pointer">
-            <img src="./play.svg" alt="" className=" h-10 w-10" />
-            <span>Download on Playstore</span>
+          <div className=" flex items-center p-4  md:gap-2.5 gap-0 cursor-pointer">
+            <img
+              src="./play.svg"
+              alt=""
+              className=" md:w-10 md:h-10 w-18 h-8"
+            />
+            <span className="md:text-base text-sm ">Download on Playstore</span>
             <sup className="bg-green-500 text-white border border-green-700 rounded-xl h-5 w-22 flex items-center mb-4 justify-center">
               Coming Soon
             </sup>
