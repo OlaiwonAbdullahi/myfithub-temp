@@ -9,19 +9,20 @@ const Hero = () => {
     <div className=" font-fredoka flex md:flex-row flex-col items-center md:h-screen h-fit md:p-20 p-10 gap-10 bg-[#EEF7F6] rounded-b-[80px]">
       <div className=" md:w-1/2 w-full  md:space-y-8 space-y-6">
         <div className=" space-y-5">
-          <h2 className=" md:text-6xl text-5xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
-            One subscription. Everything Fitness
+          <h2 className=" md:text-6xl sm:text-5xl flex flex-col text-3xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
+            <span className=" whitespace-nowrap">One subscription, </span>
+            <span className=" whitespace-nowrap"> Everything Fitness.</span>
           </h2>
-          <p className=" text-center md:text-start mx-auto md:mx-0 w-9/12 text-neutral-700 text-base">
+          <p className=" text-center md:text-start mx-auto md:mx-0 md:w-9/12 w-full text-neutral-700 text-base">
             Access top gyms, studios, fitness and wellness centers in Lagos and
             London with just one subscription
           </p>
         </div>
-        <div className=" flex flex-row  gap-5 justify-center md:justify-start">
+        <div className=" flex flex-row gap-5 justify-center md:justify-start">
           <Button
             icon={LogIn}
             iconSize={25}
-            className="w-40 bg-white/20 backdrop-blur-sm"
+            className="w-40  bg-white/20 backdrop-blur-sm"
             variant="outline"
           >
             Login
@@ -30,44 +31,37 @@ const Hero = () => {
             Get Started
           </Button>
         </div>
-        <div className=" flex flex-col md:flex-row space-y-3.5 items-center mt-7 ">
-          <div className=" justify-center md:justify-start flex flex-row items-center gap-4 md:border-r border-none md:border-[#234E49]/60 pr-4 ">
-            <div className=" flex  -space-x-3.5">
+        <div className=" flex md:flex-row flex-col space-y-3.5  mt-7 w-full items-center ">
+          <div className=" justify-center md:justify-start  flex flex-row  items-center gap-4 md:border-r border-none md:border-[#234E49]/60 md:pr-4 ">
+            <div className=" flex  -space-x-3.5 ">
               <img
                 src="https://tapback.co/api/avatar/johndoe"
                 alt=""
-                className="rounded-full border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
+                className="rounded-full border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
               />
               <img
                 src="https://tapback.co/api/avatar/abdullahi"
                 alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
+                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
               />
               <img
                 src="https://tapback.co/api/avatar/joy"
                 alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-11 h-11"
+                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
               />
             </div>
             <div className=" flex flex-col  items-start justify-start">
               <span className=" md:text-3xl text-2xl font-semibold font-sora">
-                10k
+                10k+
               </span>
-              <span className=" md:text-sm text-xs font-fredoka">
-                Happy Users{" "}
-              </span>
+              <span className="text-sm  font-fredoka">Happy Users </span>
             </div>
           </div>
-          <div className=" flex items-center p-4  md:gap-2.5 gap-0 cursor-pointer">
-            <img
-              src="./play.svg"
-              alt=""
-              className=" md:w-10 md:h-10 w-18 h-8"
-            />
-            <span className="md:text-base text-sm ">Download on Playstore</span>
-            <sup className="bg-green-500 text-white border border-green-700 rounded-xl h-5 w-22 flex items-center mb-4 justify-center">
-              Coming Soon
-            </sup>
+          <div className=" flex items-center p-4 md:gap-2.5 gap-1 cursor-pointer">
+            <img src="./play.svg" alt="" className=" md:w-10 md:h-10 w-9 h-9" />
+            <span className="md:text-base text-sm whitespace-nowrap md:whitespace-normal ">
+              Download on Playstore
+            </span>
           </div>
         </div>
       </div>

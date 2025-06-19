@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative">
-      <div className="sticky top-0 left-0 right-0 bg-[#EEF7F6] z-50 font-fredoka flex justify-between items-center p-4 px-20 border-b border-b-[#234E49]/20 text-[#234E49]">
+      <div className="sticky top-0 left-0 right-0 bg-[#EEF7F6] z-50 font-fredoka flex justify-between items-center p-4 md:px-20 px-4 border-b border-b-[#234E49]/20 text-[#234E49]">
         <Link href="/" className="flex items-center">
           <div className="text-2xl font-semibold">MyFitHub</div> <sup>Beta</sup>
         </Link>
