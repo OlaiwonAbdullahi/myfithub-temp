@@ -16,10 +16,18 @@ const Footer = () => {
         </div>
         <div className=" space-y-2 text-center">
           <ul className=" text-center flex space-x-3">
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <li>Pricing</li>
+            <Link href={"/"}>
+              <li className=" cursor-pointer">Home</li>
+            </Link>
+            <Link href={"/about"}>
+              <li className=" cursor-pointer">About</li>
+            </Link>
+            <Link href={"/contact"}>
+              <li className=" cursor-pointer">Contact</li>
+            </Link>
+            <Link href={"/pricing"}>
+              <li className=" cursor-pointer">Pricing</li>
+            </Link>
           </ul>
         </div>
         <div className="space-y-2 flex items-center gap-2">
@@ -28,7 +36,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder="Subscribe to our NewsLetter"
-              className=" border pl-8 text-xs border-[#234E49] p-3.5 mt-2 rounded-lg"
+              className=" border pl-8 w-50 text-xs border-[#234E49] p-3.5 mt-2 rounded-lg"
             />
           </div>
           <Button variant="primary" className="  text-sm ">
@@ -44,9 +52,9 @@ const Footer = () => {
         </Link>
         All right Reserved
       </div>
-      <ul className=" text-center">
-        <li>Terms & Conditions</li>
-        <li>Privacy</li>
+      <ul className=" text-center text-sm flex gap-2 justify-center">
+        <li className=" cursor-pointer">Terms & Conditions</li>
+        <li className=" cursor-pointer">Privacy</li>
       </ul>
     </div>
   );
