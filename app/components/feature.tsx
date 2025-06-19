@@ -28,7 +28,7 @@ const Feature = () => {
   ];
 
   return (
-    <div className="px-4 sm:px-8  md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-white">
+    <div className="px-4 sm:px-8  md:px-20 py-8 sm:py-10 md:py-25 lg:py-28 space-y-8 bg-white">
       <div className=" mb-20  space-y-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-sora text-[#234E49] text-center">
           Our Features
