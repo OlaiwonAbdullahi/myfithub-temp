@@ -1,4 +1,5 @@
 import React from "react";
+import Demo from "./demo";
 
 const HowItWork = () => {
   const steps = [
@@ -19,14 +20,14 @@ const HowItWork = () => {
     {
       id: 3,
       icon: <span className="text-3xl font-bold font-sora">3</span>,
-      title: "Connect & Collaborate",
+      title: "How it works 3",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, inventore enim expedita quas quisquam explicabo voluptate praesentium fugiat, dolorum labore ratione incidunt sint, sit voluptatum perferendis ad aliquam provident earum!",
     },
     {
       id: 4,
       icon: <span className="text-3xl font-bold font-sora">4</span>,
-      title: "Achieve Success",
+      title: "How it works 4",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, inventore enim expedita quas quisquam explicabo voluptate praesentium fugiat, dolorum labore ratione incidunt sint, sit voluptatum perferendis ad aliquam provident earum!",
     },
@@ -63,6 +64,7 @@ const HowItWork = () => {
             </div>
           ))}
         </div>
+        <Demo />
       </div>
     </div>
   );
