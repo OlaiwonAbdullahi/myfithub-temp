@@ -1,8 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Courier_Prime, Fredoka, Sora } from "next/font/google";
 import "./globals.css";
-import Navbar from "./ui/navbar";
-import Footer from "./ui/footer";
+import RootLayoutClient from "./rootLayoutClient";
 
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
@@ -14,6 +14,7 @@ const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
 });
+
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -54,23 +55,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${courierPrime.variable} ${fredoka.variable} ${sora.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>
   );
