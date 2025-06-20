@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ title, description, btnText }) => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white/70 to-black/5 to-60%" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white from-10% via-white/70 via-60% to-black/5 to-30%" />
     </section>
   );
 };

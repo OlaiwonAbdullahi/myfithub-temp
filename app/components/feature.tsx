@@ -1,6 +1,7 @@
 import React from "react";
 import FeatureCard from "./featureCard";
 import { BoxIcon } from "lucide-react";
+import Heading from "../ui/heading";
 
 const Feature = () => {
   const featureData = [
@@ -29,14 +30,7 @@ const Feature = () => {
 
   return (
     <div className="px-4 sm:px-8  md:px-20 py-8 sm:py-10 md:py-25 lg:py-28 space-y-8 bg-white">
-      <div className=" mb-20  space-y-6">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-sora text-[#234E49] text-center">
-          Our Features
-        </h2>
-        <p className="text-sm sm:text-base text-center font-fredoka px-4">
-          Explore our App Features
-        </p>
-      </div>
+      <Heading title="Our Feature" paragraph=" Explore our App Features" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-12 max-w-7xl mx-auto mt-6">
         {featureData.map((feature) => (
           <FeatureCard

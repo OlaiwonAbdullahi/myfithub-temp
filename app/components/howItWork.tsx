@@ -1,5 +1,6 @@
 import React from "react";
 import Demo from "./demo";
+import Heading from "../ui/heading";
 
 const HowItWork = () => {
   const steps = [
@@ -35,15 +36,11 @@ const HowItWork = () => {
 
   return (
     <div>
-      <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-[#EEF7F6]">
-        <div className="mb-20 space-y-6">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold font-sora text-[#234E49] text-center">
-            How It Works
-          </h2>
-          <p className="text-sm sm:text-base text-center font-fredoka px-4 text-gray-600 max-w-2xl mx-auto">
-            Follow these simple steps to get started
-          </p>
-        </div>
+      <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-[#EEF7F6]/50">
+        <Heading
+          title=" How It Works"
+          paragraph="Follow these simple steps to get started"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2  grid-rows-2 gap-6 w-full">
           {steps.map((step) => (

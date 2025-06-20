@@ -36,7 +36,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder="Subscribe to our NewsLetter"
-              className=" border pl-8 w-50 text-xs border-[#234E49] p-3.5 mt-2 rounded-lg"
+              className=" border pl-8 w-50 text-xs border-[#234E49] p-3.5 mt-2 rounded-lg focus:outline-none"
             />
           </div>
           <Button variant="primary" className="  text-sm ">
