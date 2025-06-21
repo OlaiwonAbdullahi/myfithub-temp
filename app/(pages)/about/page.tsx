@@ -2,6 +2,7 @@ import Hero from "@/app/ui/hero";
 import React from "react";
 import Intro from "./components/intro";
 import Team from "./components/team";
+import Faq from "./components/faq";
 
 const Page = () => {
   return (
@@ -14,6 +15,7 @@ const Page = () => {
       />
       <Intro />
       <Team />
+      <Faq />
     </div>
   );
 };

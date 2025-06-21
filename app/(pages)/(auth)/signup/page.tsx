@@ -9,8 +9,6 @@ const Page = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    // Handle form submission logic here
-    // e.g., call API to create account
   };
 
   return (
