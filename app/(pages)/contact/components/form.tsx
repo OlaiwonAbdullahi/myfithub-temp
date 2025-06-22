@@ -76,7 +76,7 @@ const Form = () => {
               </label>
               <textarea
                 id="message"
-                placeholder="Tell us about your project or inquiry..."
+                placeholder="Tell us about your studio or inquiry..."
                 className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none  transition-all duration-200 placeholder-gray-400 resize-none"
                 value={message}
                 rows={6}
@@ -117,7 +117,7 @@ const Form = () => {
 
               <a
                 href="#"
-                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-pink-600 group"
+                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-[#234E49] group"
               >
                 <InstagramIcon
                   size={20}
@@ -129,7 +129,7 @@ const Form = () => {
 
               <a
                 href="#"
-                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-blue-400 group"
+                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-[#234E49] group"
               >
                 <TwitterIcon
                   size={20}
@@ -141,7 +141,7 @@ const Form = () => {
 
               <a
                 href="#"
-                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-blue-600 group"
+                className="flex items-center justify-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 text-gray-700 hover:text-[#234E49] group"
               >
                 <LinkedinIcon
                   strokeWidth={1.5}

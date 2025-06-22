@@ -6,7 +6,7 @@ import { Mail } from "lucide-react";
 const Footer = () => {
   return (
     <div className=" font-fredoka p-7 bg-[#D6EDE9] ">
-      <div className=" flex py-4 flex-row justify-around items-center">
+      <div className=" flex py-4 md:flex-row flex-col gap-4 justify-around items-center">
         <div className="">
           {" "}
           <Link href="/" className="flex items-center">
@@ -50,7 +50,8 @@ const Footer = () => {
         <Link href="/" className="flex items-center">
           <div className="text-xl font-semibold">MyFitHub</div> <sup>Beta</sup>
         </Link>
-        All right Reserved
+        <br className="md:hidden flex" />
+        <span>All right Reserved</span>
       </div>
       <ul className=" text-center text-sm flex gap-2 justify-center">
         <li className=" cursor-pointer">Terms & Conditions</li>

@@ -5,7 +5,7 @@ import React from "react";
 
 const Intro = () => {
   return (
-    <div className=" p-15 ">
+    <div className=" p-15  bg-white">
       <h2 className="text-4xl text-center font-bold text-[#234E49] mb-6 font-sora leading-tight">
         Who We Are
       </h2>

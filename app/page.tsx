@@ -4,6 +4,7 @@ import TrustedPartners from "./components/trustedPartners";
 import About from "./components/about";
 import Feature from "./components/feature";
 import HowItWork from "./components/howItWork";
+//import Pricing from "./components/pricing";
 
 const Page = () => {
   return (
@@ -13,6 +14,9 @@ const Page = () => {
       <About />
       <Feature />
       <HowItWork />
+      {/*
+      <Pricing />
+      */}
     </div>
   );
 };
