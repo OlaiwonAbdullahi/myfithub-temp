@@ -77,7 +77,6 @@ const Navbar = () => {
         />
       )}
 
-      {/* Mobile navigation menu */}
       <div
         className={`
         fixed top-[64px] right-0 h-screen w-1/2 bg-white shadow-md border-t border-[#234E49]/10 
@@ -86,7 +85,6 @@ const Navbar = () => {
         ${menuOpen ? "translate-x-0" : "translate-x-full"}
       `}
       >
-        {/* Navigation Links */}
         <nav className="flex-1">
           <ul className="flex flex-col space-y-2 text-center">
             {navLinks.map((link) => (
