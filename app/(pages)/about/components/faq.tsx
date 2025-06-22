@@ -20,14 +20,14 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
     <div className="group mb-4 overflow-hidden">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:border-gray-200">
         <div
-          className="faq-question cursor-pointer px-6 py-5 md:px-8 md:py-6 flex justify-between items-center group-hover:bg-gray-50/50 transition-colors duration-300"
+          className="faq-question cursor-pointer px-4 py-3 md:px-6 md:py-4 flex justify-between items-center group-hover:bg-gray-50/50 transition-colors duration-300"
           onClick={toggleAccordion}
         >
           <div className="flex items-center space-x-4">
-            <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-bold">
+            <div className="flex-shrink-0 w-8 h-8 bg-[#234E49] rounded-full flex items-center justify-center text-white text-sm font-bold">
               {String(index + 1).padStart(2, "0")}
             </div>
-            <h3 className="text-lg md:text-xl font-semibold font-sora text-gray-900 pr-4">
+            <h3 className="text-sm md:text-base font-semibold font-sora text-gray-900 pr-4">
               {question}
             </h3>
           </div>
@@ -51,10 +51,10 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="px-6 pb-6 md:px-8 md:pb-8">
-            <div className="pl-12 md:pl-12">
-              <div className="bg-gradient-to-r from-gray-50 to-blue-50/30 rounded-xl p-4 md:p-5 border-l-4 border-blue-500">
-                <p className="text-gray-700 font-fredoka text-sm md:text-base leading-relaxed">
+          <div className="px-3 pb-4 md:px-4 md:pb-6">
+            <div className="">
+              <div className="bg-[#EEF7F6] rounded-xl p-3 md:p-4 ">
+                <p className="text-gray-700 font-fredoka text-xs md:text-sm leading-relaxed">
                   {answer}
                 </p>
               </div>
@@ -142,7 +142,7 @@ const FAQAccordion = () => {
   ];
 
   return (
-    <div className="faq-accordion w-full max-w-4xl mx-auto p-4 md:p-8">
+    <div className="faq-accordion w-full max-w-6xl mx-auto p-4 md:p-8">
       <div className="text-center mb-12 pt-10">
         <Heading
           title="Frequently Asked Questions"
@@ -150,7 +150,7 @@ const FAQAccordion = () => {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 grid grid-cols-2 gap-4">
         {faqData.map((item, index) => (
           <FAQItem
             key={index}
