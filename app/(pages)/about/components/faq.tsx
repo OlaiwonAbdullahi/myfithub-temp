@@ -150,7 +150,7 @@ const FAQAccordion = () => {
         />
       </div>
 
-      <div className="space-y-2 grid grid-cols-2 gap-4">
+      <div className="space-y-2 grid md:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-4">
         {faqData.map((item, index) => (
           <FAQItem
             key={index}

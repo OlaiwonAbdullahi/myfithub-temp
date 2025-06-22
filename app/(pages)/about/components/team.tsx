@@ -30,7 +30,7 @@ const Team = () => {
         title="The Team"
         paragraph="Driven by passion, powered by purpose - meet the engine that drives MyFitHub"
       />
-      <div className="flex flex-col sm:flex-row gap-8 justify-center">
+      <div className="flex flex-col sm:flex-col md:flex-row mx-auto items-center gap-8 justify-center">
         {teamDetails.map((member, idx) => (
           <div className="" key={idx}>
             <div className="border-[#234E49]/20 rounded-2xl bg-white shadow border  p-5 w-82 text-center flex flex-col justify-center items-center space-y-3">

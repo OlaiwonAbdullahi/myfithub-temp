@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Pricing", href: "/pricing" },
+    // { name: "Pricing", href: "/pricing" },
   ];
 
   return (
@@ -71,7 +71,23 @@ const Navbar = () => {
       </div>
 
       {menuOpen && (
-        <div className="absolute top-[64px] left-0 w-full bg-white shadow-md border-t border-[#234E49]/10 flex flex-col md:hidden px-8 py-4 space-y-4 font-fredoka z-40">
+        <div
+          className="fixed inset-0 bg-white/15 backdrop-blur-2xl z-30 md:hidden"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
+
+      {/* Mobile navigation menu */}
+      <div
+        className={`
+        fixed top-[64px] right-0 h-screen w-1/2 bg-white shadow-md border-t border-[#234E49]/10 
+        flex flex-col md:hidden px-8 py-4 space-y-4 font-fredoka z-40 
+        transform transition-transform duration-300 ease-in-out
+        ${menuOpen ? "translate-x-0" : "translate-x-full"}
+      `}
+      >
+        {/* Navigation Links */}
+        <nav className="flex-1">
           <ul className="flex flex-col space-y-2 text-center">
             {navLinks.map((link) => (
               <Link
@@ -80,10 +96,10 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
               >
                 <li
-                  className={`cursor-pointer py-2 rounded-lg ${
+                  className={`cursor-pointer py-3 rounded-lg transition-colors ${
                     isActive(link.href)
-                      ? "bg-[#234E49]/20 font-semibold"
-                      : "hover:bg-[#234E49]/10"
+                      ? "bg-[#234E49]/20 font-semibold text-[#234E49]"
+                      : "hover:bg-[#234E49]/10 text-gray-700"
                   }`}
                 >
                   {link.name}
@@ -91,20 +107,20 @@ const Navbar = () => {
               </Link>
             ))}
           </ul>
-          <div className="flex flex-col gap-2 items-center">
+          <div className="flex  gap-3 items-center mt-auto justify-center">
             <Link href="/login" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[200px] rounded-lg">
+              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[100px] rounded-lg hover:bg-[#234E49]/5 transition-colors">
                 Login
               </button>
             </Link>
             <Link href="/signup" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 w-[200px] rounded-lg">
+              <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 w-[150px] rounded-lg hover:bg-[#234E49]/90 transition-colors">
                 Get Started
               </button>
             </Link>
           </div>
-        </div>
-      )}
+        </nav>
+      </div>
     </nav>
   );
 };
