@@ -72,14 +72,14 @@ const Navbar = () => {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-white/15 backdrop-blur-2xl z-30 md:hidden"
+          className="fixed inset-0 bg-white/10 backdrop-blur-xs z-30 md:hidden"
           onClick={() => setMenuOpen(false)}
         />
       )}
 
       <div
         className={`
-        fixed top-[64px] right-0 h-screen w-1/2 bg-white shadow-md border-t border-[#234E49]/10 
+        fixed top-[64px] right-0 h-screen w-5/6 bg-white shadow-md border-t border-[#234E49]/10 
         flex flex-col md:hidden px-8 py-4 space-y-4 font-fredoka z-40 
         transform transition-transform duration-300 ease-in-out
         ${menuOpen ? "translate-x-0" : "translate-x-full"}
@@ -107,12 +107,12 @@ const Navbar = () => {
           </ul>
           <div className="flex  gap-3 items-center mt-auto justify-center">
             <Link href="/login" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[100px] rounded-lg hover:bg-[#234E49]/5 transition-colors">
+              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[80px] rounded-lg hover:bg-[#234E49]/5 transition-colors">
                 Login
               </button>
             </Link>
             <Link href="/signup" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 w-[150px] rounded-lg hover:bg-[#234E49]/90 transition-colors">
+              <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 w-[120px] whitespace-nowrap rounded-lg hover:bg-[#234E49]/90 transition-colors">
                 Get Started
               </button>
             </Link>

@@ -14,14 +14,17 @@ const Page = () => {
   };
 
   return (
-    <div className="flex flex-col px-20 space-y-7 py-10 justify-center items-center min-h-screen bg-[#EEF7F6]/50 font-fredoka">
-      <div className=" self-start">
-        <Link href="/" className="flex items-center">
-          <div className="text-xl font-semibold">MyFitHub</div> <sup>Beta</sup>
-        </Link>
-      </div>
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md space-y-6">
+    <div className="flex flex-col md:px-20 px-6 space-y-7 md:py-10  justify-center items-center min-h-screen bg-[#EEF7F6]/50 font-fredoka">
+      <div className="bg-white md:p-8 p-5 rounded-2xl shadow-md w-full max-w-md space-y-6">
         <div className="text-center space-y-2">
+          <div className=" ">
+            <Link href="/" className="flex items-center  justify-center">
+              <div className="text-xl text-[#234E49] font-semibold">
+                MyFitHub
+              </div>{" "}
+              <sup>Beta</sup>
+            </Link>
+          </div>
           <h2 className="text-2xl font-bold text-[#234E49] font-sora">
             Log In
           </h2>
@@ -78,7 +81,7 @@ const Page = () => {
 
         <div className="text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}
-          <a href="/login" className="text-[#234E49] font-medium">
+          <a href="/signup" className="text-[#234E49] font-medium">
             Sign Up
           </a>
         </div>

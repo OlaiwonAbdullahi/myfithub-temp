@@ -19,3 +19,17 @@
 .font-sora {
   font-family: var(--font-sora);
 }
+.PhoneInputCountryIcon--border {
+  border: none;
+}
+.PhoneInputInput {
+  height: 35px;
+  padding: 16px;
+  outline: none;
+}
+.PhoneInputCountryIcon {
+  height: 35px;
+}
+.PhoneInputCountrySelectArrow {
+  display: none;
+}

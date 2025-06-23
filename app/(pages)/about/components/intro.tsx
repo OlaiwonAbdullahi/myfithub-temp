@@ -5,11 +5,11 @@ import React from "react";
 
 const Intro = () => {
   return (
-    <div className=" p-15  bg-white">
+    <div className=" md:p-15 p-6  bg-white">
       <h2 className="text-4xl text-center font-bold text-[#234E49] mb-6 font-sora leading-tight">
         Who We Are
       </h2>
-      <p className="text-base sm:text-lg text-black font-light font-fredoka max-w-xl text-center mx-auto mb-8 leading-relaxed">
+      <p className="text-base sm:text-lg text-black font-light font-fredoka md:max-w-xl max-w-2xl text-center mx-auto mb-8 leading-relaxed">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id dolore
         explicabo laudantium eum. Quos eveniet recusandae, pariatur harum
         aliquam accusantium consequatur reprehenderit velit doloribus ipsa

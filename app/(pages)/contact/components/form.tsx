@@ -16,7 +16,7 @@ const Form = () => {
   const [message, setMessage] = useState("");
 
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12">
+    <div className="md:max-w-2xl mx-auto px-4 md:py-12 py-7">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
         {/* Header Section */}
         <div className=" px-8 pt-8 ">

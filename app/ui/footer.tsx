@@ -45,12 +45,11 @@ const Footer = () => {
         </div>
       </div>
       <hr className=" border-t border-[#234E49]" />
-      <div className=" flex items-center gap-2.5 text-center justify-center p-4 text-neutral-700">
+      <div className=" flex flex-wrap items-center gap-2.5 text-center justify-center p-4 text-neutral-700">
         &copy; {new Date().getFullYear()}{" "}
         <Link href="/" className="flex items-center">
           <div className="text-xl font-semibold">MyFitHub</div> <sup>Beta</sup>
         </Link>
-        <br className="md:hidden flex" />
         <span>All right Reserved</span>
       </div>
       <ul className=" text-center text-sm flex gap-2 justify-center">
