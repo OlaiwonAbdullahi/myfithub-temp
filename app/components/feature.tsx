@@ -1,33 +1,36 @@
 import React from "react";
 import FeatureCard from "./featureCard";
-import { BoxIcon } from "lucide-react";
+import { BrainCog, Layers3, Users2, UsersRound } from "lucide-react";
 import Heading from "../ui/heading";
 
 const Feature = () => {
   const featureData = [
     {
       id: "01",
-      icon: <BoxIcon size={30} />,
-      title: "Multiple Users1",
-      description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti quibusdam voluptates magnam, illo natus modi corporis minima",
+      icon: <Layers3 size={30} />,
+      title: "All-in-One",
+      description: "Gyms, wellness, sports, niche activities.",
     },
     {
       id: "02",
-      icon: <BoxIcon size={30} />,
-      title: "Multiple Users2",
+      icon: <BrainCog size={30} />,
+      title: "AI Personalized",
       description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti quibusdam voluptates magnam, illo natus modi corporis minima",
+        "Smart class suggestions based on mood, habits, and energy, Goal-based virtual coaching, Food integration + wearable sync.",
     },
     {
       id: "03",
-      icon: <BoxIcon size={30} />,
-      title: "Multiple Users3",
-      description:
-        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti quibusdam voluptates magnam, illo natus modi corporis minima",
+      icon: <Users2 size={30} />,
+      title: "Gamification & Community",
+      description: "Leaderboards, challenges, teams, Accountability buddies.",
+    },
+    {
+      id: "04",
+      icon: <UsersRound size={30} />,
+      title: "Family Plans",
+      description: "Share sessions across family members.",
     },
   ];
-
   return (
     <div className="px-4 sm:px-8  md:px-20 py-8 sm:py-10 md:py-25 lg:py-28 space-y-8 bg-white">
       <Heading title="Our Feature" paragraph=" Explore our App Features" />

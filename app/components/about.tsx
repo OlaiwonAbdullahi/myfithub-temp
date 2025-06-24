@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import AnimatedContent from "../animations/FadeUp";
 
 const About = () => {
   return (
@@ -26,13 +27,26 @@ const About = () => {
         {/* Description */}
         <div className="w-full md:max-w-lg">
           <p className="text-base text-gray-100 text-justify leading-7 md:leading-8">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eos
-            alias nesciunt ratione, possimus reiciendis qui placeat. Commodi
-            aliquam debitis officia inventore, molestias aut, nulla, corporis
-            veniam optio earum laborum. Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Numquam nemo esse fugiat optio amet hic ullam
-            quaerat reiciendis excepturi explicabo, voluptatum vel asperiores
-            ipsum non necessitatibus quos dolore error fuga!
+            <AnimatedContent
+              distance={150}
+              direction="horizontal"
+              reverse={false}
+              duration={1.2}
+              ease="bounce.out"
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+              delay={0.3}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eos
+              alias nesciunt ratione, possimus reiciendis qui placeat. Commodi
+              aliquam debitis officia inventore, molestias aut, nulla, corporis
+              veniam optio earum laborum. Lorem ipsum dolor, sit amet
+              consectetur adipisicing elit. Numquam nemo esse fugiat optio amet
+              hic ullam quaerat reiciendis excepturi explicabo, voluptatum vel
+              asperiores ipsum non necessitatibus quos dolore error fuga!
+            </AnimatedContent>
           </p>
         </div>
 

@@ -3,20 +3,47 @@ import { ArrowRight, LogIn } from "lucide-react";
 
 import EventAnimation from "./anihero";
 import Button from "../ui/button";
+import BlurText from "../animations/BlurText";
+import AnimatedContent from "../animations/FadeUp";
 
 const Hero = () => {
   return (
     <div className=" font-fredoka flex md:flex-row flex-col items-center md:h-screen h-fit md:p-20 p-10 gap-10 bg-[#EEF7F6] rounded-b-[80px]">
       <div className=" md:w-1/2 w-full  md:space-y-8 space-y-6">
         <div className=" space-y-5">
-          <h2 className=" md:text-6xl sm:text-5xl flex flex-col text-3xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
-            <span className=" whitespace-nowrap">One subscription, </span>
-            <span className=" whitespace-nowrap"> Everything Fitness.</span>
+          <h2 className=" md:text-[3.6rem] sm:text-5xl flex flex-col text-3xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
+            <BlurText
+              text="One subscription,"
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className=" whitespace-nowrap"
+            />
+            <BlurText
+              text="Everything Fitness."
+              delay={150}
+              animateBy="words"
+              direction="top"
+              className=" whitespace-nowrap"
+            />
           </h2>
-          <p className=" text-center md:text-start mx-auto md:mx-0 md:w-9/12 w-full text-neutral-700 text-base">
-            Access top gyms, studios, fitness and wellness centers in Lagos and
-            London with just one subscription
-          </p>
+          <AnimatedContent
+            distance={150}
+            direction="horizontal"
+            reverse={false}
+            duration={1.2}
+            ease="bounce.out"
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.2}
+            delay={0.3}
+          >
+            <p className=" text-center md:text-start mx-auto md:mx-0 md:w-9/12 w-full text-neutral-700 text-base">
+              Access top gyms, studios, fitness and wellness centers in Lagos
+              and London with just one subscription
+            </p>
+          </AnimatedContent>
         </div>
         <div className=" flex flex-row gap-5 justify-center md:justify-start">
           <Button
