@@ -17,21 +17,8 @@ const Heading: React.FC<HeadingProps> = ({ title, paragraph }) => {
         direction="top"
         className=" whitespace-nowrap text-2xl sm:text-3xl md:text-4xl font-bold font-sora text-[#234E49] text-center flex mx-auto"
       />
-      <p className="text-sm sm:text-base text-center font-fredoka px-4 text-gray-600 max-w-2xl mx-auto">
-        <AnimatedContent
-          distance={150}
-          direction="horizontal"
-          reverse={false}
-          duration={1.2}
-          ease="bounce.out"
-          initialOpacity={0.2}
-          animateOpacity
-          scale={1.1}
-          threshold={0.2}
-          delay={0.3}
-        >
-          {paragraph}
-        </AnimatedContent>
+      <p className="text-sm sm:text-lg text-center font-fredoka px-4 text-gray-600 max-w-2xl mx-auto">
+        {paragraph}
       </p>
     </div>
   );

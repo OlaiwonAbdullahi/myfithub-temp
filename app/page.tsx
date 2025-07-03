@@ -1,17 +1,17 @@
 import React from "react";
-import Hero from "./components/hero";
 import TrustedPartners from "./components/trustedPartners";
-import About from "./components/about";
+
 import Feature from "./components/feature";
 import HowItWork from "./components/howItWork";
+import Heroo from "./components/heroo";
 //import Pricing from "./components/pricing";
 
 const Page = () => {
   return (
     <div>
-      <Hero />
+      <Heroo />
       <TrustedPartners />
-      <About />
+
       <Feature />
       <HowItWork />
       {/*

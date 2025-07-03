@@ -38,7 +38,7 @@ const HowItWork = () => {
     <div>
       <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-[#EEF7F6]/50">
         <Heading
-          title=" How It Works"
+          title=" Users Persona Flow"
           paragraph="Follow these simple steps to get started"
         />
 

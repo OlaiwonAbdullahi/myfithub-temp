@@ -1,64 +1,90 @@
-import React from "react";
-import AnimatedContent from "../animations/FadeUp";
+"use client";
+import { Button } from "@/components/ui/button";
+import { CornerDownRight } from "lucide-react";
+import React, { useState } from "react";
+import Image from "next/image";
 
 type FeatureCardProps = {
-  num: string;
   icon: React.ReactNode;
   title: string;
   description: string;
+  image?: string;
 };
+
 const FeatureCard: React.FC<FeatureCardProps> = ({
-  num,
-  icon,
   title,
   description,
+  image,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div className="group relative mx-auto">
-      <div className="absolute -top-12 -left-8 z-0">
-        <span
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent select-none"
-          style={{
-            WebkitTextStroke: "1px #234E49",
-            opacity: "0.4",
-          }}
+    <div
+      className={`h-[400px] w-[485px] relative flex flex-col items-start justify-between p-6 rounded-lg transition-all duration-300 border group ${
+        isHovered ? "bg-[#234E49] shadow-xl transform scale-105" : "bg-white "
+      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="space-y-3.5 relative z-10">
+        <h2
+          className={`text-4xl font-sora font-bold transition-colors duration-300 ${
+            isHovered ? "text-white" : "text-[#234E49]"
+          }`}
         >
-          {num}
-        </span>
+          {title}
+        </h2>
+        <p
+          className={`text-lg font-fredoka transition-colors duration-300 w-4/5 ${
+            isHovered ? "text-white/90" : "text-gray-600"
+          }`}
+        >
+          {description}
+        </p>
       </div>
 
-      <div className="relative z-10 bg-white border border-[#234E49]/10 rounded-2xl p-3 md:p-4 shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#234E49]/40 hover:-translate-y-1 min-h-[220px] sm:min-h-[250px] md:min-h-[280px]">
-        <div className="mb-3 sm:mb-4">
-          <div className="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-[#234E49]/10 rounded-xl flex items-center justify-center text-[#234E49] group-hover:bg-[#234E49] group-hover:text-white transition-all duration-300">
-            {icon}
-          </div>
-        </div>
-
-        <div className="space-y-2 sm:space-y-3">
-          <h3 className="text-base sm:text-lg md:text-xl font-bold font-sora text-[#234E49] leading-tight">
-            {title}
-          </h3>
-
-          <p className="text-sm sm:text-base font-fredoka text-neutral-700 leading-relaxed line-clamp-4">
-            <AnimatedContent
-              distance={150}
-              direction="horizontal"
-              reverse={false}
-              duration={1.2}
-              ease="bounce.out"
-              initialOpacity={0.2}
-              animateOpacity
-              scale={1.1}
-              threshold={0.2}
-              delay={0.3}
-            >
-              {description}
-            </AnimatedContent>
-          </p>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#234E49] to-[#234E49]/60 rounded-b-2xl group-hover:w-full transition-all duration-500"></div>
+      {/* Image container with smooth transition */}
+      <div
+        className={`absolute bottom-3 right-6 w-[220px] h-[220px] flex items-center justify-center transition-all duration-500 ${
+          isHovered
+            ? "opacity-100 transform translate-y-0"
+            : "opacity-0 transform translate-y-4"
+        }`}
+      >
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            width={220}
+            height={220}
+            className="object-contain transition-transform duration-300 hover:scale-110"
+          />
+        )}
       </div>
+
+      {/* Button with enhanced hover states */}
+      <div className="relative z-10 w-fit">
+        <Button
+          className={`w-full border-none h-10 flex flex-row items-center justify-center gap-2 font-fredoka shadow-none transition-all duration-300 ${
+            isHovered
+              ? "text-[#234E49] bg-white hover:bg-gray-100 border-2 border-white"
+              : "text-[#234E49] bg-white hover:bg-gray-50 border-2 border-gray-200"
+          }`}
+        >
+          <CornerDownRight
+            size={20}
+            className={`transition-transform duration-300 ${
+              isHovered ? "transform rotate-12" : ""
+            }`}
+          />
+          Get Started
+        </Button>
+      </div>
+
+      {/* Optional: Add a subtle background pattern or gradient on hover */}
+      {isHovered && (
+        <div className="absolute inset-0 bg-gradient-to-br from-[#234E49] to-[#1a3d37] rounded-lg opacity-95 -z-10" />
+      )}
     </div>
   );
 };
