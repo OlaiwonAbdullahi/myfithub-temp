@@ -1,120 +1,31 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
-import { ArrowRight, LogIn } from "lucide-react";
 
-import EventAnimation from "./anihero";
-import Button from "../ui/button";
-import BlurText from "../animations/BlurText";
-import AnimatedContent from "../animations/FadeUp";
-
-const Hero = () => {
+const Heroo = () => {
   return (
-    <div className=" font-fredoka flex md:flex-row flex-col items-center md:h-screen h-fit md:p-20 p-10 gap-10 bg-[#EEF7F6] rounded-b-[80px]">
-      <div className=" md:w-1/2 w-full  md:space-y-8 space-y-6">
-        <div className=" space-y-5">
-          <h2 className=" md:text-[3.6rem] sm:text-5xl flex flex-col text-3xl text-center md:text-start md:leading-20 leading-13 font-semibold text-[#234E49] font-sora">
-            <BlurText
-              text="One subscription,"
-              delay={150}
-              animateBy="words"
-              direction="top"
-              className=" whitespace-nowrap"
-            />
-            <BlurText
-              text="Everything Fitness."
-              delay={150}
-              animateBy="words"
-              direction="top"
-              className=" whitespace-nowrap"
-            />
-          </h2>
-          <AnimatedContent
-            distance={150}
-            direction="horizontal"
-            reverse={false}
-            duration={1.2}
-            ease="bounce.out"
-            initialOpacity={0.2}
-            animateOpacity
-            scale={1.1}
-            threshold={0.2}
-            delay={0.3}
-          >
-            <p className=" text-center md:text-start mx-auto md:mx-0 md:w-9/12 w-full text-neutral-700 text-base">
-              Access top gyms, studios, fitness and wellness centers in Lagos
-              and London with just one subscription
-            </p>
-          </AnimatedContent>
+    <div className=" h-screen flex flex-col items-center justify-center   p-8 bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center">
+      <div className=" bg-white bg-opacity-80 p-8 rounded-lg shadow-lg max-w-2xl ">
+        <div className="">
+          <h1 className="text-5xl flex flex-col space-y-2.5 font-bold text-center mt-10 text-[#234E49] font-sora">
+            <span>One subscription,</span>
+            <span>Everything Fitness.</span>
+          </h1>
+          <p className="text-center mt-4 text-lg font-fredoka text-neutral-700 px-6">
+            Access top gyms, studios, fitness and wellness centers in Lagos and
+            London with just one subscription
+          </p>
         </div>
-        <div className=" flex flex-row gap-5 justify-center md:justify-start">
-          <Button
-            icon={LogIn}
-            iconSize={25}
-            className="w-40  bg-white/20 backdrop-blur-sm"
-            variant="outline"
-          >
-            Login
-          </Button>
-          <Button icon={ArrowRight} iconSize={25} className="w-40">
+        <div className=" flex flex-col items-center justify-center gap-4 my-8">
+          <Button className=" w-1/2 h-10 font-fredoka bg-[#234E49] text-white hover:bg-[#1a3b36] transition-colors cursor-pointer duration-300">
             Get Started
           </Button>
-        </div>
-        <div className=" flex md:flex-row flex-col space-y-3.5  mt-7 w-full items-center ">
-          <div className=" justify-center md:justify-start  flex flex-row  items-center gap-4 md:border-r border-none md:border-[#234E49]/60 md:pr-4 ">
-            <div className=" flex  -space-x-3.5 ">
-              <img
-                src="https://tapback.co/api/avatar/johndoe"
-                alt=""
-                className="rounded-full border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
-              />
-              <img
-                src="https://tapback.co/api/avatar/abdullahi"
-                alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
-              />
-              <img
-                src="https://tapback.co/api/avatar/joy"
-                alt=""
-                className="rounded-full  border-2 border-[#234E49]/40 backdrop-blur-sm md:w-12 md:h-12 w-10 h-10"
-              />
-            </div>
-            <div className=" flex flex-col  items-start justify-start">
-              <span className=" md:text-3xl text-2xl font-semibold font-sora">
-                10k+
-              </span>
-              <span className="text-sm  font-fredoka">Happy Users </span>
-            </div>
-          </div>
-          <div className=" flex items-center p-4 md:gap-2.5 gap-1 cursor-pointer">
-            <img src="./play.svg" alt="" className=" md:w-10 md:h-10 w-9 h-9" />
-            <span className="md:text-base text-sm whitespace-nowrap md:whitespace-normal ">
-              Download on Playstore
-            </span>
-          </div>
-        </div>
-      </div>
-      {/* <div className=" w-1/2  rounded-full flex flex-col justify-center items-center object-contain ">
-        <Image
-          src={circle}
-          width={500}
-          height={500}
-          alt="Fithub Hero"
-          className=" w-130 h-130  rounded-full absolute"
-        />
-        <Image
-          src="/fithubhero.jpeg"
-          width={500}
-          height={500}
-          alt="Fithub Hero"
-          className=" w-100 h-100  rounded-full"
-        />
-      </div>*/}
-      <div className="md:w-1/2 w-full h-full bg-primary flex flex-col gap-3 justify-center items-end">
-        <div className="relative w-full aspect-auto">
-          <EventAnimation />
+          <Button className="  w-1/2 h-10 font-fredoka border border-[#234E49] text-[#234E49] bg-white/10 backdrop-blur-sm hover:bg-transparent cursor-pointer hover:border-[#1a3b36] transition-colors duration-300 ">
+            Log In
+          </Button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Hero;
+export default Heroo;

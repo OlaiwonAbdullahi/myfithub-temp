@@ -3,13 +3,13 @@ import TrustedPartners from "./components/trustedPartners";
 
 import Feature from "./components/feature";
 import HowItWork from "./components/howItWork";
-import Heroo from "./components/heroo";
+import Hero from "./components/hero";
 //import Pricing from "./components/pricing";
 
 const Page = () => {
   return (
     <div>
-      <Heroo />
+      <Hero />
       <TrustedPartners />
 
       <Feature />
