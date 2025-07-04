@@ -44,7 +44,6 @@ const Footer = () => {
           </Button>
         </div>
       </div>
-      <hr className=" border-t border-[#234E49]" />
       <div className=" flex flex-wrap items-center gap-2.5 text-center justify-center p-4 text-neutral-700">
         &copy; {new Date().getFullYear()}{" "}
         <Link href="/" className="flex items-center">
@@ -53,8 +52,12 @@ const Footer = () => {
         <span>All right Reserved</span>
       </div>
       <ul className=" text-center text-sm flex gap-2 justify-center">
-        <li className=" cursor-pointer">Terms & Conditions</li>
-        <li className=" cursor-pointer">Privacy</li>
+        <Link href={"/conditions"}>
+          <li className=" cursor-pointer">Terms & Conditions</li>
+        </Link>
+        <Link href={"/terms-of-use"}>
+          <li className=" cursor-pointer">Terms of use</li>
+        </Link>
       </ul>
     </div>
   );

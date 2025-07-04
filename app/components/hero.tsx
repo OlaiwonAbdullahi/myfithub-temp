@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
 const Heroo = () => {
@@ -16,12 +17,22 @@ const Heroo = () => {
           </p>
         </div>
         <div className=" flex flex-col items-center justify-center gap-4 my-8">
-          <Button className=" w-1/2 h-10 font-fredoka bg-[#234E49] text-white hover:bg-[#1a3b36] transition-colors cursor-pointer duration-300">
-            Get Started
-          </Button>
-          <Button className="  w-1/2 h-10 font-fredoka border border-[#234E49] text-[#234E49] bg-white/10 backdrop-blur-sm hover:bg-transparent cursor-pointer hover:border-[#1a3b36] transition-colors duration-300 ">
-            Log In
-          </Button>
+          <Link
+            href={"/signup"}
+            className=" w-1/2 h-10 rounded-lg flex flex-row justify-center items-center font-fredoka bg-[#234E49] text-white hover:bg-[#1a3b36] transition-colors cursor-pointer duration-300"
+          >
+            <Button className=" text-white bg-transparent hover:bg-transparent ">
+              Get Started
+            </Button>
+          </Link>
+          <Link
+            href={"/login"}
+            className=" w-1/2 h-10 border-2 flex justify-center items-center rounded-lg  border-[#234E49] text-[#234E49] bg-white/10 backdrop-blur-sm hover:bg-transparent cursor-pointer hover:border-[#1a3b36] transition-colors duration-300"
+          >
+            <Button className=" text-[#234E49] bg-transparent hover:bg-transparent font-fredoka">
+              Log In
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

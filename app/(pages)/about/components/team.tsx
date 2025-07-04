@@ -1,5 +1,5 @@
 import Heading from "@/app/ui/heading";
-import { Instagram, Linkedin, Twitter } from "lucide-react";
+//import { Instagram, Linkedin, Twitter } from "lucide-react";
 import React from "react";
 
 const teamDetails = [
@@ -45,6 +45,7 @@ const Team = () => {
                 </h2>
                 <span className="text-base font-fredoka">{member.role}</span>
               </div>
+              {/*
               <div className="flex flex-row gap-3 mx-auto">
                 <a
                   href={member.linkedin}
@@ -67,7 +68,7 @@ const Team = () => {
                 >
                   <Instagram size={25} strokeWidth={1} />
                 </a>
-              </div>
+              </div>*/}
             </div>
           </div>
         ))}
