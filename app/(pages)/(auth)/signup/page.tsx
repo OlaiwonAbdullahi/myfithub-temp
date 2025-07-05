@@ -1,34 +1,51 @@
 "use client";
-import Button from "@/app/ui/button";
+
+import { useState } from "react";
 import Link from "next/link";
-import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
 const Page = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState<string | undefined>("");
+  const [step, setStep] = useState(1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [phone, setPhone] = useState<string | undefined>("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("male");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (step === 1) {
+      setStep(2);
+    } else {
+      // Final submit logic here
+      console.log({
+        firstName,
+        lastName,
+        email,
+        username,
+        phone,
+        password,
+        gender,
+      });
+    }
   };
 
   return (
     <div className="flex flex-col md:px-20 sm:px-8 px-6 space-y-7 py-10 justify-center items-center min-h-screen bg-[#EEF7F6]/50 font-fredoka">
-      <div className="bg-white p-8 rounded-2xl shadow-md space-y-6">
+      <div className="bg-white p-8 rounded-2xl shadow-md space-y-6 w-full max-w-md">
         <div className="text-center space-y-2">
-          <div className=" ">
-            <Link href="/" className="flex items-center  justify-center">
-              <div className="text-xl text-[#234E49] font-semibold">
-                MyFitHub
-              </div>{" "}
-              <sup>Beta</sup>
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center justify-center gap-1">
+            <div className="text-xl text-[#234E49] font-semibold">MyFitHub</div>
+            <sup>Beta</sup>
+          </Link>
           <h2 className="text-2xl font-bold text-[#234E49] font-sora">
             Create Account
           </h2>
@@ -36,155 +53,171 @@ const Page = () => {
             Join Us Today
           </span>
         </div>
-        <div>
-          <Button
-            variant="outline"
-            className="w-full h-9 mb-4 border text-sm border-[#E5E5E5] flex "
-          >
-            <img src={"./google.svg"} alt="" className=" z-20 h-5 w-5" />
-            Continue With Google
-          </Button>
-        </div>
+
+        <Button
+          variant="outline"
+          className="w-full h-9 mb-4 border text-sm border-[#E5E5E5] flex gap-2 items-center justify-center"
+        >
+          <img src="/google.svg" alt="Google" className="h-5 w-5" />
+          Continue With Google
+        </Button>
+
         <hr className="border-t border-t-[#234E49]/20" />
+
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex flex-col">
-            <label htmlFor="Email" className="mb-1 font-medium text-[#234E49]">
-              First Name
-            </label>
-            <input
-              id="Name"
-              type="text"
-              placeholder="Your First Name"
-              className="border border-[#E5E5E5] bg-[#E5E5E5] rounded px-3 py-2  focus:outline-none "
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="LastName"
-              className="mb-1 font-medium text-[#234E49]"
-            >
-              Last Name
-            </label>
-            <input
-              id="LastName"
-              type="text"
-              placeholder="Your Last Name"
-              className="border border-[#E5E5E5] bg-[#E5E5E5] rounded px-3 py-2  focus:outline-none "
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="flex flex-col">
-            <label htmlFor="Email" className="mb-1 font-medium text-[#234E49]">
-              Email
-            </label>
-            <input
-              id="Email"
-              type="email"
-              placeholder="Enter your Email"
-              className="border border-[#E5E5E5] bg-[#E5E5E5] rounded px-3 py-2  focus:outline-none "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="username"
-              className="mb-1 font-medium text-[#234E49]"
-            >
-              Username
-            </label>
-            <input
-              id="username"
-              type="username"
-              placeholder="Create a Username "
-              className="border border-[#E5E5E5] bg-[#E5E5E5] rounded px-3 py-2  focus:outline-none "
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="phonenumber"
-              className="mb-1 font-medium text-[#234E49]"
-            >
-              Phone Number
-            </label>{" "}
-            <PhoneInput
-              defaultCountry="NG"
-              value={phone}
-              onChange={setPhone}
-              placeholder="8012345678"
-              className=" p-1 px-2 border border-[#E5E5E5] bg-[#E5E5E5] focus:outline-none rounded"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="Password"
-              className="mb-1 font-medium text-[#234E49]"
-            >
-              Password
-            </label>
-            <input
-              id="Password"
-              type="password"
-              placeholder="Create a Password"
-              className="border rounded  border-[#E5E5E5] bg-[#E5E5E5] px-3 py-2 focus:outline-none "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="LastName"
-              className="mb-1 font-medium text-[#234E49]"
-            >
-              Gender
-            </label>
-            <div className=" flex items-center gap-1.5">
-              <div className=" flex items-center gap-1 text-sm text-gray-600">
-                <input
-                  type="radio"
-                  name="gender"
-                  id="male"
-                  value="male"
-                  className=" accent-[#234E49] cursor-pointer"
+          {step === 1 ? (
+            <>
+              <div className="space-y-1">
+                <Label
+                  htmlFor="firstName"
+                  className="text-[#234E49] font-medium"
+                >
+                  First Name
+                </Label>
+                <Input
+                  id="firstName"
+                  type="text"
+                  placeholder="Your First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
                 />
-                <span>Male</span>
               </div>
-              <div className=" flex items-center gap-1 text-sm text-gray-600">
-                <input
-                  type="radio"
-                  name="gender"
-                  id="female"
-                  value="female"
-                  className=" accent-[#234E49] cursor-pointer"
-                />
-                <span>Female</span>
-              </div>
-            </div>
-          </div>
 
-          <Button type="submit" className="w-full">
-            Create Account
-          </Button>
+              <div className="space-y-1">
+                <Label
+                  htmlFor="lastName"
+                  className="text-[#234E49] font-medium"
+                >
+                  Last Name
+                </Label>
+                <Input
+                  id="lastName"
+                  type="text"
+                  placeholder="Your Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label htmlFor="email" className="text-[#234E49] font-medium">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Enter your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label
+                  htmlFor="username"
+                  className="text-[#234E49] font-medium"
+                >
+                  Username
+                </Label>
+                <Input
+                  id="username"
+                  type="text"
+                  placeholder="Create a Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="space-y-1">
+                <Label htmlFor="phone" className="text-[#234E49] font-medium">
+                  Phone Number
+                </Label>
+                <PhoneInput
+                  defaultCountry="NG"
+                  value={phone}
+                  onChange={setPhone}
+                  placeholder="8012345678"
+                  className="px-2 border border-[#E5E5E5] bg-[#E5E5E5] focus:outline-none rounded-lg text-sm"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label
+                  htmlFor="password"
+                  className="text-[#234E49] font-medium"
+                >
+                  Password
+                </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Create a Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <Label className="text-[#234E49] font-medium">Gender</Label>
+                <RadioGroup
+                  defaultValue="male"
+                  className="flex gap-4"
+                  onValueChange={(value) => setGender(value)}
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="male" id="male" />
+                    <Label htmlFor="male">Male</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="female" id="female" />
+                    <Label htmlFor="female">Female</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+            </>
+          )}
+
+          {/* Navigation Buttons */}
+          <div className="flex justify-between">
+            {step > 1 && (
+              <Button
+                type="button"
+                variant="outline"
+                className="text-[#234E49] border-[#234E49] hover:bg-[#234E49]/10 cursor-pointer"
+                onClick={() => setStep(step - 1)}
+              >
+                Back
+              </Button>
+            )}
+            <Button
+              type="submit"
+              className="ml-auto bg-[#234E49] text-white hover:bg-[#234E49]/90 cursor-pointer"
+            >
+              {step === 2 ? "Create Account" : "Next"}
+            </Button>
+          </div>
         </form>
-        <span className=" text-sm text-neutral-500">
+
+        <span className="text-sm text-neutral-500">
           By signing up, you agree to our Terms and Conditions & Privacy Policy
         </span>
         <div className="text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a href="/login" className="text-[#234E49] font-medium">
+          <Link href="/login" className="text-[#234E49] font-medium">
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </div>
