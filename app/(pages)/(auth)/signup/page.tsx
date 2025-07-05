@@ -189,7 +189,6 @@ const Page = () => {
             </>
           )}
 
-          {/* Navigation Buttons */}
           <div className="flex justify-between">
             {step > 1 && (
               <Button

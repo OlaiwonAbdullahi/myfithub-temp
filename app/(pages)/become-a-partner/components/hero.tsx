@@ -1,82 +1,129 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import React, { useState } from "react";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 const Hero = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    business: "",
+    website: "",
+    phone: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Submitted Data:", formData);
+    // TODO: Integrate with backend or API here
+  };
+
   return (
-    <div className=" h-screen flex flex-col md:flex-row justify-between  bg-white text-[#234E49] p-6 w-full">
-      <div className=" md:w-1/2 w-full">
-        <h2 className=" text-3xl font-bold font-sora">
-          Join MyFit Hub As a Partner
+    <section className="h-auto md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
+      {/* Left Content */}
+      <div className="md:w-1/2 w-full flex items-center">
+        <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug">
+          Join <span className="text-[#234E49]">MyFit Hub</span> As a Partner
         </h2>
       </div>
-      <div className=" md:w-1/2 w-full p-6 rounded-lg shadow-md ">
-        <form action="" className="flex flex-col gap-6">
-          <div className="grid w-full  items-center gap-3">
+
+      <div className="md:w-1/2 w-full bg-white p-6 rounded-lg shadow-md mt-8 md:mt-0">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="grid w-full items-center gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
               type="email"
               id="email"
-              placeholder="Email"
-              className=" h-10"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              className="h-10"
+              required
             />
           </div>
-          <div className=" flex flex-col md:flex-row gap-4">
-            <div className="grid md:w-1/2 w-full items-center gap-2">
+
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="grid w-full md:w-1/2 items-center gap-2">
               <Label htmlFor="firstName">First Name</Label>
               <Input
                 type="text"
                 id="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
                 placeholder="First Name"
-                className=" h-10"
+                className="h-10"
+                required
               />
             </div>
-            <div className="grid md:w-1/2 w-full items-center gap-2">
-              <Label htmlFor="lastName">Last Name </Label>
+            <div className="grid w-full md:w-1/2 items-center gap-2">
+              <Label htmlFor="lastName">Last Name</Label>
               <Input
                 type="text"
                 id="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
                 placeholder="Last Name"
-                className=" h-10"
+                className="h-10"
+                required
               />
             </div>
           </div>
-          <div className=" flex flex-col md:flex-row gap-4">
-            <div className="grid md:w-1/2 w-full items-center gap-2">
+
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="grid w-full md:w-1/2 items-center gap-2">
               <Label htmlFor="business">Business Name</Label>
               <Input
                 type="text"
                 id="business"
+                value={formData.business}
+                onChange={handleChange}
                 placeholder="Business Name"
-                className=" h-10"
+                className="h-10"
               />
             </div>
-            <div className="grid md:w-1/2 w-full items-center gap-2">
-              <Label htmlFor="website">Website URL </Label>
+            <div className="grid w-full md:w-1/2 items-center gap-2">
+              <Label htmlFor="website">Website URL</Label>
               <Input
                 type="url"
                 id="website"
-                placeholder="Enter Your Website URL"
-                className=" h-10"
+                value={formData.website}
+                onChange={handleChange}
+                placeholder="https://yourwebsite.com"
+                className="h-10"
               />
             </div>
           </div>
-          <div className="grid w-full items-center gap-3">
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input
-              type="tel"
-              id="phone"
-              placeholder="Phone Number"
-              className=" h-10"
+
+          <div className="space-y-1">
+            <Label htmlFor="phone" className="text-[#234E49] font-medium">
+              Phone Number
+            </Label>
+            <PhoneInput
+              defaultCountry="NG"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="8012345678"
+              className="px-2 border border-[#E5E5E5] shadow focus:outline-none rounded-lg text-sm"
             />
           </div>
-          <div className=" flex justify-center">
-            <Button className=" bg-[#234E49] w-full mt-10 ">Submit</Button>
-          </div>
+
+          <Button
+            type="submit"
+            className="bg-[#234E49] text-white mt-6 w-full hover:bg-[#1d3f3d] transition"
+          >
+            Submit
+          </Button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
