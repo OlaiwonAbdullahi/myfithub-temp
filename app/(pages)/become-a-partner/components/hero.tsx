@@ -35,7 +35,7 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="md:w-1/2 w-full bg-white p-6 rounded-lg shadow-md mt-8 md:mt-0">
+      <div className="md:w-1/2 w-full bg-white p-6 rounded-lg border border-[#f5f5f5]  mt-8 md:mt-0">
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="email">Email</Label>
@@ -111,8 +111,20 @@ const Hero = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="8012345678"
-              className="px-2 border border-[#E5E5E5] shadow focus:outline-none rounded-lg text-sm"
+              className="px-2 py-1 border border-[#E5E5E5] shadow focus:outline-none rounded-lg text-sm"
             />
+          </div>
+          <div className=" space-y-1 flex flex-col">
+            <Label htmlFor="phone" className="text-[#234E49] font-medium">
+              Service Type
+            </Label>
+            <select className=" border  p-2 w-1/2 rounded-lg shadow">
+              <option value="gym" className=" bg-[#e5e5e5]">
+                Gym
+              </option>
+              <option value="spa">Spa</option>
+              <option value="beauty_salon">Beauty Salon</option>
+            </select>
           </div>
 
           <Button

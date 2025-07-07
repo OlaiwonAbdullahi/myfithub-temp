@@ -1,5 +1,4 @@
 import React from "react";
-import Demo from "./demo";
 import Heading from "../ui/heading";
 import CreditFlow from "./creditFlow";
 //import Image from "next/image";
@@ -42,7 +41,7 @@ const HowItWork = () => {
       <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-[#EEF7F6]/50">
         <Heading
           title=" Users Persona Flow"
-          paragraph="Types of users and how they interact with MyFitHub"
+          paragraph="This is a guide on how you can customize your routine using your subscription points on MyFitHub"
         />
         {/*
         <div className="grid grid-cols-1 md:grid-cols-2  grid-rows-2 gap-6 w-full">
@@ -65,7 +64,6 @@ const HowItWork = () => {
           ))}
         </div>*/}
         <CreditFlow />
-        <Demo />
       </div>
     </div>
   );

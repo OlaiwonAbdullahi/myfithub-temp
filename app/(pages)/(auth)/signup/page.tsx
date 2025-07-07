@@ -17,6 +17,7 @@ const Page = () => {
   const [username, setUsername] = useState("");
   const [phone, setPhone] = useState<string | undefined>("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [gender, setGender] = useState("male");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +26,7 @@ const Page = () => {
     if (step === 1) {
       setStep(2);
     } else {
-      // Final submit logic here
+      // TODO: Final submit backend logic implimented here
       console.log({
         firstName,
         lastName,
@@ -33,6 +34,7 @@ const Page = () => {
         username,
         phone,
         password,
+        confirmPassword,
         gender,
       });
     }
@@ -164,6 +166,23 @@ const Page = () => {
                   placeholder="Create a Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="bg-[#E5E5E5] border-[#E5E5E5]"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label
+                  htmlFor="confirmPassword"
+                  className="text-[#234E49] font-medium"
+                >
+                  Password
+                </Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Confirm Your Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                   className="bg-[#E5E5E5] border-[#E5E5E5]"
                 />
