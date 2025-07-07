@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
-const Hero = () => {
+const Intro = () => {
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="h-auto md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
+    <section className="h-auto    md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
       {/* Left Content */}
       <div className="md:w-1/2 w-full flex items-center">
         <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug">
@@ -139,4 +139,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Intro;

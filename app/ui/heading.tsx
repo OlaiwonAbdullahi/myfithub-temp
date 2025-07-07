@@ -1,5 +1,4 @@
 import React from "react";
-import AnimatedContent from "../animations/FadeUp";
 import BlurText from "../animations/BlurText";
 
 interface HeadingProps {
