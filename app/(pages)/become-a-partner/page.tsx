@@ -1,10 +1,11 @@
 import Hero from "@/app/ui/hero";
 import React from "react";
 import WhyPartner from "./components/whyPartner";
+import Procedure from "./components/procedure";
 
 const Page = () => {
   return (
-    <div>
+    <div className=" my-10">
       <Hero
         title="List With Us"
         description="Are you a gym, yoga/pilates studio, pool, sporting center or wellness provider looking to increase your visibility and attract more members? "
@@ -12,6 +13,9 @@ const Page = () => {
       />
       <div className="">
         <WhyPartner />
+      </div>
+      <div className="">
+        <Procedure />
       </div>
     </div>
   );

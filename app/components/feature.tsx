@@ -38,7 +38,7 @@ const Feature = () => {
   return (
     <div className="px-4 sm:px-8  md:px-20 py-8 sm:py-10 md:py-15  space-y-8 bg-white flex flex-col items-center justify-center">
       <Heading title="Why MyFit Hub" paragraph=" Explore our App Features" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-12 max-w-7xl mx-auto mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-12 max-w-7xl mx-auto mt-6">
         {featureData.map((feature) => (
           <FeatureCard
             key={feature.id}

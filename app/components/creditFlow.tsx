@@ -7,7 +7,6 @@ const CreditFlow = () => {
     {
       tier: "Tier 1",
       name: "Ozichi",
-      location: "Nigeria",
       points: 80,
       avatar: "https://tapback.co/api/avatar/kate.jpg",
       description:
@@ -22,7 +21,6 @@ const CreditFlow = () => {
     {
       tier: "Tier 2",
       name: "Efua",
-      location: "Nigeria",
       points: 40,
       avatar: "https://tapback.co/api/avatar/joy.jpg",
       description:
@@ -37,7 +35,6 @@ const CreditFlow = () => {
     {
       tier: "Tier 3",
       name: "Denise",
-      location: "UK",
       points: 20,
       avatar: "https://tapback.co/api/avatar/efua.jpg",
       description:
@@ -78,8 +75,7 @@ const CreditFlow = () => {
                     {tier.points} points
                   </h2>
                   <p className="text-base sm:text-lg font-fredoka">
-                    <span className="font-semibold">{tier.name}</span> ·{" "}
-                    {tier.location}
+                    <span className="font-semibold">{tier.name}</span>
                   </p>
                 </div>
               </div>
