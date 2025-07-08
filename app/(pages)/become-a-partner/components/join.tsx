@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
-const Intro = () => {
+const Join = () => {
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -27,15 +27,30 @@ const Intro = () => {
   };
 
   return (
-    <section className="h-auto    md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
+    <section className="h-auto px-20 mt-20  md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
       {/* Left Content */}
-      <div className="md:w-1/2 w-full flex items-center">
-        <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug">
-          Join <span className="text-[#234E49]">MyFit Hub</span> As a Partner
+      <div className="md:w-1/2 w-full flex flex-col items-start space-y-5">
+        <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug w-9/12">
+          Ready to Boost Your Business?
         </h2>
+        <p className=" text-sm font-fredoka w-3/5">
+          Partnering with MyFitHub means gaining access to a vast network of
+          fitness enthusiasts, state-of-the-art management tools, and
+          unparalleled support to help your gym, studio, or wellness center
+          thrive in the digital age.
+        </p>
       </div>
 
       <div className="md:w-1/2 w-full bg-white p-6 rounded-lg border border-[#f5f5f5]  mt-8 md:mt-0">
+        <div className=" py-4">
+          <h2 className="text-lg md:text-xl font-bold font-sora leading-snug ">
+            Join MyFitHub Today
+          </h2>
+          <p className=" text-sm font-fredoka w-4/5">
+            Fill out the form below and our partnership team will get in touch
+            to discuss how MyFitHub can help your business thrive.
+          </p>
+        </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="grid w-full items-center gap-2">
             <Label htmlFor="email">Email</Label>
@@ -139,4 +154,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default Join;
