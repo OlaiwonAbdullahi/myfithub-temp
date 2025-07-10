@@ -47,7 +47,6 @@ const Page = () => {
         { id: "usage-data", title: "Usage Data" },
         { id: "fitness-data", title: "Health and Fitness Information" },
         { id: "communication-data", title: "Communication Information" },
-        { id: "cookies", title: "Cookies & Tracking" },
       ],
     },
     {
@@ -126,13 +125,13 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-row min-h-screen bg-gray-50">
+    <div className="flex flex-row min-h-screen bg-white">
       {/* Navigation Sidebar */}
       <div className="border border-gray-300 bg-white my-5 sticky top-5 h-fit max-h-screen  w-64 py-8 px-4  rounded-lg">
-        <ul className="space-y-2 font-sora">
+        <ul className="space-y-2 font-sora text-[#234E49]">
           {navigationItems.map((item) => (
             <div key={item.id} className="flex flex-col">
-              <li className="text-sm font-semibold text-gray-700 flex items-center justify-between hover:bg-gray-100 p-2 rounded cursor-pointer transition-colors">
+              <li className="text-sm font-semibold text-[#234E49] flex items-center justify-between hover:bg-gray-100 p-2 rounded cursor-pointer transition-colors">
                 <div
                   className="flex items-center gap-2 flex-1"
                   onClick={() => scrollToSection(item.id)}
@@ -174,176 +173,233 @@ const Page = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl font-bold text-[#234E49] font-sora mb-4">
               Privacy Policy
             </h1>
             <p className="text-lg text-gray-600">Last updated: July 10, 2025</p>
           </div>
-
-          {/* Introduction Section */}
           <section id="introduction" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Shield className="w-6 h-6 text-blue-600" />
+            <h2 className="text-2xl font-sora text-[#234E49] font-bold  mb-3 flex items-center gap-2">
               Introduction
             </h2>
 
-            <div id="overview" className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Overview
-              </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                We are committed to protecting your privacy and ensuring the
-                security of your personal information. This Privacy Policy
+            <div className="mb-8">
+              <p>
+                MyFitHub (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is
+                committed to protecting your privacy. This Privacy Policy
                 explains how we collect, use, disclose, and safeguard your
-                information when you visit our website or use our services.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                By using our services, you agree to the collection and use of
-                information in accordance with this policy.
-              </p>
-            </div>
-
-            <div id="scope" className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Scope of Policy
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                This policy applies to all information collected through our
-                website, mobile applications, and any related services, sales,
-                marketing, or events.
-              </p>
-            </div>
-
-            <div id="contact" className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Contact Information
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                If you have any questions about this Privacy Policy, please
-                contact us at privacy@company.com
+                information when you use our Platform.
               </p>
             </div>
           </section>
 
           {/* Data Collection Section */}
           <section id="data-collection" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Database className="w-6 h-6 text-blue-600" />
+            <h2 className="text-2xl font-sora font-bold text-[#234E49]  mb-6 flex items-center gap-2">
               Data Collection
             </h2>
 
             <div id="personal-info" className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Personal Information
+              <h3 className="text-xl font-semibold text-black mb-4">
+                2.1 Personal Information
               </h3>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                We may collect personal information that you provide directly to
-                us, including:
-              </p>
-              <ul className="text-gray-700 leading-relaxed space-y-2 ml-6">
-                <li>• Name and contact information</li>
-                <li>• Account credentials</li>
-                <li>• Payment information</li>
-                <li>• Communication preferences</li>
+
+              <ul className="text-black leading-relaxed space-y-2 ml-6">
+                <li>
+                  <b>Account Information:</b> Name, email address, phone number,
+                  date of birth
+                </li>
+                <li>
+                  <b>Payment Information:</b> Billing address, payment method
+                  details (processed by third-party providers)
+                </li>
+                <li>
+                  <b>Profile Information:</b> Fitness goals, preferences,
+                  emergency contacts
+                </li>
+                <li>
+                  <b>Family Information:</b> Details of family members included
+                  in family plans
+                </li>
               </ul>
             </div>
 
             <div id="usage-data" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Usage Data
+                2.2 Usage Information
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We automatically collect information about how you use our
-                services, including IP addresses, browser types, pages visited,
-                and interaction patterns.
-              </p>
+              <ul className="text-black leading-relaxed space-y-2 ml-6">
+                <li>
+                  <b>Activities Data:</b> Session bookings, attendance, fitness
+                  preferences
+                </li>
+                <li>
+                  <b>Platform Usage:</b> Pages visited, features used, time
+                  spent on Platform
+                </li>
+                <li>
+                  <b>Device Information:</b> Device type, operating system,
+                  browser information
+                </li>
+                <li>
+                  <b>Location Data:</b>General location for facility
+                  recommendations (with consent)
+                </li>
+              </ul>
             </div>
 
-            <div id="cookies" className="mb-8">
+            <div id="fitness-data" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Cookies & Tracking
+                2.3 Health and Fitness Information
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We use cookies and similar tracking technologies to enhance your
-                experience and analyze usage patterns.
-              </p>
+              <ul className="text-black leading-relaxed space-y-2 ml-6">
+                <li>
+                  <b>Fitness Data:</b> Workout history, progress tracking, goals
+                </li>
+
+                <li>
+                  <b>Health Information:</b> Basic health metrics you choose to
+                  share
+                </li>
+                <li>
+                  <b>Wearable Data:</b>Information from connected fitness
+                  devices (with consent)
+                </li>
+              </ul>
+            </div>
+            <div id="fitness-data" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                2.4 Communication Information
+              </h3>
+              <ul className="text-black leading-relaxed space-y-2 ml-6">
+                <li>
+                  <b>Message:</b> Communications with customer support
+                </li>
+
+                <li>
+                  <b>Social Feature:</b> Posts, comments, and interactions with
+                  other users
+                </li>
+                <li>
+                  <b>Marketing Communication:</b>Preferences and engagement data
+                </li>
+              </ul>
             </div>
           </section>
 
           {/* Data Usage Section */}
           <section id="data-usage" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Settings className="w-6 h-6 text-blue-600" />
-              How We Use Data
+            <h2 className="text-2xl font-bold text-[#234E49] mb-6 flex items-center gap-2">
+              3.How We Use Your Information
             </h2>
 
             <div id="service-provision" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Service Provision
+                3.1 Service Provision
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We use your information to provide, maintain, and improve our
-                services, process transactions, and deliver customer support.
-              </p>
+              <ul className=" list list-disc list-inside">
+                <li>Create and manage your account</li>
+                <li>Process payments and subscriptions</li>
+                <li>Facilitate bookings at partner facilities</li>
+                <li>Provide customer support</li>
+                <li>Send service-related communications</li>
+              </ul>
             </div>
 
-            <div id="communication" className="mb-8">
+            <div id="personalization" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Communication
+                3.2 Personalization
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We may use your contact information to send you updates,
-                security alerts, and administrative messages.
-              </p>
+
+              <ul className="list list-disc list-inside">
+                <li>Provide AI-powered fitness recommendations</li>
+                <li>Customize your Platform experience</li>
+                <li>Suggest relevant facilities and activities</li>
+                <li>Track your fitness progress</li>
+              </ul>
             </div>
 
-            <div id="improvement" className="mb-8">
+            <div id="business" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Service Improvement
+                3.3 Business Operations
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We analyze usage patterns to understand user behavior and
-                improve our services.
-              </p>
+
+              <ul className="list list-disc list-inside">
+                <li>Analyze Platform usage and performance</li>
+                <li>Improve our services and features</li>
+                <li>Conduct research and development</li>
+                <li>Prevent fraud and ensure security</li>
+              </ul>
+            </div>
+            <div id="marketing" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                3.4 Marketing and Communications
+              </h3>
+
+              <ul className="list list-disc list-inside">
+                <li>Send promotional materials (with consent)</li>
+                <li>Notify you about new features and services</li>
+                <li>Provide personalized offers and recommendations</li>
+                <li>Conduct surveys and collect feedback</li>
+              </ul>
             </div>
           </section>
 
           {/* Data Sharing Section */}
           <section id="data-sharing" className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Users className="w-6 h-6 text-blue-600" />
-              Data Sharing
+              4. HOW WE SHARE YOUR INFORMATION
             </h2>
 
-            <div id="third-parties" className="mb-8">
+            <div id="partner-facilities" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Third Parties
+                4.1 Partner Facilities
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We do not sell your personal information. We may share
-                information with trusted partners who assist us in operating our
-                services.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>
+                  Share necessary booking information with gyms and studios
+                </li>
+                <li>Provide attendance data for session confirmation</li>
+                <li>Provide attendance data for session confirmation</li>
+              </ul>
             </div>
 
-            <div id="legal-requirements" className="mb-8">
+            <div id="service-providers" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Legal Requirements
+                4.2 Service Providers
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We may disclose your information if required by law or to
-                protect our rights and safety.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>Payment processors for transaction handling</li>
+                <li>Cloud storage and hosting providers</li>
+                <li>Analytics and marketing service providers</li>
+                <li>Customer support and communication tools</li>
+              </ul>
             </div>
 
-            <div id="business-transfers" className="mb-8">
+            <div id="corporate-partners" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Business Transfers
+                4.3 Corporate Partners
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                In the event of a merger or acquisition, your information may be
-                transferred as part of the transaction.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>
+                  Aggregate, anonymized data for corporate wellness programs
+                </li>
+                <li>
+                  Usage statistics for employer reporting (no personal
+                  identification)
+                </li>
+              </ul>
+            </div>
+            <div id="corporate-partners" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                4.4 Legal Requirements
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Comply with legal obligations and court orders</li>
+                <li>Protect our rights and property</li>
+                <li>Respond to government requests</li>
+                <li>Ensure user safety and security</li>
+              </ul>
             </div>
           </section>
 

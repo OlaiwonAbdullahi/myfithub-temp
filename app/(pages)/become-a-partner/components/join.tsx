@@ -23,17 +23,17 @@ const Join = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Submitted Data:", formData);
-    // TODO: Integrate with backend or API here
+    // TODO: Integrate with backend
   };
 
   return (
     <section className="h-auto px-20 mt-20  md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
       {/* Left Content */}
       <div className="md:w-1/2 w-full flex flex-col items-start space-y-5">
-        <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug w-9/12">
+        <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug md:w-9/12 w-full text-center md:text-start">
           Ready to Boost Your Business?
         </h2>
-        <p className=" text-sm font-fredoka w-3/5">
+        <p className=" text-sm font-fredoka w-3/5 text-center md:text-start mx-auto md:mx-0">
           Partnering with MyFitHub means gaining access to a vast network of
           fitness enthusiasts, state-of-the-art management tools, and
           unparalleled support to help your gym, studio, or wellness center
