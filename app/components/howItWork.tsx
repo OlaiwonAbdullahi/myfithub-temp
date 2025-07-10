@@ -40,7 +40,7 @@ const HowItWork = () => {
     <div>
       <div className="px-4 sm:px-8 md:px-20 py-8 sm:py-10 md:py-12 lg:py-15 space-y-8 bg-[#EEF7F6]/50">
         <Heading
-          title=" Users Persona Flow"
+          title=" How it Works"
           paragraph="This is a guide on how you can customize your routine using your subscription points on MyFitHub"
         />
         {/*

@@ -29,7 +29,7 @@ const Intro = () => {
           </div>
           <div className="w-full md:w-1/2">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#234E49] mb-6 font-sora leading-tight text-center md:text-left">
-              A Short Story
+              Our Story
             </h2>
             <div className="text-base sm:text-lg text-black font-light font-fredoka text-center md:text-left mb-8 space-y-4">
               <p>

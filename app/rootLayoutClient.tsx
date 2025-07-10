@@ -11,13 +11,15 @@ export default function RootLayoutClient({
   children: ReactNode;
 }) {
   const pathname = usePathname();
-  const hideNavbar = ["/login", "/signup"].includes(pathname);
+  const hideNavbar = ["/login", "/signup", "/email-verification"].includes(
+    pathname
+  );
 
   return (
     <>
       {!hideNavbar && <Navbar />}
       {children}
-      <Footer />
+      {!hideNavbar && <Footer />}
     </>
   );
 }

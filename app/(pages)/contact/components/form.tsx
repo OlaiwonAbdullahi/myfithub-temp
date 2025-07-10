@@ -76,7 +76,7 @@ const Form = () => {
               </label>
               <textarea
                 id="message"
-                placeholder="Tell us about your studio or inquiry..."
+                placeholder="Your Message"
                 className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none  transition-all duration-200 placeholder-gray-400 resize-none"
                 value={message}
                 rows={6}
@@ -112,7 +112,7 @@ const Form = () => {
                   strokeWidth={1.5}
                   className="group-hover:scale-110 transition-transform"
                 />
-                <span className="text-sm font-medium">Email Us</span>
+                <span className="text-sm font-medium">Email</span>
               </a>
 
               <a

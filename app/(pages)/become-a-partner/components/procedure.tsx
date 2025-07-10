@@ -1,4 +1,5 @@
 import Heading from "@/app/ui/heading";
+import { Button } from "@/components/ui/button";
 import { CheckCircle, FileText, Handshake, Rocket } from "lucide-react";
 import React from "react";
 
@@ -47,7 +48,7 @@ const Procedure = () => {
     },
   ];
   return (
-    <div className="flex justify-center flex-col my-10">
+    <div className="flex justify-center items-center flex-col my-10">
       <Heading
         title="Our Simple Partnership Process"
         paragraph="Joining MyFitHub is straightforward. Follow these steps to become a valued partner."
@@ -72,6 +73,11 @@ const Procedure = () => {
             <p className="text-sm font-fredoka">{item.description}</p>
           </div>
         ))}
+      </div>
+      <div className="">
+        <Button className="bg-[#234E49] text-white font-fredoka h-10 w-20">
+          Join Us
+        </Button>
       </div>
     </div>
   );

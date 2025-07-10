@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CornerDownRight } from "lucide-react";
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type FeatureCardProps = {
   icon: React.ReactNode;
@@ -64,21 +65,23 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
       {/* Button with enhanced hover states */}
       <div className="relative z-10 w-fit">
-        <Button
-          className={`w-full border-none h-10 flex flex-row items-center justify-center gap-2 font-fredoka shadow-none transition-all duration-300 ${
-            isHovered
-              ? "text-[#234E49] bg-white hover:bg-gray-100 border-2 border-white"
-              : "text-[#234E49] bg-white hover:bg-gray-50 border-2 border-gray-200"
-          }`}
-        >
-          <CornerDownRight
-            size={20}
-            className={`transition-transform duration-300 ${
-              isHovered ? "transform rotate-12" : ""
+        <Link href={"/signup"}>
+          <Button
+            className={`w-full border-none h-10 flex flex-row items-center justify-center gap-2 font-fredoka shadow-none transition-all duration-300 ${
+              isHovered
+                ? "text-[#234E49] bg-white hover:bg-gray-100 border-2 border-white"
+                : "text-[#234E49] bg-white hover:bg-gray-50 border-2 border-gray-200"
             }`}
-          />
-          Get Started
-        </Button>
+          >
+            <CornerDownRight
+              size={20}
+              className={`transition-transform duration-300 ${
+                isHovered ? "transform rotate-12" : ""
+              }`}
+            />
+            Get Started
+          </Button>
+        </Link>
       </div>
 
       {/* Optional: Add a subtle background pattern or gradient on hover */}

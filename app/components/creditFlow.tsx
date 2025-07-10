@@ -5,10 +5,10 @@ import React from "react";
 const CreditFlow = () => {
   const tiers = [
     {
-      tier: "Tier 1",
+      tier: "Premium",
       name: "Ozichi",
       points: 80,
-      avatar: "https://tapback.co/api/avatar/kate.jpg",
+      avatar: "https://tapback.co/api/avatar/faith.jpg",
       description:
         "Ozichi works hybrid and uses MyFitHub to build and maintain a consistent fitness routine using a mix of different services.",
       activities: [
@@ -19,10 +19,10 @@ const CreditFlow = () => {
       ],
     },
     {
-      tier: "Tier 2",
+      tier: "Standard",
       name: "Efua",
       points: 40,
-      avatar: "https://tapback.co/api/avatar/joy.jpg",
+      avatar: "https://tapback.co/api/avatar/jane.jpg",
       description:
         "Efua is recently trying to live healthier and uses MyFitHub to customize a basic fitness routine.",
       activities: [
@@ -33,7 +33,7 @@ const CreditFlow = () => {
       ],
     },
     {
-      tier: "Tier 3",
+      tier: "Basic",
       name: "Denise",
       points: 20,
       avatar: "https://tapback.co/api/avatar/efua.jpg",
