@@ -553,7 +553,9 @@ const Page = () => {
               </h3>
               <ul className="list list-disc list-inside">
                 <li>Parents are responsible for family member information</li>
-                <li>Children's data is protected under parental account</li>
+                <li>
+                  Children&apos;s data is protected under parental account
+                </li>
                 <li>Review privacy policies of connected services</li>
               </ul>
             </div>
