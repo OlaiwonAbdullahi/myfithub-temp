@@ -1,14 +1,5 @@
 "use client";
-import {
-  Plus,
-  Minus,
-  Shield,
-  Eye,
-  Lock,
-  Users,
-  Database,
-  Settings,
-} from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -101,7 +92,6 @@ const Page = () => {
       subItems: [
         { id: "integration-partners", title: "Integration Partners" },
         { id: "third-party-privacy", title: "Third-Party Privacy" },
-        { id: "data-portability", title: "Data Portability" },
       ],
     },
     {
@@ -127,7 +117,7 @@ const Page = () => {
   return (
     <div className="flex flex-row min-h-screen bg-white">
       {/* Navigation Sidebar */}
-      <div className="border border-gray-300 bg-white my-5 sticky top-5 h-fit max-h-screen  w-64 py-8 px-4  rounded-lg">
+      <div className="border-r border-gray-300 bg-white sticky top-5 h-fit max-h-screen  w-64 py-8 px-4  rounded-lg">
         <ul className="space-y-2 font-sora text-[#234E49]">
           {navigationItems.map((item) => (
             <div key={item.id} className="flex flex-col">
@@ -180,7 +170,7 @@ const Page = () => {
           </div>
           <section id="introduction" className="mb-12">
             <h2 className="text-2xl font-sora text-[#234E49] font-bold  mb-3 flex items-center gap-2">
-              Introduction
+              1. Introduction
             </h2>
 
             <div className="mb-8">
@@ -196,11 +186,11 @@ const Page = () => {
           {/* Data Collection Section */}
           <section id="data-collection" className="mb-12">
             <h2 className="text-2xl font-sora font-bold text-[#234E49]  mb-6 flex items-center gap-2">
-              Data Collection
+              2. Data Collection
             </h2>
 
             <div id="personal-info" className="mb-8">
-              <h3 className="text-xl font-semibold text-black mb-4">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 2.1 Personal Information
               </h3>
 
@@ -267,7 +257,7 @@ const Page = () => {
                 </li>
               </ul>
             </div>
-            <div id="fitness-data" className="mb-8">
+            <div id="communication-data" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 2.4 Communication Information
               </h3>
@@ -390,7 +380,7 @@ const Page = () => {
                 </li>
               </ul>
             </div>
-            <div id="corporate-partners" className="mb-8">
+            <div id="legal-requirements" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 4.4 Legal Requirements
               </h3>
@@ -406,86 +396,282 @@ const Page = () => {
           {/* Security Section */}
           <section id="security" className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Lock className="w-6 h-6 text-blue-600" />
-              Security
+              5. DATA SECURITY
             </h2>
 
-            <div id="protection-measures" className="mb-8">
+            <div id="security-measures" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Protection Measures
+                5.1 Security Measures
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                We implement appropriate technical and organizational measures
-                to protect your personal information against unauthorized
-                access, alteration, disclosure, or destruction.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>Encryption of sensitive data in transit and at rest</li>
+                <li>Regular security audits and assessments</li>
+                <li>Access controls and authentication requirements</li>
+                <li>Secure payment processing through certified providers</li>
+              </ul>
             </div>
 
-            <div id="data-breach" className="mb-8">
+            <div id="data-retention" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Data Breach Response
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                In the event of a data breach, we will notify affected users and
-                relevant authorities as required by law.
-              </p>
-            </div>
-
-            <div id="user-responsibility" className="mb-8">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                User Responsibility
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                You are responsible for maintaining the security of your account
-                credentials and notifying us of any unauthorized access.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>
+                  Personal information retained while your account is active
+                </li>
+                <li>
+                  Some information may be retained for legal or business
+                  purposes
+                </li>
+                <li>Access controls and authentication requirements</li>
+                <li>You may request deletion of your personal information</li>
+              </ul>
             </div>
           </section>
 
           {/* Rights Section */}
           <section id="rights" className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Eye className="w-6 h-6 text-blue-600" />
-              Your Rights
+              6. YOUR PRIVACY RIGHTS
             </h2>
 
             <div id="access-rights" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Access Rights
+                6.1 Access and Control
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                You have the right to access, update, or delete your personal
-                information. Contact us to exercise these rights.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>Access your personal information </li>
+                <li>Update or correct inaccurate information</li>
+                <li>Delete your account and associated data</li>
+                <li>Export your data in a portable format</li>
+              </ul>
             </div>
 
-            <div id="correction" className="mb-8">
+            <div id="communication" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Correction
+                6.2 Communication Preferences
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                You may request corrections to inaccurate or incomplete personal
-                information.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>Opt out of marketing communications </li>
+                <li>Control notification settings</li>
+                <li>Choose what information to share publicly</li>
+                <li>Manage connected device permissions</li>
+              </ul>
             </div>
 
-            <div id="deletion" className="mb-8">
+            <div id="data-portability" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Deletion
+                6.3 Data Portability
               </h3>
-              <p className="text-gray-700 leading-relaxed">
-                You may request deletion of your personal information, subject
-                to certain legal requirements.
-              </p>
+              <ul className="list list-disc list-inside">
+                <li>Request a copy of your personal information</li>
+                <li>Transfer data to another service provider</li>
+                <li>Receive data in a structured, commonly-used format</li>
+              </ul>
+            </div>
+          </section>
+          <section id="cookies" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              7. COOKIES AND TRACKING
+            </h2>
+
+            <div id="cookies" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                7.1 Cookies
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>We use cookies to enhance your experience</li>
+                <li>Essential cookies for Platform functionality</li>
+                <li>Analytics cookies to understand usage patterns</li>
+                <li>
+                  Marketing cookies for personalized advertising (with consent)
+                </li>
+              </ul>
+            </div>
+
+            <div id="analytics" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                7.2 Analytics
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Google Analytics and similar services </li>
+                <li>User behavior tracking for service improvement</li>
+                <li>Aggregate usage statistics</li>
+                <li>Performance monitoring and optimization</li>
+              </ul>
+            </div>
+          </section>
+          <section id="third-party" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              8. THIRD-PARTY SERVICES
+            </h2>
+
+            <div id="integration-partners" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                8.1 Integration Partners
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Fitness tracking apps and devices</li>
+                <li>Social media platforms</li>
+                <li>Payment processors</li>
+                <li>Mapping and location services</li>
+              </ul>
+            </div>
+
+            <div id="third-party-privacy" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                8.2 Third-Party Privacy
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Each service has its own privacy policy</li>
+                <li>We are not responsible for third-party practices</li>
+                <li>Review privacy policies of connected services</li>
+              </ul>
+            </div>
+          </section>
+          <section id="third-party" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              9. CHILDREN&apos;S PRIVACY
+            </h2>
+
+            <div id="integration-partners" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                9.1 Age Restrictions
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>
+                  Our Platform is not intended for children or adult under 18
+                </li>
+                <li>Family accounts must be managed by adults</li>
+                <li>Parental consent required for minors</li>
+              </ul>
+            </div>
+
+            <div id="third-party-privacy" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                9.2 Family Plans
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Parents are responsible for family member information</li>
+                <li>Children's data is protected under parental account</li>
+                <li>Review privacy policies of connected services</li>
+              </ul>
+            </div>
+          </section>
+          <section id="international" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              10. INTERNATIONAL TRANSFERS
+            </h2>
+
+            <div id="data-processing" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                10.1 Data Processing
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Your information may be processed outside Nigeria</li>
+                <li>
+                  We ensure adequate protection for international transfers
+                </li>
+                <li>Compliance with applicable data protection laws</li>
+              </ul>
+            </div>
+          </section>
+          <section id="changes" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              11. CHANGES TO PRIVACY POLICY
+            </h2>
+
+            <div id="data-processing" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                11.1 Updates
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>We may update this Privacy Policy periodically</li>
+                <li>
+                  Material changes will be communicated via email or Platform
+                  notification
+                </li>
+                <li>Continued use constitutes acceptance of updated policy</li>
+              </ul>
+            </div>
+          </section>
+          <section id="changes" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              12. CONTACT INFORMATION
+            </h2>
+            <p>For privacy-related questions or requests, contact us at:</p>
+            <div id="data-processing" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                Privacy Officer
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Email: privacy@myfithub.live</li>
+                <li>Phone: +234XXXXXXXXXXX</li>
+              </ul>
+            </div>
+            <div id="data-processing" className="mb-8">
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">
+                Data Protection Rights
+              </h3>
+              <ul className="list list-disc list-inside">
+                <li>Email: dataprotection@myfithub.live</li>
+                <li>
+                  Subject Line: <b>Privacy Rights Request</b>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section id="nigeria" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              13. NIGERIAN DATA PROTECTION COMPLIANCE
+            </h2>
+            <p>
+              MyFitHub complies with the Nigeria Data Protection Regulation
+              (NDPR) and other applicable Nigerian privacy laws. You have the
+              right to:
+            </p>
+            <div id="data-processing" className="mb-8">
+              <ul className="list list-disc list-inside">
+                <li>Know what personal data we collect and how we use it</li>
+                <li>Access your personal data</li>
+                <li>Correct inaccurate personal data</li>
+                <li>Delete your personal data</li>
+                <li>Restrict processing of your personal data</li>
+                <li>Data portability</li>
+                <li>Object to processing of your personal data</li>
+                <li>
+                  File complaints with the National Information Technology
+                  Development Agency (NITDA)
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section id="nigeria" className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              14. GDPR COMPLIANCE
+            </h2>
+            <p>
+              For users in the European Union, MyFitHub complies with the
+              General Data Protection Regulation (GDPR). Our legal basis for
+              processing includes:
+            </p>
+            <div id="data-processing" className="mb-8">
+              <ul className="list list-disc list-inside">
+                <li>
+                  Consent for marketing communications and optional features
+                </li>
+                <li>Contract performance for service provision</li>
+                <li>
+                  Legitimate interests for business operations and improvements
+                </li>
+                <li>Legal compliance for regulatory requirements</li>
+              </ul>
             </div>
           </section>
 
-          {/* Footer */}
           <div className="border-t border-gray-200 pt-8 mt-12">
             <p className="text-sm text-gray-600">
-              This Privacy Policy is effective as of July 10, 2025. We reserve
-              the right to update this policy at any time. We will notify you of
-              any changes by posting the new policy on this page.
+              Effective Date: [DATE] MyFitHub - One Subscription, Every Activity
             </p>
           </div>
         </div>
