@@ -119,8 +119,8 @@ const Page = () => {
   return (
     <div className="flex flex-row min-h-screen bg-white">
       {/* Navigation Sidebar */}
-      <div className="border-r border-gray-300 bg-white sticky top-5 h-fit max-h-screen  w-64 py-8 px-4  rounded-lg">
-        <ul className="space-y-2 font-sora text-[#234E49]">
+      <div className="border-r border-gray-300 bg-white overflow-y-auto sticky top-5 h-fit max-h-screen  w-64 py-8 px-4  rounded-lg">
+        <ul className="space-y-2 font-sora text-[#234E49] overflow-y-auto">
           {navigationItems.map((item) => (
             <div key={item.id} className="flex flex-col">
               <li className="text-sm font-semibold text-[#234E49] flex items-center justify-between hover:bg-gray-100 p-2 rounded cursor-pointer transition-colors">
