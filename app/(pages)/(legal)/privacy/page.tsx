@@ -279,7 +279,7 @@ const Page = () => {
 
           {/* Data Usage Section */}
           <section id="data-usage" className="mb-12">
-            <h2 className="text-2xl font-bold text-[#234E49] mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               3.How We Use Your Information
             </h2>
 
@@ -337,7 +337,7 @@ const Page = () => {
 
           {/* Data Sharing Section */}
           <section id="data-sharing" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               4. HOW WE SHARE YOUR INFORMATION
             </h2>
 
@@ -395,7 +395,7 @@ const Page = () => {
 
           {/* Security Section */}
           <section id="security" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               5. DATA SECURITY
             </h2>
 
@@ -413,7 +413,7 @@ const Page = () => {
 
             <div id="data-retention" className="mb-8">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Data Breach Response
+                5.2 Data Breach Response
               </h3>
               <ul className="list list-disc list-inside">
                 <li>
@@ -431,7 +431,7 @@ const Page = () => {
 
           {/* Rights Section */}
           <section id="rights" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               6. YOUR PRIVACY RIGHTS
             </h2>
 
@@ -471,7 +471,7 @@ const Page = () => {
             </div>
           </section>
           <section id="cookies" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               7. COOKIES AND TRACKING
             </h2>
 
@@ -502,7 +502,7 @@ const Page = () => {
             </div>
           </section>
           <section id="third-party" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               8. THIRD-PARTY SERVICES
             </h2>
 
@@ -530,7 +530,7 @@ const Page = () => {
             </div>
           </section>
           <section id="third-party" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               9. CHILDREN&apos;S PRIVACY
             </h2>
 
@@ -561,7 +561,7 @@ const Page = () => {
             </div>
           </section>
           <section id="international" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               10. INTERNATIONAL TRANSFERS
             </h2>
 
@@ -579,7 +579,7 @@ const Page = () => {
             </div>
           </section>
           <section id="changes" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               11. CHANGES TO PRIVACY POLICY
             </h2>
 
@@ -598,7 +598,7 @@ const Page = () => {
             </div>
           </section>
           <section id="changes" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               12. CONTACT INFORMATION
             </h2>
             <p>For privacy-related questions or requests, contact us at:</p>
@@ -624,7 +624,7 @@ const Page = () => {
             </div>
           </section>
           <section id="nigeria" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               13. NIGERIAN DATA PROTECTION COMPLIANCE
             </h2>
             <p>
@@ -649,7 +649,7 @@ const Page = () => {
             </div>
           </section>
           <section id="nigeria" className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-2xl font-bold font-sora text-[#234E49] mb-6 flex items-center gap-2">
               14. GDPR COMPLIANCE
             </h2>
             <p>
