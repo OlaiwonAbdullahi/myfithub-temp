@@ -15,6 +15,9 @@ interface StudioDetails {
   reviewCount: number;
   type: string;
   whatToBring: string;
+  email: string;
+  phone: string;
+  amenities: string[]; // Added amenities property
 }
 
 const Page: React.FC = () => {
@@ -67,7 +70,14 @@ const Page: React.FC = () => {
             type={studioDetails.type}
           />
           <div className="px-20 py-10">
-            <Details whatToBring={studioDetails.whatToBring} />
+            <Details
+              whatToBring={studioDetails.whatToBring}
+              location={studioDetails.location}
+              email={studioDetails.email}
+              image={studioDetails.image}
+              phone={studioDetails.phone}
+              amenities={studioDetails.amenities}
+            />
           </div>
         </div>
       )}
