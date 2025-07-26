@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Hero from "./components/hero";
 import Details from "./components/details";
+import Classes from "./components/classes";
 
 // Define the interface for studio details
 interface StudioDetails {
@@ -69,7 +70,7 @@ const Page: React.FC = () => {
             reviewCount={studioDetails.reviewCount}
             type={studioDetails.type}
           />
-          <div className="px-20 py-10">
+          <div className="px-20 py-10 space-y-12">
             <Details
               whatToBring={studioDetails.whatToBring}
               location={studioDetails.location}
@@ -78,6 +79,7 @@ const Page: React.FC = () => {
               phone={studioDetails.phone}
               amenities={studioDetails.amenities}
             />
+            <Classes />
           </div>
         </div>
       )}
