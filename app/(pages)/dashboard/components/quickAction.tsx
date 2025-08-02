@@ -62,7 +62,7 @@ const QuickAction = () => {
             >
               <div
                 className={
-                  "bg-[#234E49]/10 border border-[#234E49]/60 text-[#234E49] p-3 rounded-full mb-3 group-hover:scale-110 transition-transform"
+                  "bg-blue-50 border border-green-200 text-[#234E49] p-3 rounded-md mb-3 group-hover:scale-110 transition-transform"
                 }
               >
                 <Icon className="h-6 w-6" />

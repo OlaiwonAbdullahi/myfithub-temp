@@ -16,6 +16,7 @@ const Classes = () => {
     time: string;
     instructor: string;
     duration: string;
+    image: string;
   }
 
   const [studiosClasses, setStudiosClasses] = useState<Studio[]>([]);
@@ -114,6 +115,7 @@ const Classes = () => {
               key={studio.id}
               className=" bg-white rounded-lg shadow-md mb-4"
             >
+              {/*eslint-disable-next-line @next/next/no-img-element*/}
               <img
                 src={studio.image}
                 alt=""
