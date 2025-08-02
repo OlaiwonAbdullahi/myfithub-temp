@@ -1,4 +1,4 @@
-import { MapPin, Star } from "lucide-react";
+import { MapPin } from "lucide-react";
 import React from "react";
 
 // Define the props interface
@@ -7,8 +7,6 @@ interface HeroProps {
   description: string;
   image: string;
   location: string;
-  rating: number;
-  reviewCount: number;
   type: string;
 }
 
@@ -17,8 +15,6 @@ const Hero: React.FC<HeroProps> = ({
   description,
   image,
   location,
-  rating,
-  reviewCount,
   type,
 }) => {
   return (
@@ -43,13 +39,6 @@ const Hero: React.FC<HeroProps> = ({
           <div className="flex flex-wrap justify-center items-center gap-4 text-sm sm:text-base text-white font-fredoka mt-4">
             <div className="flex items-center gap-1">
               <MapPin size={18} /> <span>{location}</span>
-            </div>
-
-            <div className="flex items-center gap-1">
-              <Star size={18} fill="#fbbf24" stroke="#fbbf24" />
-              <span>
-                {rating} ({reviewCount} reviews)
-              </span>
             </div>
 
             <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20">

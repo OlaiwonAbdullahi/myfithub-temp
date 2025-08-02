@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MapPin, Star } from "lucide-react";
+import { MapPin } from "lucide-react";
 import React from "react";
 
 interface StudioCardProps {
@@ -7,7 +7,6 @@ interface StudioCardProps {
   location: string;
   description: string;
   imageUrl: string;
-  rating: number;
   amenities?: string[];
 }
 
@@ -16,7 +15,6 @@ const StudioCard: React.FC<StudioCardProps> = ({
   location,
   description,
   imageUrl,
-  rating,
   amenities = [],
 }) => {
   return (
@@ -31,10 +29,6 @@ const StudioCard: React.FC<StudioCardProps> = ({
           }}
           className="w-full h-48 object-cover rounded-t-md"
         />
-        <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 font-fredoka py-1 rounded-full flex items-center gap-1">
-          <Star size={14} className="fill-yellow-400 text-yellow-400" />
-          <span className="text-xs font-semibold text-gray-700">{rating}</span>
-        </div>
       </div>
 
       <div className="p-4 flex flex-col gap-3">

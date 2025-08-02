@@ -143,7 +143,7 @@ const Classes = () => {
                   </span>
                 </div>
                 <div className=" mt-3.5 flex justify-end ">
-                  <Button className=" bg-[#234E49]">Book Now</Button>
+                  <Button className=" bg-[#234E49] text-white">Book Now</Button>
                 </div>
               </div>
             </div>

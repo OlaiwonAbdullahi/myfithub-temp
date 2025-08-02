@@ -6,7 +6,6 @@ import Hero from "./components/hero";
 import Details from "./components/details";
 import Classes from "./components/classes";
 
-// Define the interface for studio details
 interface StudioDetails {
   name: string;
   description: string;
@@ -18,7 +17,7 @@ interface StudioDetails {
   whatToBring: string;
   email: string;
   phone: string;
-  amenities: string[]; // Added amenities property
+  amenities: string[];
 }
 
 const Page: React.FC = () => {
@@ -66,8 +65,6 @@ const Page: React.FC = () => {
             description={studioDetails.description}
             location={studioDetails.location}
             image={studioDetails.image}
-            rating={studioDetails.rating}
-            reviewCount={studioDetails.reviewCount}
             type={studioDetails.type}
           />
           <div className="px-20 py-10 space-y-12">
