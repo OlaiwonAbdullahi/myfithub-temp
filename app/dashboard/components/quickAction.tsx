@@ -1,3 +1,4 @@
+import { link } from "fs";
 import {
   Calendar,
   MapPin,
@@ -6,6 +7,7 @@ import {
   Clock,
   CreditCard,
 } from "lucide-react";
+import Link from "next/link";
 
 const QuickAction = () => {
   const actions = [
@@ -20,6 +22,7 @@ const QuickAction = () => {
       title: "Find Studios",
       description: "Discover gyms near you",
       icon: MapPin,
+      link: "/dashboard/studiolist",
     },
     {
       id: "browse-classes",
@@ -56,24 +59,27 @@ const QuickAction = () => {
         {actions.map((action) => {
           const Icon = action.icon;
           return (
-            <button
+            <Link
+              href={action.link || "#"}
               key={action.id}
               className="group flex flex-col items-center p-4 rounded-lg hover:shadow-md transition-all duration-200 border border-gray-100 hover:border-gray-200"
             >
-              <div
-                className={
-                  "bg-blue-50 border border-green-200 text-[#234E49] p-3 rounded-md mb-3 group-hover:scale-110 transition-transform"
-                }
-              >
-                <Icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-sora font-medium text-lg text-[#234E49] text-center mb-1">
-                {action.title}
-              </h3>
-              <p className="text-xs text-gray-500 font-fredoka text-center leading-tight">
-                {action.description}
-              </p>
-            </button>
+              <button key={action.id} className="flex flex-col items-center">
+                <div
+                  className={
+                    "bg-blue-50 border border-green-200 text-[#234E49] p-3 w-fit justify-center rounded-md mb-3 group-hover:scale-110 transition-transform"
+                  }
+                >
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="font-sora font-medium text-lg text-[#234E49] text-center mb-1">
+                  {action.title}
+                </h3>
+                <p className="text-xs text-gray-500 font-fredoka text-center leading-tight">
+                  {action.description}
+                </p>
+              </button>
+            </Link>
           );
         })}
       </div>

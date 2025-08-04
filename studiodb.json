@@ -441,5 +441,239 @@
       "parking": "Free on-site",
       "wifi": "High-speed throughout"
     }
-  }
+  },
+
+  "popular": [
+    {
+      "id": "1",
+      "name": "Zen Flow Studio",
+      "location": "Lekki, Lagos",
+      "description": "A serene yoga and meditation studio offering mindfulness practices, flow yoga sessions, and wellness workshops in a peaceful environment designed for inner transformation.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Free parking",
+        "High-speed Wi-Fi",
+        "Yoga mats",
+        "Meditation cushions",
+        "Aromatherapy",
+        "Changing rooms",
+        "Water station"
+      ],
+      "priceRange": 8000,
+      "category": "Wellness",
+      "features": {
+        "parking": "Free parking",
+        "wifi": "High-speed Wi-Fi",
+        "additionalCount": 7
+      }
+    },
+    {
+      "id": "2",
+      "name": "Core Sculpt Fitness",
+      "location": "Victoria Island, Lagos",
+      "description": "High-intensity fitness studio specializing in core strengthening, body sculpting, and functional training with expert trainers and modern equipment.",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+      "rating": 4.9,
+      "amenities": [
+        "Juice bar",
+        "Valet parking",
+        "Personal training",
+        "Group classes",
+        "Locker rooms",
+        "Towel service"
+      ],
+      "priceRange": 15000,
+      "category": "Fitness",
+      "features": {
+        "juiceBar": "Juice bar",
+        "parking": "Valet parking",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "3",
+      "name": "Harmony Gym Academy",
+      "location": "Ikeja GRA, Lagos",
+      "description": "Professional dance studio offering ballet, contemporary, hip-hop, and traditional African dance classes for all skill levels with experienced instructors.",
+      "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop",
+      "rating": 4.7,
+      "amenities": [
+        "Sound system",
+        "Mirrors",
+        "Dance floors",
+        "Costume rental",
+        "Performance space",
+        "Air conditioning"
+      ],
+      "priceRange": 10000,
+      "category": "Dance",
+      "features": {
+        "soundSystem": "Professional sound",
+        "mirrors": "Wall-to-wall mirrors",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "4",
+      "name": "Urban Recording Hub",
+      "location": "Maryland, Lagos",
+      "description": "State-of-the-art recording studio with professional equipment, soundproof booths, and experienced engineers for music production and audio recording.",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Recording booth",
+        "Mixing console",
+        "Audio engineering",
+        "Instrument rental",
+        "24/7 access",
+        "Coffee station"
+      ],
+      "priceRange": 20000,
+      "category": "Music",
+      "features": {
+        "recording": "Pro equipment",
+        "access": "24/7 access",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "5",
+      "name": "Mind Meditation Center",
+      "location": "Surulere, Lagos",
+      "description": "Peaceful meditation center offering guided meditation sessions, mindfulness workshops, and stress relief programs in a tranquil setting.",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
+      "rating": 4.6,
+      "amenities": [
+        "Library",
+        "Quiet zones",
+        "Meditation cushions",
+        "Tea service",
+        "Garden access",
+        "Workshops"
+      ],
+      "priceRange": 5000,
+      "category": "Wellness",
+      "features": {
+        "quietZones": "Silent spaces",
+        "teaService": "Herbal tea",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "6",
+      "name": "Creative Arts Workshop",
+      "location": "Lekki Phase 1, Lagos",
+      "description": "Inspiring creative space for artists, featuring painting studios, pottery wheels, and workshops for various art forms with professional guidance.",
+      "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
+      "rating": 4.5,
+      "amenities": [
+        "Art supplies",
+        "Pottery wheels",
+        "Easels",
+        "Natural lighting",
+        "Storage lockers",
+        "Gallery space"
+      ],
+      "priceRange": 12000,
+      "category": "Arts",
+      "features": {
+        "supplies": "Art materials",
+        "lighting": "Natural light",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "7",
+      "name": " Conditioning Gym",
+      "location": "Ajah, Lagos",
+      "description": "Comprehensive fitness facility focused on strength training, conditioning, and athletic performance with certified trainers and premium equipment.",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop",
+      "rating": 4.7,
+      "amenities": [
+        "Sauna",
+        "Olympic weights",
+        "Cardio machines",
+        "Protein bar",
+        "Personal training",
+        "Group sessions"
+      ],
+      "priceRange": 18000,
+      "category": "Fitness",
+      "features": {
+        "weights": "Olympic equipment",
+        "sauna": "Relaxation area",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "8",
+      "name": "Serenity Spa Studio",
+      "location": "Ikoyi, Lagos",
+      "description": "Luxury spa studio offering massage therapy, facial treatments, and holistic wellness services in an elegant and relaxing environment.",
+      "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=300&fit=crop",
+      "rating": 4.9,
+      "amenities": [
+        "Massage rooms",
+        "Facial services",
+        "Steam room",
+        "Relaxation lounge",
+        "Organic products",
+        "Valet service"
+      ],
+      "priceRange": 25000,
+      "category": "Spa",
+      "features": {
+        "massage": "Therapeutic massage",
+        "steamRoom": "Steam therapy",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "9",
+      "name": "Photography Studio Pro",
+      "location": "Victoria Island, Lagos",
+      "description": "Professional photography studio with lighting equipment, backdrops, and props for portrait, fashion, and commercial photography sessions.",
+      "image": "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop",
+      "rating": 4.6,
+      "amenities": [
+        "Professional lighting",
+        "Backdrops",
+        "Props",
+        "Editing suite",
+        "Makeup area",
+        "Client lounge"
+      ],
+      "priceRange": 22000,
+      "category": "Photography",
+      "features": {
+        "lighting": "Pro lighting setup",
+        "editing": "Post-production",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "10",
+      "name": "Pilates & Barre Studio",
+      "location": "Banana Island, Lagos",
+      "description": "Specialized studio offering Pilates and barre classes with certified instructors, focusing on core strength, flexibility, and body alignment.",
+      "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Pilates equipment",
+        "Barre",
+        "Mats included",
+        "Small classes",
+        "Personalized attention",
+        "Stretching area"
+      ],
+      "priceRange": 14000,
+      "category": "Fitness",
+      "features": {
+        "equipment": "Specialized gear",
+        "smallClasses": "Intimate sessions",
+        "additionalCount": 6
+      }
+    }
+  ]
 }

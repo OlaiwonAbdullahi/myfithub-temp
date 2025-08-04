@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "My FitHub",
     description: "Achieve your fitness goals with My FitHub.",
-    url: "https://myfithub.live",
+    url: "https://myfithub.life",
     siteName: "My FitHub",
     images: [
       {
-        url: "https://myfithub.live/og-image.jpg",
+        url: "https://myfithub.life/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "My FitHub Preview Image",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "My FitHub",
     description: "Achieve your fitness goals with My FitHub.",
     creator: "@myfithub",
-    images: ["https://myfithub.live/og-image.jpg"],
+    images: ["https://myfithub.life/og-image.jpg"],
   },
 };
 

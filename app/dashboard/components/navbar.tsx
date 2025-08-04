@@ -7,9 +7,19 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   const menuItems = [
-    { id: "home", label: "Home", icon: HomeIcon },
-    { id: "studios", label: "Studios", icon: Dumbbell },
-    { id: "bookings", label: "Bookings", icon: BookIcon },
+    { id: "home", label: "Home", icon: HomeIcon, link: "/dashboard" },
+    {
+      id: "/dashboard/studiolist",
+      label: "Studios",
+      icon: Dumbbell,
+      link: "/dashboard/studiolist",
+    },
+    {
+      id: "/dashboard/bookings",
+      label: "Bookings",
+      icon: BookIcon,
+      link: "/dashboard/bookings",
+    },
   ];
 
   return (
@@ -30,18 +40,19 @@ const Navbar = () => {
               {menuItems.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`flex items-center px-6 py-3 text-left hover:bg-gray-50 border-b-2 transition-colors ${
-                      activeTab === item.id
-                        ? "bg-[#234E49]/10 border-[#234E49] text-[#234E49]"
-                        : "border-transparent text-gray-600 hover:text-gray-900"
-                    }`}
-                  >
-                    <Icon className="h-5 w-5 mr-3" />
-                    {item.label}
-                  </button>
+                  <Link href={item.link} key={item.id}>
+                    <button
+                      onClick={() => setActiveTab(item.id)}
+                      className={`flex items-center px-6 py-3 text-left hover:bg-gray-50 border-b-2 transition-colors ${
+                        activeTab === item.id
+                          ? "bg-[#234E49]/10 border-[#234E49] text-[#234E49]"
+                          : "border-transparent text-gray-600 hover:text-gray-900"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5 mr-3" />
+                      {item.label}
+                    </button>
+                  </Link>
                 );
               })}
             </nav>

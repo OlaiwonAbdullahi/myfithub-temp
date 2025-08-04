@@ -16,6 +16,8 @@ export default function RootLayoutClient({
     "/signup",
     "/email-verification",
     "/dashboard",
+    "/dashboard/bookings",
+    "/dashboard/studiolist",
   ].includes(pathname);
 
   return (
