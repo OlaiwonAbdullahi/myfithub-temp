@@ -3,7 +3,8 @@ export interface FitnessSession {
   title: string;
   instructor: string;
   instructorImage: string;
-  type: "yoga" | "hiit" | "strength" | "cardio" | "pilates" | "dance";
+  studio: string;
+
   difficulty: "beginner" | "intermediate" | "advanced";
   duration: number;
   capacity: number;

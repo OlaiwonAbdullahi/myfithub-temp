@@ -113,7 +113,7 @@ export function SessionDetailsModal({
             <div className="text-center p-4 bg-gray-50 rounded-xl">
               <Target className="w-6 h-6 text-[#234E49] mx-auto mb-2" />
               <div className="font-semibold text-gray-900 capitalize">
-                {session.type}
+                {session.studio}
               </div>
               <div className="text-sm text-gray-600">Type</div>
             </div>

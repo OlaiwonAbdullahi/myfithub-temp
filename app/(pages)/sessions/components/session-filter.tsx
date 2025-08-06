@@ -13,12 +13,12 @@ interface SessionFiltersProps {
 }
 
 const sessionTypes = [
-  { value: "yoga", label: "Yoga", emoji: "🧘‍♀️" },
-  { value: "hiit", label: "HIIT", emoji: "🔥" },
-  { value: "strength", label: "Strength", emoji: "💪" },
-  { value: "cardio", label: "Cardio", emoji: "❤️" },
-  { value: "pilates", label: "Pilates", emoji: "🤸‍♀️" },
-  { value: "dance", label: "Dance", emoji: "💃" },
+  { value: "yoga", label: "Yoga" },
+  { value: "hiit", label: "HIIT" },
+  { value: "strength", label: "Strength" },
+  { value: "cardio", label: "Cardio" },
+  { value: "pilates", label: "Pilates" },
+  { value: "dance", label: "Dance" },
 ];
 
 const difficulties = ["beginner", "intermediate", "advanced"];
@@ -38,9 +38,9 @@ export function SessionFilters({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 flex justify-between md:flex-row-reverse flex-col font-fredoka">
       {/* Search bar */}
-      <div className="relative">
+      <div className="relative md:w-1/3 w-full flex items-center">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
         <Input
           placeholder="Search sessions, instructors, or types..."
@@ -51,7 +51,7 @@ export function SessionFilters({
       </div>
 
       {/* Filter chips */}
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 md:w-2/3 w-full justify-center md:justify-start">
         {/* Session types */}
         <div className="flex flex-wrap gap-2">
           {sessionTypes.map((type) => (
@@ -65,13 +65,12 @@ export function SessionFilters({
                   type: filters.type === type.value ? undefined : type.value,
                 })
               }
-              className={`rounded-full transition-all duration-300 ${
+              className={`rounded-md transition-all duration-300 ${
                 filters.type === type.value
                   ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"
               }`}
             >
-              <span className="mr-1">{type.emoji}</span>
               {type.label}
             </Button>
           ))}
@@ -93,7 +92,7 @@ export function SessionFilters({
                     filters.difficulty === difficulty ? undefined : difficulty,
                 })
               }
-              className={`rounded-full capitalize transition-all duration-300 ${
+              className={`rounded-md capitalize transition-all duration-300 ${
                 filters.difficulty === difficulty
                   ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"
@@ -117,7 +116,7 @@ export function SessionFilters({
                   timeSlot: filters.timeSlot === slot ? undefined : slot,
                 })
               }
-              className={`rounded-full capitalize transition-all duration-300 ${
+              className={`rounded-md: capitalize transition-all duration-300 ${
                 filters.timeSlot === slot
                   ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"

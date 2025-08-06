@@ -8,14 +8,13 @@ import { SessionCard } from "./components/session-card";
 import { SessionDetailsModal } from "./components/session-details-modal";
 import Hero from "@/app/ui/hero";
 
-// Sample data
 const sampleSessions: FitnessSession[] = [
   {
     id: "1",
     title: "Morning Power Yoga",
     instructor: "Sarah Johnson",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=Sarah",
-    type: "yoga",
+    instructorImage: "https://tapback.co/api/avatar/Sarah",
+    studio: "i-fitness",
     difficulty: "intermediate",
     duration: 60,
     capacity: 20,
@@ -33,15 +32,16 @@ const sampleSessions: FitnessSession[] = [
       "Better posture",
       "Mental clarity",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=Power+Yoga",
+    image:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
     featured: true,
   },
   {
     id: "2",
     title: "HIIT Cardio Blast",
     instructor: "Mike Chen",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=Mike",
-    type: "hiit",
+    instructorImage: "https://tapback.co/api/avatar/mike",
+    studio: "Zen Studio",
     difficulty: "advanced",
     duration: 45,
     capacity: 15,
@@ -64,14 +64,15 @@ const sampleSessions: FitnessSession[] = [
       "Time efficient",
       "Full body workout",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=HIIT+Training",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
   },
   {
     id: "3",
     title: "Strength & Conditioning",
     instructor: "Alex Rodriguez",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=Alex",
-    type: "strength",
+    instructorImage: "https://tapback.co/api/avatar/alex",
+    studio: "Iron Forge",
     difficulty: "intermediate",
     duration: 75,
     capacity: 12,
@@ -89,15 +90,16 @@ const sampleSessions: FitnessSession[] = [
       "Improved metabolism",
       "Better posture",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=Strength+Training",
+    image:
+      "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&crop=center",
     featured: true,
   },
   {
     id: "4",
     title: "Beginner's Pilates",
     instructor: "Emma Wilson",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=Emma",
-    type: "pilates",
+    instructorImage: "https://tapback.co/api/avatar/emma",
+    studio: "pilates",
     difficulty: "beginner",
     duration: 50,
     capacity: 18,
@@ -120,14 +122,15 @@ const sampleSessions: FitnessSession[] = [
       "Injury prevention",
       "Stress relief",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=Pilates+Class",
+    image:
+      "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop&crop=center",
   },
   {
     id: "5",
     title: "Dance Cardio Party",
     instructor: "Zoe Martinez",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=Zoe",
-    type: "dance",
+    instructorImage: "https://tapback.co/api/avatar/zoe",
+    studio: "dance",
     difficulty: "beginner",
     duration: 55,
     capacity: 25,
@@ -145,14 +148,15 @@ const sampleSessions: FitnessSession[] = [
       "Social interaction",
       "Fun workout",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=Dance+Cardio",
+    image:
+      "https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=400&h=300&fit=crop&crop=center",
   },
   {
     id: "6",
     title: "Cardio Kickboxing",
     instructor: "James Park",
-    instructorImage: "/placeholder.svg?height=40&width=40&text=James",
-    type: "cardio",
+    instructorImage: "https://tapback.co/api/avatar/james",
+    studio: "cardio",
     difficulty: "intermediate",
     duration: 60,
     capacity: 16,
@@ -170,10 +174,10 @@ const sampleSessions: FitnessSession[] = [
       "Full body workout",
       "Confidence building",
     ],
-    image: "/placeholder.svg?height=200&width=400&text=Kickboxing",
+    image:
+      "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=400&h=300&fit=crop&crop=center",
   },
 ];
-
 export default function FitnessSessionsPage() {
   const [selectedSession, setSelectedSession] = useState<FitnessSession | null>(
     null
@@ -191,14 +195,13 @@ export default function FitnessSessionsPage() {
         const matchesSearch =
           session.title.toLowerCase().includes(query) ||
           session.instructor.toLowerCase().includes(query) ||
-          session.type.toLowerCase().includes(query) ||
+          session.studio.toLowerCase().includes(query) ||
           session.description.toLowerCase().includes(query);
 
         if (!matchesSearch) return false;
       }
 
-      // Type filter
-      if (filters.type && session.type !== filters.type) return false;
+      if (filters.type && session.studio !== filters.type) return false;
 
       // Difficulty filter
       if (filters.difficulty && session.difficulty !== filters.difficulty)
@@ -241,100 +244,59 @@ export default function FitnessSessionsPage() {
       totalSessions
   );
 
- 
   return (
-  <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
-    <Hero
-      title="Fitness Sessions"
-      description="Join our expert-led fitness sessions designed to help you achieve your health and wellness goals"
-      more=""
-    />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">
+      <Hero
+        title="Fitness Sessions"
+        description="Join expert-led fitness sessions of various Studios designed to help you achieve your health and wellness goals"
+        more=""
+      />
 
-    {/* Stats */}
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 px-6 max-w-7xl mx-auto">
-      <div className="text-center">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-          <Calendar className="w-8 h-8 mx-auto mb-2" />
-          <div className="text-2xl font-bold">{totalSessions}</div>
-          <div className="text-sm text-white/80">Sessions Available</div>
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Filters */}
+        <div className="mb-8 w-full">
+          <SessionFilters
+            filters={filters}
+            onFiltersChange={setFilters}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+          />
         </div>
-      </div>
-      <div className="text-center">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-          <Users className="w-8 h-8 mx-auto mb-2" />
-          <div className="text-2xl font-bold">{totalEnrolled}</div>
-          <div className="text-sm text-white/80">Members Enrolled</div>
-        </div>
-      </div>
-      <div className="text-center">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-          <TrendingUp className="w-8 h-8 mx-auto mb-2" />
-          <div className="text-2xl font-bold">${avgPrice}</div>
-          <div className="text-sm text-white/80">Average Price</div>
-        </div>
-      </div>
-      <div className="text-center">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-          <Award className="w-8 h-8 mx-auto mb-2" />
-          <div className="text-2xl font-bold">4.9</div>
-          <div className="text-sm text-white/80">Average Rating</div>
-        </div>
-      </div>
-    </div>
 
-    {/* Main content */}
-    <div className="max-w-7xl mx-auto px-6 py-8">
-      {/* Filters */}
-      <div className="mb-8 w-full">
-        <SessionFilters
-          filters={filters}
-          onFiltersChange={setFilters}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-        />
-      </div>
-
-      {/* Results count */}
-      <div className="mb-6">
-        <p className="text-gray-600" role="status">
-          Showing {filteredSessions.length} of {totalSessions} sessions
-          {searchQuery && ` for "${searchQuery}"`}
-        </p>
-      </div>
-
-      {/* Sessions grid */}
-      {filteredSessions.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredSessions.map((session) => (
-            <SessionCard
-              key={session.id}
-              session={session}
-              onBookSession={handleBookSession}
-              onViewDetails={handleViewDetails}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12">
-          <div className="text-gray-400 mb-4">
-            <Calendar className="w-16 h-16 mx-auto" />
+        {/* Sessions grid */}
+        {filteredSessions.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredSessions.map((session) => (
+              <SessionCard
+                key={session.id}
+                session={session}
+                onBookSession={handleBookSession}
+                onViewDetails={handleViewDetails}
+              />
+            ))}
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            No sessions found
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Try adjusting your search or filters to find more sessions.
-          </p>
-        </div>
+        ) : (
+          <div className="text-center py-12 font-fredoka">
+            <div className="text-gray-400 mb-4">
+              <Calendar className="w-16 h-16 mx-auto" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2 font-sora">
+              No sessions found
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Try adjusting your search or filters to find more sessions.
+            </p>
+          </div>
+        )}
+      </div>
+      {selectedSession && (
+        <SessionDetailsModal
+          session={selectedSession}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onBookSession={handleBookSession}
+        />
       )}
     </div>
-
-    {/* Session details modal */}
-    <SessionDetailsModal
-      session={selectedSession}
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      onBookSession={handleBookSession}
-    />
-  </div>
-);
+  );
+}
