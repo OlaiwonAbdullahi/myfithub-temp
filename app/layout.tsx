@@ -1,8 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Courier_Prime, Fredoka, Sora } from "next/font/google";
 import "./globals.css";
-//import Navbar from "./ui/navbar";
-//import Footer from "./ui/footer";
+import RootLayoutClient from "./rootLayoutClient";
 
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
@@ -14,6 +14,7 @@ const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
 });
+
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -30,11 +31,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "My FitHub",
     description: "Achieve your fitness goals with My FitHub.",
-    url: "https://myfithub.live",
+    url: "https://myfithub.life",
     siteName: "My FitHub",
     images: [
       {
-        url: "https://myfithub.live/og-image.jpg",
+        url: "https://myfithub.life/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "My FitHub Preview Image",
@@ -48,29 +49,24 @@ export const metadata: Metadata = {
     title: "My FitHub",
     description: "Achieve your fitness goals with My FitHub.",
     creator: "@myfithub",
-    images: ["https://myfithub.live/og-image.jpg"],
+    images: ["https://myfithub.life/og-image.jpg"],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body
         className={`${courierPrime.variable} ${fredoka.variable} ${sora.variable} antialiased`}
       >
-        {/*<Navbar />*/}
-        {children}
-        {/*<Footer />*/}
+        <RootLayoutClient>{children}</RootLayoutClient>
       </body>
     </html>
   );

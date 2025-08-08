@@ -1,0 +1,679 @@
+{
+  "studios": [
+    {
+      "id": 1,
+      "name": "Zen Flow Studio",
+      "tagline": "Find your peace and strength.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+      "location": "Lekki, Lagos",
+      "type": "Yoga & Meditation",
+      "rating": 4.9,
+      "reviewCount": 235,
+      "priceRange": "$$",
+      "phone": "+234 812 345 6789",
+      "email": "info@zenflowstudio.ng",
+      "description": "A serene space dedicated to yoga and mindfulness practices in the heart of Lekki.",
+      "amenities": [
+        "Free parking",
+        "High-speed Wi-Fi",
+        "Juice bar",
+        "Spacious main studio with natural light",
+        "Dedicated yoga and meditation room",
+        "Modern strength training area",
+        "Locker rooms with showers",
+        "Complimentary towel service",
+        "On-site smoothie bar and lounge"
+      ],
+      "whatToBring": "For yoga and flexibility classes, comfortable, stretchy athletic wear is recommended. For high-intensity or strength training, breathable athletic wear and supportive athletic shoes are essential. We recommend bringing a water bottle and a small towel for all sessions.",
+      "facilities": {
+        "mainStudio": "Spacious with natural light",
+        "yogaRoom": "Dedicated meditation space",
+        "strengthArea": "Modern equipment",
+        "lockers": "With shower facilities",
+        "parking": "Free on-site",
+        "wifi": "High-speed throughout"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Core Sculpt Fitness",
+      "tagline": "Sculpt your body, empower your core.",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "location": "Victoria Island, Lagos",
+      "type": "Fitness & Strength Training",
+      "rating": 4.7,
+      "reviewCount": 189,
+      "priceRange": "$$$",
+      "phone": "+234 803 456 7890",
+      "email": "info@coresculpt.ng",
+      "description": "Modern fitness studio specializing in core strengthening and body sculpting workouts.",
+      "amenities": [
+        "Juice bar",
+        "Valet parking",
+        "Personal training rooms",
+        "State-of-the-art gym equipment",
+        "Group fitness studio",
+        "Recovery and stretching area",
+        "Nutritional consultation room",
+        "Premium locker facilities"
+      ],
+      "whatToBring": "Bring comfortable workout attire, cross-training shoes, a water bottle, and a small towel. We provide yoga mats and other equipment for classes.",
+      "facilities": {
+        "gymFloor": "Premium equipment",
+        "personalTraining": "Private rooms available",
+        "groupStudio": "For fitness classes",
+        "recovery": "Dedicated stretching area",
+        "parking": "Valet service",
+        "nutrition": "On-site consultation"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Rhythm & Movement Hub",
+      "tagline": "Unleash your inner dancer.",
+      "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&crop=center",
+      "location": "Ikeja GRA, Lagos",
+      "type": "Dance & Movement",
+      "rating": 4.9,
+      "reviewCount": 156,
+      "priceRange": "$$",
+      "phone": "+234 807 234 5678",
+      "email": "info@rhythmhub.ng",
+      "description": "Dynamic dance studio offering classes from ballet to hip-hop in a creative community space.",
+      "amenities": [
+        "Supplement store",
+        "Covered parking",
+        "Performance space",
+        "Three mirrored dance studios",
+        "Professional sound systems",
+        "Costume and prop storage",
+        "Changing rooms with lockers",
+        "Reception and waiting area",
+        "Air conditioning throughout",
+        "Street parking available"
+      ],
+      "whatToBring": "Wear comfortable, flexible clothing that allows for movement. Dance shoes or bare feet are recommended depending on the class style. Bring a water bottle and hair ties for longer hair.",
+      "facilities": {
+        "studios": "Three mirrored spaces",
+        "sound": "Professional audio equipment",
+        "costumes": "Storage and rental available",
+        "performance": "Dedicated showcase area",
+        "climate": "Full air conditioning",
+        "parking": "Street parking nearby"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Iron Forge Gym",
+      "tagline": "Forge your strength, redefine your limits.",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop&crop=center",
+      "location": "Yaba, Lagos",
+      "type": "Powerlifting & CrossFit",
+      "rating": 4.6,
+      "reviewCount": 298,
+      "priceRange": "$$$",
+      "phone": "+234 809 345 6789",
+      "email": "info@ironforge.ng",
+      "description": "Hardcore training facility equipped with professional-grade equipment for serious athletes.",
+      "amenities": [
+        "Supplement store",
+        "Covered parking",
+        "Cardio machine area",
+        "Olympic lifting platforms",
+        "CrossFit boxes and rigs",
+        "Powerlifting equipment",
+        "Nutrition coaching services",
+        "Recovery room with massage"
+      ],
+      "whatToBring": "Wear athletic clothing suitable for intense workouts. Bring proper weightlifting shoes or cross-trainers, lifting belt (if you have one), water bottle, and workout towel.",
+      "facilities": {
+        "lifting": "Olympic platforms",
+        "crossfit": "Full rig setup",
+        "cardio": "Modern machines",
+        "recovery": "Massage and stretching",
+        "coaching": "Nutrition guidance",
+        "retail": "Supplement shop"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Aqua Wellness Center",
+      "tagline": "Dive into wellness and recovery.",
+      "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&h=300&fit=crop&crop=center",
+      "location": "Ikoyi, Lagos",
+      "type": "Aquatic Fitness",
+      "rating": 4.8,
+      "reviewCount": 127,
+      "priceRange": "$$$$",
+      "phone": "+234 812 567 8901",
+      "email": "info@aquawellness.ng",
+      "description": "Luxury aquatic center focused on water-based fitness and therapeutic treatments.",
+      "amenities": [
+        "Hydrotherapy pool",
+        "Poolside cafe",
+        "Juice bar",
+        "25-meter heated swimming pool",
+        "Aqua fitness studio",
+        "Swim coaching facilities",
+        "Sauna and steam room",
+        "Premium changing facilities",
+        "Valet parking service"
+      ],
+      "whatToBring": "Bring swimwear, swim cap, goggles, and flip-flops or pool shoes. Towels are provided. For aqua fitness classes, water shoes are recommended.",
+      "facilities": {
+        "pool": "25m heated lap pool",
+        "hydrotherapy": "Therapeutic treatments",
+        "coaching": "Professional swim instruction",
+        "wellness": "Sauna and steam",
+        "dining": "Poolside refreshments",
+        "parking": "Valet service available"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Mind Body Balance",
+      "tagline": "Harmony through movement and breath.",
+      "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop&crop=center",
+      "location": "Gbagada, Lagos",
+      "type": "Pilates & Barre",
+      "rating": 4.7,
+      "reviewCount": 203,
+      "priceRange": "$$",
+      "phone": "+234 815 678 9012",
+      "email": "info@mindbodybalance.ng",
+      "description": "Boutique studio combining Pilates and barre for complete mind-body wellness.",
+      "amenities": [
+        "Retail boutique",
+        "Free parking lot",
+        "Mat Pilates space",
+        "Reformer machine studio",
+        "Barre setup with mirrors",
+        "Wellness workshop room",
+        "Tea and relaxation corner",
+        "Private consultation rooms"
+      ],
+      "whatToBring": "Wear form-fitting, stretchy athletic wear. Grip socks are required for barre classes and recommended for Pilates. Bring a water bottle and hair tie if needed.",
+      "facilities": {
+        "reformers": "Professional Pilates machines",
+        "barre": "Mirrored barre studio",
+        "matSpace": "Open floor for mat work",
+        "workshops": "Educational sessions",
+        "retail": "Wellness products",
+        "relaxation": "Quiet tea corner"
+      }
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "Morning Flow Yoga",
+      "instructor": "Anya Sharma",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+      "time": "7:00 AM",
+      "duration": 60,
+      "day": "Monday",
+      "type": "Yoga",
+      "level": "Beginner to Intermediate",
+      "description": "Start your week with energizing flow sequences that awaken the body and mind.",
+      "capacity": 20,
+      "price": 3500
+    },
+    {
+      "id": 2,
+      "name": "Spin Endurance",
+      "instructor": "Markus Chen",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "time": "8:30 AM",
+      "duration": 45,
+      "day": "Tuesday",
+      "type": "Fitness",
+      "level": "Intermediate to Advanced",
+      "description": "High-energy workout combining cardio and strength training for maximum results.",
+      "capacity": 15,
+      "price": 4000
+    },
+    {
+      "id": 3,
+      "name": "Pilates Core Fusion",
+      "instructor": "Elena Petrova",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop&crop=center",
+      "time": "10:00 AM",
+      "duration": 55,
+      "day": "Wednesday",
+      "type": "Pilates",
+      "level": "All Levels",
+      "description": "Strengthen your core and improve posture with this dynamic Pilates fusion class.",
+      "capacity": 12,
+      "price": 3800
+    },
+    {
+      "id": 4,
+      "name": "Spin Endurance",
+      "instructor": "David Lee",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "time": "6:00 PM",
+      "duration": 50,
+      "day": "Thursday",
+      "type": "Cardio",
+      "level": "Intermediate",
+      "description": "Build cardiovascular endurance with high-energy spin sessions and motivating music.",
+      "capacity": 25,
+      "price": 3200
+    },
+    {
+      "id": 5,
+      "name": "Evening Vinyasa",
+      "instructor": "Anya Sharma",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+      "time": "7:00 PM",
+      "duration": 75,
+      "day": "Friday",
+      "type": "Yoga",
+      "level": "All Levels",
+      "description": "Unwind with flowing yoga sequences perfect for ending your week.",
+      "capacity": 20,
+      "price": 4000
+    },
+    {
+      "id": 6,
+      "name": "Weekend Warrior HIIT",
+      "instructor": "Markus Chen",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "time": "9:00 AM",
+      "duration": 45,
+      "day": "Saturday",
+      "type": "Fitness",
+      "level": "Intermediate",
+      "description": "Start your weekend strong with this energizing HIIT session.",
+      "capacity": 18,
+      "price": 4000
+    },
+    {
+      "id": 7,
+      "name": "Sunday Stretch & Flow",
+      "instructor": "Elena Petrova",
+      "studioId": 1,
+      "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=400&h=300&fit=crop&crop=center",
+      "time": "10:30 AM",
+      "duration": 60,
+      "day": "Sunday",
+      "type": "Yoga",
+      "level": "Beginner",
+      "description": "Gentle stretching and flow sequences to prepare for the week ahead.",
+      "capacity": 16,
+      "price": 3500
+    },
+    {
+      "id": 8,
+      "name": "Core Power Sculpt",
+      "instructor": "James Wilson",
+      "studioId": 2,
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "time": "6:30 AM",
+      "duration": 50,
+      "day": "Monday",
+      "type": "Strength",
+      "level": "Intermediate",
+      "description": "Build core strength and sculpt your body with targeted exercises.",
+      "capacity": 15,
+      "price": 4200
+    },
+    {
+      "id": 9,
+      "name": "Functional Fitness",
+      "instructor": "Sarah Mitchell",
+      "studioId": 2,
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+      "time": "7:30 PM",
+      "duration": 55,
+      "day": "Tuesday",
+      "type": "Fitness",
+      "level": "All Levels",
+      "description": "Improve daily movement patterns with functional training exercises.",
+      "capacity": 12,
+      "price": 4500
+    },
+    {
+      "id": 10,
+      "name": "Hip Hop Fundamentals",
+      "instructor": "Zara Okafor",
+      "studioId": 3,
+      "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&crop=center",
+      "time": "8:00 PM",
+      "duration": 60,
+      "day": "Wednesday",
+      "type": "Dance",
+      "level": "Beginner",
+      "description": "Learn the basics of hip hop dance in a fun, supportive environment.",
+      "capacity": 20,
+      "price": 3800
+    },
+    {
+      "id": 11,
+      "name": "Contemporary Flow",
+      "instructor": "Maya Johnson",
+      "studioId": 3,
+      "image": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&crop=center",
+      "time": "6:00 PM",
+      "duration": 90,
+      "day": "Thursday",
+      "type": "Dance",
+      "level": "Intermediate",
+      "description": "Express yourself through fluid contemporary dance movements.",
+      "capacity": 16,
+      "price": 4500
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "name": "Anya Sharma",
+      "specialties": ["Hatha Yoga", "Vinyasa Flow", "Meditation"],
+      "experience": "8 years",
+      "certification": "RYT-500",
+      "bio": "Certified yoga instructor with a passion for helping students find balance and inner peace.",
+      "image": "https://images.unsplash.com/photo-1494790108755-2616b612b1a?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 2,
+      "name": "Markus Chen",
+      "specialties": ["HIIT", "Strength Training", "Athletic Conditioning"],
+      "experience": "6 years",
+      "certification": "NASM-CPT, HIIT Specialist",
+      "bio": "Former athlete turned fitness coach, specializing in high-intensity training methods.",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 3,
+      "name": "Elena Petrova",
+      "specialties": ["Pilates", "Core Training", "Rehabilitation"],
+      "experience": "10 years",
+      "certification": "PMA-CPT, Physical Therapy",
+      "bio": "Pilates expert with background in physical therapy, focused on movement quality and injury prevention.",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face"
+    },
+    {
+      "id": 4,
+      "name": "David Lee",
+      "specialties": ["Spin", "Cycling", "Endurance Training"],
+      "experience": "5 years",
+      "certification": "Spinning Certified, Endurance Coach",
+      "bio": "Cycling enthusiast and certified spin instructor known for energetic and motivating classes.",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+    }
+  ],
+  "detail": {
+    "id": 1,
+    "name": "Zen Flow Studio",
+    "tagline": "Find your peace and strength.",
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=center",
+    "location": "Lekki, Lagos",
+    "type": "Yoga & Meditation",
+    "rating": 4.9,
+    "reviewCount": 235,
+    "priceRange": "$$",
+    "phone": "+234 812 345 6789",
+    "email": "info@zenflowstudio.ng",
+    "description": "A serene space dedicated to yoga and mindfulness practices in the heart of Lekki.",
+    "amenities": [
+      "Free parking",
+      "High-speed Wi-Fi",
+      "Juice bar",
+      "Spacious main studio ",
+      "Dedicated yoga ",
+      "Modern training area",
+      "Towel service",
+      "Locker rooms with showers",
+      "On-site smoothie bar"
+    ],
+    "whatToBring": "For yoga and flexibility classes, comfortable, stretchy athletic wear is recommended. For high-intensity or strength training, breathable athletic wear and supportive athletic shoes are essential. We recommend bringing a water bottle and a small towel for all sessions.",
+    "facilities": {
+      "mainStudio": "Spacious with natural light",
+      "yogaRoom": "Dedicated meditation space",
+      "strengthArea": "Modern equipment",
+      "lockers": "With shower facilities",
+      "parking": "Free on-site",
+      "wifi": "High-speed throughout"
+    }
+  },
+
+  "popular": [
+    {
+      "id": "1",
+      "name": "Zen Flow Studio",
+      "location": "Lekki, Lagos",
+      "description": "A serene yoga and meditation studio offering mindfulness practices, flow yoga sessions, and wellness workshops in a peaceful environment designed for inner transformation.",
+      "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Free parking",
+        "High-speed Wi-Fi",
+        "Yoga mats",
+        "Meditation cushions",
+        "Aromatherapy",
+        "Changing rooms",
+        "Water station"
+      ],
+      "priceRange": 8000,
+      "category": "Wellness",
+      "features": {
+        "parking": "Free parking",
+        "wifi": "High-speed Wi-Fi",
+        "additionalCount": 7
+      }
+    },
+    {
+      "id": "2",
+      "name": "Core Sculpt Fitness",
+      "location": "Victoria Island, Lagos",
+      "description": "High-intensity fitness studio specializing in core strengthening, body sculpting, and functional training with expert trainers and modern equipment.",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+      "rating": 4.9,
+      "amenities": [
+        "Juice bar",
+        "Valet parking",
+        "Personal training",
+        "Group classes",
+        "Locker rooms",
+        "Towel service"
+      ],
+      "priceRange": 15000,
+      "category": "Fitness",
+      "features": {
+        "juiceBar": "Juice bar",
+        "parking": "Valet parking",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "3",
+      "name": "Harmony Gym Academy",
+      "location": "Ikeja GRA, Lagos",
+      "description": "Professional dance studio offering ballet, contemporary, hip-hop, and traditional African dance classes for all skill levels with experienced instructors.",
+      "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop",
+      "rating": 4.7,
+      "amenities": [
+        "Sound system",
+        "Mirrors",
+        "Dance floors",
+        "Costume rental",
+        "Performance space",
+        "Air conditioning"
+      ],
+      "priceRange": 10000,
+      "category": "Dance",
+      "features": {
+        "soundSystem": "Professional sound",
+        "mirrors": "Wall-to-wall mirrors",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "4",
+      "name": "Urban Recording Hub",
+      "location": "Maryland, Lagos",
+      "description": "State-of-the-art recording studio with professional equipment, soundproof booths, and experienced engineers for music production and audio recording.",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Recording booth",
+        "Mixing console",
+        "Audio engineering",
+        "Instrument rental",
+        "24/7 access",
+        "Coffee station"
+      ],
+      "priceRange": 20000,
+      "category": "Music",
+      "features": {
+        "recording": "Pro equipment",
+        "access": "24/7 access",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "5",
+      "name": "Mind Meditation Center",
+      "location": "Surulere, Lagos",
+      "description": "Peaceful meditation center offering guided meditation sessions, mindfulness workshops, and stress relief programs in a tranquil setting.",
+      "image": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop",
+      "rating": 4.6,
+      "amenities": [
+        "Library",
+        "Quiet zones",
+        "Meditation cushions",
+        "Tea service",
+        "Garden access",
+        "Workshops"
+      ],
+      "priceRange": 5000,
+      "category": "Wellness",
+      "features": {
+        "quietZones": "Silent spaces",
+        "teaService": "Herbal tea",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "6",
+      "name": "Creative Arts Workshop",
+      "location": "Lekki Phase 1, Lagos",
+      "description": "Inspiring creative space for artists, featuring painting studios, pottery wheels, and workshops for various art forms with professional guidance.",
+      "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
+      "rating": 4.5,
+      "amenities": [
+        "Art supplies",
+        "Pottery wheels",
+        "Easels",
+        "Natural lighting",
+        "Storage lockers",
+        "Gallery space"
+      ],
+      "priceRange": 12000,
+      "category": "Arts",
+      "features": {
+        "supplies": "Art materials",
+        "lighting": "Natural light",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "7",
+      "name": " Conditioning Gym",
+      "location": "Ajah, Lagos",
+      "description": "Comprehensive fitness facility focused on strength training, conditioning, and athletic performance with certified trainers and premium equipment.",
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop",
+      "rating": 4.7,
+      "amenities": [
+        "Sauna",
+        "Olympic weights",
+        "Cardio machines",
+        "Protein bar",
+        "Personal training",
+        "Group sessions"
+      ],
+      "priceRange": 18000,
+      "category": "Fitness",
+      "features": {
+        "weights": "Olympic equipment",
+        "sauna": "Relaxation area",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "8",
+      "name": "Serenity Spa Studio",
+      "location": "Ikoyi, Lagos",
+      "description": "Luxury spa studio offering massage therapy, facial treatments, and holistic wellness services in an elegant and relaxing environment.",
+      "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&h=300&fit=crop",
+      "rating": 4.9,
+      "amenities": [
+        "Massage rooms",
+        "Facial services",
+        "Steam room",
+        "Relaxation lounge",
+        "Organic products",
+        "Valet service"
+      ],
+      "priceRange": 25000,
+      "category": "Spa",
+      "features": {
+        "massage": "Therapeutic massage",
+        "steamRoom": "Steam therapy",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "9",
+      "name": "Photography Studio Pro",
+      "location": "Victoria Island, Lagos",
+      "description": "Professional photography studio with lighting equipment, backdrops, and props for portrait, fashion, and commercial photography sessions.",
+      "image": "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop",
+      "rating": 4.6,
+      "amenities": [
+        "Professional lighting",
+        "Backdrops",
+        "Props",
+        "Editing suite",
+        "Makeup area",
+        "Client lounge"
+      ],
+      "priceRange": 22000,
+      "category": "Photography",
+      "features": {
+        "lighting": "Pro lighting setup",
+        "editing": "Post-production",
+        "additionalCount": 6
+      }
+    },
+    {
+      "id": "10",
+      "name": "Pilates & Barre Studio",
+      "location": "Banana Island, Lagos",
+      "description": "Specialized studio offering Pilates and barre classes with certified instructors, focusing on core strength, flexibility, and body alignment.",
+      "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop",
+      "rating": 4.8,
+      "amenities": [
+        "Pilates equipment",
+        "Barre",
+        "Mats included",
+        "Small classes",
+        "Personalized attention",
+        "Stretching area"
+      ],
+      "priceRange": 14000,
+      "category": "Fitness",
+      "features": {
+        "equipment": "Specialized gear",
+        "smallClasses": "Intimate sessions",
+        "additionalCount": 6
+      }
+    }
+  ]
+}
