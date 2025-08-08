@@ -1,5 +1,12 @@
 "use client";
-import { Bell, BookIcon, Dumbbell, HomeIcon, Search, User } from "lucide-react";
+import {
+  Bell,
+  BookIcon,
+  Dumbbell,
+  LayoutGridIcon,
+  Search,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -7,7 +14,7 @@ const Navbar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   const menuItems = [
-    { id: "home", label: "Home", icon: HomeIcon, link: "/dashboard" },
+    { id: "home", label: "Overview", icon: LayoutGridIcon, link: "/dashboard" },
     {
       id: "/dashboard/studiolist",
       label: "Studios",
@@ -71,9 +78,11 @@ const Navbar = () => {
               <Bell className="h-5 w-5" />
               <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
             </button>
-            <div className="h-8 w-8 bg-[#234E49] rounded-full flex items-center justify-center">
-              <User className="h-4 w-4 text-white" />
-            </div>
+            <Link href="/dashboard/account">
+              <div className="h-8 w-8 bg-[#234E49] rounded-full flex items-center justify-center">
+                <User className="h-4 w-4 text-white" />
+              </div>
+            </Link>
           </div>
         </div>
       </header>

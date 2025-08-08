@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "@/app/ui/loader";
+import { SparklesIcon } from "lucide-react";
 import PopularStudiosCard from "./components/popularStudio";
 import AllStudiosCard from "./components/allstudio";
 
@@ -55,8 +56,9 @@ const Page: React.FC = () => {
       <div className="space-y-16">
         <div className="">
           <div className=" flex items-center justify-between">
-            <h2 className=" text-2xl font-sora font-bold text-[#234E49]">
-              Popular Studios{" "}
+            <h2 className=" text-xl font-sora font-bold text-[#234E49]">
+              <SparklesIcon className="inline-block w-6 h-6 mr-2 text-amber-500" />
+              Recommended Studios{" "}
             </h2>
             <span className=" font-fredoka">View All</span>
           </div>

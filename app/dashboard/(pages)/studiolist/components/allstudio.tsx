@@ -65,9 +65,9 @@ const AllStudiosCard: React.FC<AllStudiosCardProps> = ({
             )}
 
             <Button
-              variant="outline"
+              variant="default"
               size="sm"
-              className="border-[#234E49] text-[#234E49] font-fredoka hover:bg-[#234E49] hover:text-white transition-colors duration-200"
+              className="bg-[#234E49] cursor-pointer text-white font-fredoka hover:bg-[#234E49]/90 hover:text-white transition-colors duration-200"
             >
               View Details
             </Button>

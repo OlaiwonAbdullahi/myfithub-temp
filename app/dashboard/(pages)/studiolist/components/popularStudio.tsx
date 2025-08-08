@@ -58,20 +58,13 @@ const PopularStudiosCard: React.FC<PopularStudiosCardProps> = ({
           )}
         </div>
 
-        <div className="flex justify-center gap-3 px-3.5 pt-2 border-t border-gray-100">
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-[#234E49] cursor-pointer text-[#234E49] font-fredoka hover:bg-[#234E49] hover:text-white transition-colors duration-200"
-          >
-            View Details
-          </Button>
+        <div className="flex justify-end gap-3  pt-2 border-t border-gray-100">
           <Button
             variant="default"
             size="sm"
             className="bg-[#234E49] cursor-pointer text-white font-fredoka hover:bg-[#234E49]/90 hover:text-white transition-colors duration-200"
           >
-            Book Now
+            View Details
           </Button>
         </div>
       </div>

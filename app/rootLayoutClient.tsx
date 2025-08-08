@@ -19,6 +19,7 @@ export default function RootLayoutClient({
     "/dashboard/bookings",
     "/dashboard/studiolist",
     "/dashboard/findStudio",
+    "/dashboard/account",
   ].includes(pathname);
 
   return (
