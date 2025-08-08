@@ -20,6 +20,7 @@ export default function RootLayoutClient({
     "/dashboard/studiolist",
     "/dashboard/findStudio",
     "/dashboard/account",
+    "/dashboard/sessions",
   ].includes(pathname);
 
   return (

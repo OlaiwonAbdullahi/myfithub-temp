@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Camera, PenLine } from "lucide-react";
+import { Camera, Crown, PenLine } from "lucide-react";
 import React from "react";
 
 const Page = () => {
@@ -50,7 +50,7 @@ const Page = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-y-6 gap-x-12 mt-6">
           <div className="flex flex-col space-y-1">
             <div className="text-sm font-medium text-gray-500 font-sora">
               First Name
@@ -67,9 +67,11 @@ const Page = () => {
 
           <div className="flex flex-col space-y-1">
             <div className="text-sm font-medium text-gray-500 font-sora">
-              Date of Birth
+              Country
             </div>
-            <div className="text-lg font-medium text-gray-900">12-10-1990</div>
+            <div className="text-lg font-medium text-gray-900">
+              United Kingdom
+            </div>
           </div>
 
           <div className="flex flex-col space-y-1">
@@ -95,6 +97,45 @@ const Page = () => {
               User Role
             </div>
             <div className="text-lg font-medium text-gray-900">Admin</div>
+          </div>
+          <div className="flex flex-col space-y-1">
+            <div className="text-sm font-medium text-gray-500 font-sora">
+              Session Tier
+            </div>
+            <div className="text-lg font-medium text-gray-900">Premium</div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-white space-y-4 font-fredoka rounded-2xl p-8 shadow-sm border border-gray-100/50">
+        <div className="flex justify-between py-2 border-b border-gray-200">
+          <div className="text-xl font-semibold text-gray-900 font-sora">
+            Account Management
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="">
+            <Button variant="default" className=" bg-[#234E49] text-white">
+              Upgrade Subscripsion
+            </Button>
+          </div>
+          <div className="">
+            <Button className=" border-red-500 " variant={"outline"}>
+              Cancel Subscription
+            </Button>
+          </div>
+        </div>
+        <div className="mt-6 p-4 md:w-1/2 w-full bg-amber-50 border border-amber-200 rounded-lg">
+          <div className="flex items-start gap-3">
+            <Crown className="text-amber-600 mt-0.5" size={20} />
+            <div>
+              <p className="font-semibold text-amber-800 font-sora">
+                Premium Membership Active
+              </p>
+              <p className="text-sm text-amber-700 mt-1">
+                Your premium subscription includes all advanced features and
+                priority support.
+              </p>
+            </div>
           </div>
         </div>
       </div>

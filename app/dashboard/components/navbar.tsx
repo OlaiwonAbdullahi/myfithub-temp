@@ -6,6 +6,7 @@ import {
   LayoutGridIcon,
   Search,
   User,
+  LayoutList,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -16,13 +17,19 @@ const Navbar = () => {
   const menuItems = [
     { id: "home", label: "Overview", icon: LayoutGridIcon, link: "/dashboard" },
     {
-      id: "/dashboard/studiolist",
+      id: "studios",
       label: "Studios",
       icon: Dumbbell,
       link: "/dashboard/studiolist",
     },
     {
-      id: "/dashboard/bookings",
+      id: "sessions",
+      label: "Sessions",
+      icon: LayoutList,
+      link: "/dashboard/sessions",
+    },
+    {
+      id: "bookings",
       label: "Bookings",
       icon: BookIcon,
       link: "/dashboard/bookings",
@@ -52,7 +59,7 @@ const Navbar = () => {
                       onClick={() => setActiveTab(item.id)}
                       className={`flex items-center px-6 py-3 text-left hover:bg-gray-50 border-b-2 transition-colors ${
                         activeTab === item.id
-                          ? "bg-[#234E49]/10 border-[#234E49] text-[#234E49]"
+                          ? "bg-[#234E49]/10 border-[#234E49] text-[#234E49] rounded-t-md"
                           : "border-transparent text-gray-600 hover:text-gray-900"
                       }`}
                     >
