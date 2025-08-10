@@ -2,7 +2,7 @@ import { Calendar, Clock, Users, Building } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import type { FitnessSession } from "../../../types/session";
+import type { FitnessSession } from "../../../../types/session";
 
 interface SessionCardProps {
   session: FitnessSession;

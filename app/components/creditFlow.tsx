@@ -48,7 +48,7 @@ const CreditFlow = () => {
   ];
 
   return (
-    <section className="bg-gray-50 px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-20 lg:py-16">
+    <section className=" px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-20 lg:py-16">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {tiers.map((tier, index) => (

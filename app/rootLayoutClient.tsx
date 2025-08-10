@@ -21,6 +21,7 @@ export default function RootLayoutClient({
     "/dashboard/findStudio",
     "/dashboard/account",
     "/dashboard/sessions",
+    "/dashboard/sessions/session-details",
   ].includes(pathname);
 
   return (

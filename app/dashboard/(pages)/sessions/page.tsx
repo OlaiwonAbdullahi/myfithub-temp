@@ -5,7 +5,6 @@ import { Calendar } from "lucide-react";
 import type { FitnessSession, SessionFilter } from "../../../types/session";
 import { SessionFilters } from "./components/session-filter";
 import { SessionCard } from "./components/session-card";
-import { SessionDetailsModal } from "./components/session-details-modal";
 
 const sampleSessions: FitnessSession[] = [
   {
@@ -177,11 +176,12 @@ const sampleSessions: FitnessSession[] = [
       "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=400&h=300&fit=crop&crop=center",
   },
 ];
+
 export default function FitnessSessionsPage() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedSession, setSelectedSession] = useState<FitnessSession | null>(
     null
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [filters, setFilters] = useState<SessionFilter>({});
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -223,14 +223,13 @@ export default function FitnessSessionsPage() {
   }, [searchQuery, filters]);
 
   const handleBookSession = (sessionId: string) => {
-    // Handle booking logic here
+    //TODO:Handle booking logic here
     console.log("Booking session:", sessionId);
     alert("Session booked successfully!");
   };
 
   const handleViewDetails = (session: FitnessSession) => {
     setSelectedSession(session);
-    setIsModalOpen(true);
   };
 
   return (
@@ -272,14 +271,6 @@ export default function FitnessSessionsPage() {
           </div>
         )}
       </div>
-      {selectedSession && (
-        <SessionDetailsModal
-          session={selectedSession}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onBookSession={handleBookSession}
-        />
-      )}
     </div>
   );
 }
