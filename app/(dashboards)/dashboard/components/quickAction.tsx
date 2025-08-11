@@ -1,21 +1,21 @@
-import { link } from "fs";
 import {
   Calendar,
   MapPin,
-  Search,
   Star,
   Clock,
-  CreditCard,
+  Activity,
+  BotMessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 
 const QuickAction = () => {
   const actions = [
     {
-      id: "book-class",
-      title: "Book a Class",
-      description: "Find and book your next workout",
+      id: "book-session",
+      title: "Book a Session",
+      description: "Explore and book your next workout",
       icon: Calendar,
+      link: "/dashboard/sessions",
     },
     {
       id: "find-studios",
@@ -25,28 +25,32 @@ const QuickAction = () => {
       link: "/dashboard/studiolist",
     },
     {
-      id: "browse-classes",
-      title: "Browse Classes",
-      description: "Explore different workout types",
-      icon: Search,
+      id: "calories-tracker",
+      title: "Calories Tracker",
+      description: "Track your calories in Real-time",
+      icon: Activity,
+      link: "/dashboard/studiolist",
     },
     {
       id: "my-favorites",
       title: "My Favorites",
       description: "Quick access to saved studios",
       icon: Star,
+      link: "/dashboard/studiolist",
     },
     {
       id: "schedule",
       title: "My Schedule",
       description: "View upcoming sessions",
       icon: Clock,
+      link: "/dashboard/studiolist",
     },
     {
-      id: "membership",
-      title: "Membership",
-      description: "Manage your subscriptions",
-      icon: CreditCard,
+      id: "ai-fitness-coach",
+      title: "AI Fitness Coach",
+      description: "Talk to MyFithub Coach",
+      icon: BotMessageSquare,
+      link: "/dashboard/studiolist",
     },
   ];
 

@@ -6,10 +6,8 @@ import {
   Clock,
   MapPin,
   Users,
-  Star,
   Heart,
   Share2,
-  DollarSign,
   Target,
   Zap,
   Info,
@@ -102,7 +100,6 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
 
   // Merge provided props with sampleData as fallback
   const {
-    id = sampleData.id,
     title = sampleData.title,
     instructor = sampleData.instructor,
     schedule = sampleData.schedule,
@@ -135,22 +132,6 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
     }
   }, [details?.level]);
 
-  // Memoize formatted date with validation
-  const formattedDate = useMemo(() => {
-    if (!schedule?.date) return "Invalid Date";
-    const date = new Date(schedule.date);
-    if (isNaN(date.getTime())) {
-      return "Invalid Date";
-    }
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }, [schedule?.date]);
-
-  // Short date for Quick Info Bar
   const shortDate = useMemo(() => {
     if (!schedule?.date) return "N/A";
     const date = new Date(schedule.date);
@@ -319,7 +300,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                   What You&apos;ll Get
                 </h3>
                 <div className="grid gap-3">
-                  {benefits.map((benefit, index) => (
+                  {benefits?.map((benefit, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="mt-1 p-1 bg-green-100 rounded-full">
                         <Zap size={12} className="text-green-600" />

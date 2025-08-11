@@ -22,6 +22,7 @@ export default function RootLayoutClient({
     "/dashboard/account",
     "/dashboard/sessions",
     "/dashboard/sessions/session-details",
+    "/dashboard/calories-tracker",
   ].includes(pathname);
 
   return (

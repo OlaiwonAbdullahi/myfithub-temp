@@ -1,10 +1,17 @@
+"use client";
 import Hero from "@/app/ui/hero";
-import React from "react";
+import React, { useState } from "react";
 import Intro from "./components/intro";
-//import Team from "./components/team";
 import Faq from "./components/faq";
+import Chatbot from "@/app/components/chatbot";
+import { MessageSquare } from "lucide-react";
 
 const Page = () => {
+  const [open, setOpen] = useState(false);
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Hero
@@ -14,8 +21,14 @@ const Page = () => {
         more=""
       />
       <Intro />
-      {/*<Team />*/}
       <Faq />
+      <button
+        className="fixed bottom-10 cursor-pointer right-4 bg-[#234E49] text-white p-3 rounded-full shadow-lg"
+        onClick={() => setOpen(true)}
+      >
+        <MessageSquare size={30} className=" cursor-pointer" />
+      </button>
+      {open && <Chatbot open={open} onClose={onClose} />}
     </div>
   );
 };

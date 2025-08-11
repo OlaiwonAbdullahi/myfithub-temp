@@ -17,14 +17,13 @@ const Intro = () => {
     <section className="bg-white px-6 py-12 md:px-20 md:py-20">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Image Section */}
           <div className="w-full md:w-1/2 relative p-8">
             <div className="relative flex flex-col ">
               <div className="relative self-start">
                 <div className="">
                   <img
                     src="https://tapback.co/api/avatar/johndoe"
-                    alt="Fitness Community Member"
+                    alt="MyFitHub CoFounder"
                     className="w-42 h-42 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-white"
                   />
                   <div className=" flex justify-center items-center flex-col">
@@ -42,7 +41,7 @@ const Intro = () => {
               <div className="relative self-end">
                 <img
                   src="https://tapback.co/api/avatar/janedoe"
-                  alt="Fitness Community Member"
+                  alt="MyFitHub CoFounder"
                   className="w-38 h-38 md:w-56 md:h-56 rounded-full object-cover shadow-lg border-4 border-white"
                 />
 
