@@ -1,6 +1,6 @@
 "use client";
 import {
-  Bell,
+  //Bell,
   BookIcon,
   Dumbbell,
   LayoutGridIcon,
@@ -8,6 +8,7 @@ import {
   //User,
   LayoutList,
   Activity,
+  Heart,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -92,8 +93,7 @@ const Navbar = () => {
             </div>
              */}
             <button className="relative p-2 hover:bg-gray-100 rounded-lg">
-              <Bell className="h-5 w-5" />
-              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+              <Heart className="h-5 w-5" />
             </button>
             <Link href="/dashboard/account">
               <img
