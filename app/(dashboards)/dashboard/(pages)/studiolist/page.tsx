@@ -52,7 +52,7 @@ const Page: React.FC = () => {
     return <p className="p-10 text-red-600 text-center">Error: {error}</p>;
 
   return (
-    <div className="  px-6 md:px-13 py-10">
+    <div className=" p-6 px-6 md:px-13 py-10">
       <div className="space-y-16">
         <div className="">
           <div className=" flex items-center justify-between">

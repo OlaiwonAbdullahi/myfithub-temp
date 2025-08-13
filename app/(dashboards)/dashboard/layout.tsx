@@ -9,7 +9,7 @@ const DashboardLayout: React.FC<DashboardProps> = ({ children }) => {
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 p-6 bg-gray-50 overflow-auto">{children}</main>
+      <main className="flex-1  bg-gray-50 overflow-auto">{children}</main>
     </div>
   );
 };

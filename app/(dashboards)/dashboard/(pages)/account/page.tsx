@@ -4,7 +4,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className=" space-y-5 px-6 md:px-13 py-10">
+    <div className=" space-y-5 px-6 p-6 md:px-13 py-10">
       <div className=" flex w-full items-center gap-2">
         <span className=" whitespace-nowrap text-lg font-medium text-[#234E49]  font-sora">
           My Profile

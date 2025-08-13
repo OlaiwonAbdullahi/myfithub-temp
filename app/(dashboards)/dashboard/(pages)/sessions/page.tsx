@@ -233,7 +233,7 @@ export default function FitnessSessionsPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen p-6">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Filters */}
         <div className="mb-8 w-full">
