@@ -316,7 +316,7 @@ const Page = () => {
         <div className="text-center mb-8">
           <h2 className="md:text-4xl text-2xl capitalize font-bold text-[#234E49] mb-2 font-sora">
             {hasCalculated && selectedFood
-              ? `Nutritions in ${selectedFood.brand} ${selectedFood.name}`
+              ? `Nutritions in  ${selectedFood.name}`
               : "Nutritions in Your Meal"}
           </h2>
           {hasCalculated && selectedFood && (
