@@ -1,6 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Fish, Flame, Ham, ScanSearch, Search, Utensils } from "lucide-react";
+import {
+  Fish,
+  Flame,
+  Ham,
+  ScanSearch,
+  Search,
+  Utensils,
+  X,
+  AlertCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -43,41 +52,21 @@ interface ApiResponse {
   message: string;
 }
 
+interface NutritionResult {
+  calories?: number;
+  protein?: number;
+  carbohydrates?: number;
+  fat?: number;
+  [key: string]: number | undefined;
+}
+
 const Page = () => {
-  const nutritionData: NutritionData[] = [
-    {
-      icon: Flame,
-      label: "Calories",
-      value: "200",
-      unit: "Kcal",
-      color: "text-orange-500",
-      bgColor: "bg-orange-50",
-    },
-    {
-      icon: Fish,
-      label: "Protein",
-      value: "25",
-      unit: "g",
-      color: "text-blue-500",
-      bgColor: "bg-blue-50",
-    },
-    {
-      icon: Utensils,
-      label: "Carbs",
-      value: "30",
-      unit: "g",
-      color: "text-green-500",
-      bgColor: "bg-green-50",
-    },
-    {
-      icon: Ham,
-      label: "Fat",
-      value: "8",
-      unit: "g",
-      color: "text-red-500",
-      bgColor: "bg-red-50",
-    },
-  ];
+  const [nutritionResult, setNutritionResult] = useState<NutritionResult>({
+    calories: 0,
+    protein: 0,
+    carbohydrates: 0,
+    fat: 0,
+  });
 
   const [nigerianFoods, setNigerianFoods] = useState<NigerianFood[]>([]);
   const [openFindFood, setOpenFindFood] = useState(false);
@@ -85,16 +74,51 @@ const Page = () => {
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
+  const [nutritionLoading, setNutritionLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [nutritionError, setNutritionError] = useState<string | null>(null);
   const [apiMessage, setApiMessage] = useState<string | null>(null);
   const [portionSize, setPortionSize] = useState("");
-  interface PortionGuide {
-    unit: string;
-  }
-
-  const [portionGuide, setPortionGuide] = useState<PortionGuide[]>([]);
+  const [selectedFood, setSelectedFood] = useState<SearchQuery | null>(null);
   const [portionUnit, setPortionUnit] = useState("");
+  const [hasCalculated, setHasCalculated] = useState(false);
+
+  const nutritionData: NutritionData[] = [
+    {
+      icon: Flame,
+      label: "Calories",
+      value: nutritionResult.calories?.toFixed(0) || "0",
+
+      unit: "Kcal",
+      color: "text-orange-500",
+      bgColor: "bg-orange-50",
+    },
+    {
+      icon: Fish,
+      label: "Protein",
+      value: nutritionResult.protein?.toFixed(1) || "0",
+      unit: "g",
+      color: "text-blue-500",
+      bgColor: "bg-blue-50",
+    },
+    {
+      icon: Utensils,
+      label: "Carbs",
+      value: nutritionResult.carbohydrates?.toFixed(1) || "0",
+      unit: "g",
+      color: "text-green-500",
+      bgColor: "bg-green-50",
+    },
+    {
+      icon: Ham,
+      label: "Fat",
+      value: nutritionResult.fat?.toFixed(1) || "0",
+      unit: "g",
+      color: "text-red-500",
+      bgColor: "bg-red-50",
+    },
+  ];
 
   const fetchData = async (): Promise<void> => {
     try {
@@ -106,17 +130,13 @@ const Page = () => {
       );
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Failed to fetch Nigerian foods (${response.status})`);
       }
 
       const result = await response.json();
       console.log("API Response (Nigerian Foods):", result);
 
-      if (
-        result &&
-        result.nigerian_foods &&
-        Array.isArray(result.nigerian_foods)
-      ) {
+      if (result?.nigerian_foods && Array.isArray(result.nigerian_foods)) {
         setNigerianFoods(result.nigerian_foods);
       } else {
         console.warn("Unexpected API response structure:", result);
@@ -133,41 +153,10 @@ const Page = () => {
       setLoading(false);
     }
   };
-  const fetchPortionGuide = async (): Promise<void> => {
-    try {
-      setLoading(true);
-      setError(null);
 
-      const response = await fetch(
-        "https://myfithub-nutrition-api.onrender.com/nutrition/portion-guide"
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const result = await response.json();
-      console.log("API Response (Portion Guide):", result);
-
-      // Ensure result.supported_units is an array
-      if (Array.isArray(result.supported_units)) {
-        setPortionGuide(result.supported_units);
-      } else {
-        throw new Error(
-          "API response does not contain a valid supported_units array"
-        );
-      }
-    } catch (error) {
-      console.error("Error fetching Portion Guide:", error);
-      setError(
-        error instanceof Error ? error.message : "Failed to fetch Portion Guide"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
   const fetchSearchQueries = async (query: string): Promise<void> => {
     if (!query.trim()) return;
+
     try {
       setSearchLoading(true);
       setSearchError(null);
@@ -180,25 +169,26 @@ const Page = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            query,
+            query: query.trim(),
             limit: 10,
           }),
         }
       );
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Search failed (${response.status})`);
       }
 
       const result: ApiResponse = await response.json();
       console.log("API Response (Search):", result);
 
-      if (result && Array.isArray(result.results)) {
+      if (result?.results && Array.isArray(result.results)) {
         setSearchQueries(result.results);
         setApiMessage(result.message);
       } else {
-        console.warn("Unexpected API response structure:", result);
+        console.warn("Unexpected search response:", result);
         setSearchQueries([]);
+        setApiMessage("No results found");
       }
     } catch (error) {
       console.error("Error fetching search results:", error);
@@ -213,27 +203,127 @@ const Page = () => {
   };
 
   const handleSearch = (): void => {
-    fetchSearchQueries(searchInput);
+    if (searchInput.trim()) {
+      fetchSearchQueries(searchInput.trim());
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
-      fetchSearchQueries(searchInput);
+      handleSearch();
     }
+  };
+
+  const handleCheckNutrition = async () => {
+    setNutritionError(null);
+
+    if (!selectedFood) {
+      setNutritionError("Please select a food item first.");
+      return;
+    }
+
+    if (!portionSize || parseFloat(portionSize) <= 0) {
+      setNutritionError("Please enter a valid portion size.");
+      return;
+    }
+
+    if (!portionUnit) {
+      setNutritionError("Please select a unit.");
+      return;
+    }
+
+    try {
+      setNutritionLoading(true);
+
+      const response = await fetch(
+        "https://myfithub-nutrition-api.onrender.com/nutrition/quick-log",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            query: selectedFood.fdc_id,
+            quantity: parseFloat(portionSize),
+            unit: portionUnit,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Nutrition calculation failed (${response.status})`);
+      }
+
+      const result = await response.json();
+      console.log(
+        "Nutrition calculation result:",
+        result.search_result.nutrition_per_100g
+      );
+
+      if (result.search_result?.nutrition_per_100g) {
+        setNutritionResult({
+          calories: result.search_result.nutrition_per_100g.calories || 0,
+          protein: result.search_result.nutrition_per_100g.protein || 0,
+          carbohydrates: result.search_result.nutrition_per_100g.carbs || 0,
+          fat: result.search_result.nutrition_per_100g.fat || 0,
+        });
+        setHasCalculated(true);
+      }
+    } catch (error) {
+      console.error("Error calculating nutrition:", error);
+      setNutritionError(
+        error instanceof Error ? error.message : "Failed to calculate nutrition"
+      );
+    } finally {
+      setNutritionLoading(false);
+    }
+  };
+
+  const handleQuickAdd = (food: NigerianFood) => {
+    const foodName =
+      typeof food === "string"
+        ? food
+        : food.label || food.name || "Unknown Food";
+    setSearchInput(foodName);
+    setOpenFindFood(true);
+    fetchSearchQueries(foodName);
+  };
+
+  const clearSelection = () => {
+    setSelectedFood(null);
+    setPortionSize("");
+    setPortionUnit("");
+    setNutritionError(null);
+  };
+
+  const resetNutrition = () => {
+    setNutritionResult({
+      calories: 0,
+      protein: 0,
+      carbohydrates: 0,
+      fat: 0,
+    });
+    setHasCalculated(false);
   };
 
   useEffect(() => {
     fetchData();
-    fetchPortionGuide();
   }, []);
 
   return (
-    <div className="">
-      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-gradient-to-br from-green-50 to-blue-50">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-[#F5FAF7] ">
         <div className="text-center mb-8">
-          <h2 className="md:text-4xl text-2xl font-bold text-[#234E49] mb-2 font-sora">
-            Nutrition in Your Meal
+          <h2 className="md:text-4xl text-2xl capitalize font-bold text-[#234E49] mb-2 font-sora">
+            {hasCalculated && selectedFood
+              ? `Nutritions in ${selectedFood.brand} ${selectedFood.name}`
+              : "Nutritions in Your Meal"}
           </h2>
+          {hasCalculated && selectedFood && (
+            <p className="text-sm text-gray-600 font-fredoka ">
+              {portionSize} {portionUnit} portion
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
@@ -242,7 +332,7 @@ const Page = () => {
             return (
               <div
                 key={index}
-                className="rounded-xl transition-shadow duration-300 p-6 mx-auto"
+                className="rounded-xl transition-all duration-300 p-6 mx-auto bg-white/20 backdrop-blur-sm border border-white/10 shadow-sm hover:shadow-md"
               >
                 <div className="flex flex-row items-center">
                   <div className="pr-2">
@@ -264,20 +354,34 @@ const Page = () => {
             );
           })}
         </div>
+
+        {hasCalculated && (
+          <div className="text-center mt-6">
+            <Button
+              onClick={resetNutrition}
+              variant="outline"
+              className="text-[#234E49] cursor-pointer border-[#234E49]/30 hover:bg-[#234E49]/5 font-fredoka"
+            >
+              Calculate New Food
+            </Button>
+          </div>
+        )}
       </div>
 
       <section className="max-w-4xl py-10 px-4 mx-auto font-fredoka">
-        <div className="flex justify-between mb-3">
+        <div className="flex justify-between items-center mb-3">
           <h2 className="text-lg font-semibold text-[#234E49] mb-3 font-sora">
             Quick Add
           </h2>
-          <div
-            className="flex items-center gap-2 text-sm font-medium text-neutral-600 cursor-pointer"
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex cursor-pointer items-center gap-2 text-sm font-medium text-neutral-600 border-neutral-300 hover:bg-neutral-50"
             onClick={() => setOpenFindFood(!openFindFood)}
           >
-            <ScanSearch />
-            Find Food
-          </div>
+            {openFindFood ? <X size={16} /> : <ScanSearch size={16} />}
+            {openFindFood ? "Close" : "Find Food"}
+          </Button>
         </div>
 
         {loading && (
@@ -288,9 +392,14 @@ const Page = () => {
 
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-4">
-            <div className="text-red-700">Error: {error}</div>
+            <div className="flex items-center gap-2 text-red-700">
+              <AlertCircle size={16} />
+              Error: {error}
+            </div>
             <button
-              onClick={fetchData}
+              onClick={() => {
+                fetchData();
+              }}
               className="mt-2 text-red-600 underline hover:text-red-800"
             >
               Retry
@@ -299,16 +408,16 @@ const Page = () => {
         )}
 
         {!loading && nigerianFoods.length > 0 && (
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
             {nigerianFoods.map((food, index) => (
               <button
                 key={index}
-                className="bg-gray-300 cursor-pointer hover:bg-gray-400 text-black px-4 py-2 flex items-center justify-center rounded-md transition-colors duration-200 whitespace-nowrap"
+                onClick={() => handleQuickAdd(food)}
+                className="bg-white border border-gray-200 hover:border-[#234E49]/30 hover:bg-[#234E49]/5 text-gray-700 px-4 py-2 flex items-center justify-center rounded-md transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
               >
                 {typeof food === "string"
-                  ? typeof food === "string"
-                    ? food.charAt(0).toUpperCase() + food.slice(1)
-                    : food
+                  ? (food as string).charAt(0).toUpperCase() +
+                    (food as string).slice(1)
                   : food.label || food.name || "Unknown Food"}
               </button>
             ))}
@@ -321,28 +430,9 @@ const Page = () => {
           </div>
         )}
       </section>
-      {/*
-      {openAddCustomFood && (
-        <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
-          <h2 className="text-lg font-semibold text-[#234E49] mb-3 font-sora">
-            Add Custom Food
-          </h2>
-          <div className="flex items-center justify-center relative">
-            <input
-              type="text"
-              placeholder="Search for food"
-              maxLength={50}
-              className="w-full p-2 border border-[#234E49]/30 rounded-md focus:outline-none font-fredoka"
-            />
-            <Button className="bg-[#234E49] absolute right-1 text-white px-4 py-1.5 font-sora rounded-md font-fredoka">
-              <Plus size={30} />
-            </Button>
-          </div>
-        </section>
-      )}*/}
 
-      <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
-        {openFindFood && (
+      {openFindFood && (
+        <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
           <div>
             <h2 className="text-lg font-semibold text-[#234E49] mb-3 font-sora">
               Find Food
@@ -350,17 +440,17 @@ const Page = () => {
             <div className="flex items-center justify-center relative">
               <input
                 type="text"
-                placeholder="Search for food"
+                placeholder="Search for food (e.g., rice, chicken, beans)"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 maxLength={50}
-                className="w-full p-2 border border-[#234E49]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#234E49] font-fredoka"
+                className="w-full p-3 pr-12 border border-[#234E49]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#234E49] focus:border-transparent font-fredoka"
               />
               <button
-                className="bg-[#234E49] hover:bg-[#234E49]/80 absolute right-1 text-white px-4 py-1.5 rounded-md transition-colors"
+                className="bg-[#234E49] hover:bg-[#234E49]/80 absolute right-1 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50"
                 onClick={handleSearch}
-                disabled={searchLoading}
+                disabled={searchLoading || !searchInput.trim()}
               >
                 <Search size={20} />
               </button>
@@ -375,11 +465,12 @@ const Page = () => {
 
               {searchError && (
                 <div className="bg-red-50 border border-red-200 rounded-md p-3 mb-4">
-                  <div className="text-red-700 text-sm">
+                  <div className="flex items-center gap-2 text-red-700 text-sm">
+                    <AlertCircle size={16} />
                     Search error: {searchError}
                   </div>
                   <button
-                    onClick={() => fetchSearchQueries(searchInput || "rice")}
+                    onClick={() => fetchSearchQueries(searchInput)}
                     className="mt-2 text-red-600 underline hover:text-red-800 text-sm"
                   >
                     Retry Search
@@ -388,83 +479,168 @@ const Page = () => {
               )}
 
               {!searchLoading && searchQueries.length > 0 && (
-                <div className="space-y-2">
+                <div className="space-y-2 font-fredoka">
                   <h3 className="text-sm font-medium text-gray-600">
                     Search Results:
                   </h3>
-                  <div className="flex gap-2  flex-col border border-[#234E49]/30 pb-2 rounded-md bg-white shadow-md">
-                    <p className=" p-2.5">{apiMessage}</p>
-                    {searchQueries
-                      .filter((query) => query.name)
-                      .map((query, index) => (
-                        <div key={index} className="px-3 py-2">
-                          <button
-                            key={index}
-                            className="bg-gray-100 w-full text-start cursor-pointer hover:bg-gray-200 text-gray-800 px-3 py-2 flex items-center justify-start rounded-md transition-colors duration-200 whitespace-nowrap text-sm"
-                          >
-                            {query.name} {query.brand ? `(${query.brand})` : ""}
-                            {query.nutrition_per_100g?.calories && (
-                              <span className="ml-2 text-xs bg-blue-200 px-1 rounded">
-                                {query.nutrition_per_100g.calories} cal
-                              </span>
-                            )}
-                          </button>
-                        </div>
-                      ))}
+                  <div className="border border-[#234E49]/30 rounded-md bg-white shadow-md">
+                    {apiMessage && (
+                      <p className="p-3 text-sm text-gray-600 border-b border-gray-100">
+                        {apiMessage}
+                      </p>
+                    )}
+                    <div className="max-h-60 overflow-y-auto">
+                      {searchQueries
+                        .filter((query) => query.name)
+                        .map((query, index) => {
+                          const isSelected =
+                            selectedFood?.fdc_id === query.fdc_id;
+                          return (
+                            <div
+                              key={index}
+                              className="px-3 py-2 border-b border-gray-100 last:border-b-0"
+                            >
+                              <button
+                                onClick={() => {
+                                  setSelectedFood(query);
+                                  setSearchQueries([]);
+                                }}
+                                className={`w-full text-left px-3 py-3 rounded-md transition-all duration-200 text-sm ${
+                                  isSelected
+                                    ? "bg-[#234E49] text-white shadow-md"
+                                    : "bg-gray-50 hover:bg-gray-100 text-gray-800 hover:shadow-sm"
+                                }`}
+                              >
+                                <div>
+                                  {query.brand && (
+                                    <div
+                                      className={`text-xs ${
+                                        isSelected
+                                          ? "text-green-200"
+                                          : "text-gray-500"
+                                      } mb-1`}
+                                    >
+                                      Brand: {query.brand}
+                                    </div>
+                                  )}
+                                  <div className="font-medium">
+                                    {query.name}
+                                  </div>
+                                </div>
+                              </button>
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {!searchError && searchQueries.length === 0 && searchInput && (
-                <div className="text-gray-500 text-center py-4 text-sm">
-                  No results found for &quot;{searchInput}&quot;
                 </div>
               )}
             </div>
           </div>
-        )}
-        <div className="py-3">
-          <h2 className="text-lg font-semibold text-[#234E49] mb-2 font-sora">
-            Portion Size
-          </h2>
-          <div className="flex items-center gap-2">
-            <Input
-              type="number"
-              placeholder="Enter portion size"
-              value={portionSize}
-              onChange={(e) => setPortionSize(e.target.value)}
-              className="flex-1 p-2 py-3 border border-[#234E49]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#234E49] font-fredoka"
-            />
-            <Select
-              value={portionUnit}
-              onValueChange={(value: string) => setPortionUnit(value)}
-            >
-              <SelectTrigger className="w-32 border border-[#234E49]/30 px-3 font-fredoka rounded-md py-1.5 flex items-center justify-between">
-                <SelectValue placeholder="Select Unit" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {portionGuide.map((item, index) => (
-                    <SelectItem
-                      key={`${item.unit}-${index}`}
-                      value={item.unit}
-                      className="font-fredoka"
-                    >
-                      {item.unit}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>{" "}
-          </div>
-        </div>
+        </section>
+      )}
 
-        <div>
-          <Button className="w-full bg-[#234E49] hover:bg-[#234E49]/80 text-white px-4 py-1.5 font-sora rounded-md font-fredoka">
-            Check Nutrition
-          </Button>
-        </div>
-      </section>
+      {selectedFood && (
+        <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
+          <div className="bg-white rounded-lg p-4 border border-[#234E49]/20 shadow-sm">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="text-lg font-semibold text-[#234E49] font-sora">
+                  Selected Food
+                </h3>
+                <p className="text-gray-600 font-fredoka">
+                  {selectedFood.name}
+                </p>
+                {selectedFood.brand && (
+                  <p className="text-sm text-gray-500 font-fredoka">
+                    Brand: {selectedFood.brand}
+                  </p>
+                )}
+              </div>
+              <button
+                onClick={clearSelection}
+                className="text-gray-400 cursor-pointer hover:text-gray-600 transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div>
+              <h4 className="text-md font-semibold text-[#234E49] mb-3 font-sora">
+                Portion Size
+              </h4>
+              <div className="flex items-center gap-3">
+                <Input
+                  type="number"
+                  placeholder="Enter amount"
+                  value={portionSize}
+                  onChange={(e) => setPortionSize(e.target.value)}
+                  min="0"
+                  step="0.1"
+                  className="flex-1 p-3 border border-[#234E49]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#234E49] font-fredoka"
+                />
+                <Select
+                  value={portionUnit}
+                  onValueChange={(value: string) => setPortionUnit(value)}
+                >
+                  <SelectTrigger className="w-32 border border-[#234E49]/30 px-3 font-fredoka rounded-md py-3">
+                    <SelectValue placeholder="Unit" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="grams" className="font-fredoka">
+                        Grams
+                      </SelectItem>
+                      <SelectItem value="kg" className="font-fredoka">
+                        kg
+                      </SelectItem>
+                      <SelectItem value="oz" className="font-fredoka">
+                        oz
+                      </SelectItem>
+                      <SelectItem value="lb" className="font-fredoka">
+                        lb
+                      </SelectItem>
+                      <SelectItem value="cup" className="font-fredoka">
+                        cup
+                      </SelectItem>
+                      <SelectItem value="tablespoon" className="font-fredoka">
+                        tablespoon
+                      </SelectItem>
+                      <SelectItem value="piece" className="font-fredoka">
+                        piece
+                      </SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {nutritionError && (
+              <div className="mt-4 bg-red-50 border border-red-200 rounded-md p-3">
+                <div className="flex items-center gap-2 text-red-700 text-sm">
+                  <AlertCircle size={16} />
+                  {nutritionError}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6">
+              <Button
+                className="w-full bg-[#234E49] cursor-pointer hover:bg-[#234E49]/80 text-white px-4 py-3 font-sora rounded-md font-fredoka disabled:opacity-50"
+                onClick={handleCheckNutrition}
+                disabled={
+                  nutritionLoading ||
+                  !selectedFood ||
+                  !portionSize ||
+                  !portionUnit
+                }
+              >
+                {nutritionLoading ? "Calculating..." : "Check Nutrition"}
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };
