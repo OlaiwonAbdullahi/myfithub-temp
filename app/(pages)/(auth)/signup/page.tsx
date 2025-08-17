@@ -19,27 +19,44 @@ const Page = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [gender, setGender] = useState("male");
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (step === 1) {
       setStep(2);
     } else {
-      // TODO: Final submit backend logic implimented here
-      console.log({
-        firstName,
-        lastName,
-        email,
-        username,
-        phone,
-        password,
-        confirmPassword,
-        gender,
-      });
+      try {
+        const res = await fetch(
+          "http://myfithub-backend.onrender.com/api/v1/auth/sign-up",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              firstName,
+              lastName,
+              email,
+              username,
+              phone,
+              password,
+              confirmPassword,
+              gender,
+            }),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Signup failed:", error);
+      }
     }
   };
-
   return (
     <div className="flex flex-col md:px-20 sm:px-8 px-6 space-y-7 py-10 justify-center items-center min-h-screen bg-[#EEF7F6]/50 font-fredoka">
       <div className="bg-white p-8 rounded-2xl shadow-md space-y-6 w-full max-w-md">
