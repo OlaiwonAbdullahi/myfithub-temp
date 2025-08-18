@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AgCharts } from "ag-charts-react";
 
 const OverviewChart = () => {
-  const [options, setOptions] = useState({
+  const [options] = useState({
     data: [
       { Day: "Mon", bookings: 12, revenue: 15 },
       { Day: "Tue", bookings: 17, revenue: 16 },

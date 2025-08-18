@@ -6,7 +6,7 @@ import {
   SelectValue,
   SelectItem,
 } from "@/components/ui/select";
-import { Users, DollarSign, TrendingUp, MousePointerClick } from "lucide-react";
+import { DollarSign, TrendingUp, Calendar, Users } from "lucide-react";
 import OverviewChart from "./chart";
 
 const Overview = () => {
@@ -16,7 +16,7 @@ const Overview = () => {
       value: "15k",
       change: "-12% from last month",
       positive: false,
-      icon: Users,
+      icon: Calendar,
     },
     {
       title: "Revenue",
@@ -26,11 +26,11 @@ const Overview = () => {
       icon: DollarSign,
     },
     {
-      title: "No of Visitors",
+      title: "Total Members",
       value: "5k",
       change: "+8% from last month",
       positive: true,
-      icon: MousePointerClick,
+      icon: Users,
     },
     {
       title: "Growth Rate",
@@ -50,7 +50,7 @@ const Overview = () => {
           return (
             <div
               key={i}
-              className="bg-white shadow-sm border border-[#234E49]/20 rounded-xl p-5 flex flex-col justify-between transition hover:shadow-md"
+              className="bg-white shadow-sm border border-[#234E49]/10 rounded-xl p-5 flex flex-col justify-between transition hover:shadow-md"
             >
               <div className="flex justify-between items-center mb-2">
                 <h2 className="text-sm font-sora font-medium text-[#234E49]">
@@ -76,16 +76,14 @@ const Overview = () => {
           );
         })}
       </div>
-
-      {/* Analytics Chart */}
-      <div className="w-1/2 h-[21.5rem] bg-white border border-[#234E49]/20 rounded-xl shadow-sm py-4 px-6 flex flex-col">
+      <div className="w-1/2 h-[21.5rem] bg-white border border-[#234E49]/10 rounded-xl shadow-sm py-4 px-6 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg text-[#234E49] font-sora font-semibold">
             Analytics Overview
           </h3>
 
           <Select>
-            <SelectTrigger className="w-[140px] font-fredoka focus:ring-0 text-[#234E49] border border-[#234E49]/20 cursor-pointer rounded-lg">
+            <SelectTrigger className="w-[140px] font-fredoka focus:ring-0 text-[#234E49] border border-[#234E49]/10 cursor-pointer rounded-lg">
               <SelectValue placeholder="Last 7 days" />
             </SelectTrigger>
             <SelectContent>

@@ -17,10 +17,10 @@ import Link from "next/link";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeItem, setActiveItem] = useState("overview");
+  const [activeItem, setActiveItem] = useState("");
 
   const menuItems = [
-    { id: "overview", label: "Dashboard", icon: Home },
+    { id: "", label: "Dashboard", icon: Home },
     { id: "studio", label: "Studio Management", icon: Building },
     { id: "classes", label: "Classes Management", icon: Calendar },
     { id: "instructors", label: "Instructors", icon: Users },
@@ -74,20 +74,22 @@ const Sidebar = () => {
 
             return (
               <li key={item.id}>
-                <button
-                  onClick={() => handleItemClick(item.id)}
-                  className={`w-full whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors ${
-                    isActive
-                      ? "border border-[#E5E5E5] text-white"
-                      : "text-[#E5E5E5] hover:bg-[#] hover:text-white"
-                  }`}
-                  title={isCollapsed ? item.label : ""}
-                >
-                  <Icon size={20} className="flex-shrink-0" />
-                  {!isCollapsed && (
-                    <span className="ml-3 font-medium">{item.label}</span>
-                  )}
-                </button>
+                <Link href={`/studios-owners/${item.id}`}>
+                  <button
+                    onClick={() => handleItemClick(item.id)}
+                    className={`w-full cursor-pointer whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors ${
+                      isActive
+                        ? "border border-[#E5E5E5] text-white"
+                        : "text-[#E5E5E5] hover:bg-[#] hover:text-white"
+                    }`}
+                    title={isCollapsed ? item.label : ""}
+                  >
+                    <Icon size={20} className="flex-shrink-0" />
+                    {!isCollapsed && (
+                      <span className="ml-3 font-medium">{item.label}</span>
+                    )}
+                  </button>
+                </Link>
               </li>
             );
           })}

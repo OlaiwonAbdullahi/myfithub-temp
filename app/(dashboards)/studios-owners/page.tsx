@@ -1,5 +1,6 @@
 import React from "react";
 import Overview from "./components/overview";
+import RecentUsers from "./components/recentUsers";
 
 const Page = () => {
   return (
@@ -14,6 +15,9 @@ const Page = () => {
       </div>
       <div className="">
         <Overview />
+      </div>
+      <div className="">
+        <RecentUsers />
       </div>
     </div>
   );
