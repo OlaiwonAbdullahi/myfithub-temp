@@ -3,7 +3,7 @@ import Overview from "./components/overview";
 
 const Page = () => {
   return (
-    <div>
+    <div className=" space-y-6">
       <div className="flex flex-col">
         <h1 className="text-3xl font-bold text-gray-900 mb-1 font-sora">
           Welcome Back

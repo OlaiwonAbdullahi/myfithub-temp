@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   Home,
   Settings,
-  BarChart3,
   Calendar,
   Bell,
   ChevronLeft,
@@ -11,7 +10,6 @@ import {
   LogOut,
   Building,
   Users,
-  UserCircle,
   CreditCard,
   Wallet,
 } from "lucide-react";
@@ -26,10 +24,8 @@ const Sidebar = () => {
     { id: "studio", label: "Studio Management", icon: Building },
     { id: "classes", label: "Classes Management", icon: Calendar },
     { id: "instructors", label: "Instructors", icon: Users },
-    { id: "members", label: "Members", icon: UserCircle },
     { id: "subscriptions", label: "Subscriptions & Plans", icon: CreditCard },
     { id: "payments", label: "Payments & Transactions", icon: Wallet },
-    { id: "analytics", label: "Analytics", icon: BarChart3 },
     { id: "notifications", label: "Notifications", icon: Bell },
     { id: "settings", label: "Settings", icon: Settings },
   ];
@@ -44,7 +40,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`bg-[#234E49] text-white h-full transition-all duration-300 ease-in-out flex flex-col ${
+      className={`bg-[#234E49] font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col ${
         isCollapsed ? "w-16" : "w-64"
       }`}
     >
@@ -64,7 +60,7 @@ const Sidebar = () => {
         )}
         <button
           onClick={toggleSidebar}
-          className="p-1 rounded-lg hover:bg-gray-700 transition-colors"
+          className="p-1 rounded-lg hover:bg-[#234E49]/50 cursor-pointer transition-colors"
         >
           {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
         </button>
