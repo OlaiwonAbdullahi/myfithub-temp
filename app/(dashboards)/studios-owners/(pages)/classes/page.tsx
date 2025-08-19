@@ -22,9 +22,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Users, User, BookOpen, Plus } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Users,
+  User,
+  BookOpen,
+  Plus,
+  Trash2,
+  PenLine,
+} from "lucide-react";
 import type React from "react";
 import { useState } from "react";
+import Image from "next/image";
 
 const ClassManagement = () => {
   const [classes] = useState([
@@ -61,6 +71,7 @@ const ClassManagement = () => {
     date: "",
     time: "",
     description: "",
+    banner: "",
   });
 
   const handleInputChange = (
@@ -92,7 +103,7 @@ const ClassManagement = () => {
 
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="bg-primary hover:bg-primary/90 gap-2">
+            <Button className="bg-primary cursor-pointer hover:bg-primary/90 gap-2">
               <Plus className="h-4 w-4" />
               Add New Class
             </Button>
@@ -100,7 +111,7 @@ const ClassManagement = () => {
           <DialogContent className="sm:max-w-[600px]">
             <form onSubmit={handleSubmit}>
               <DialogHeader>
-                <DialogTitle className="text-xl font-semibold text-primary">
+                <DialogTitle className="text-xl font-sora  font-semibold text-primary">
                   Add New Class
                 </DialogTitle>
                 <DialogDescription className=" font-family-fredoka">
@@ -108,7 +119,7 @@ const ClassManagement = () => {
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="grid gap-6 py-4">
+              <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label
@@ -218,6 +229,34 @@ const ClassManagement = () => {
                     />
                   </div>
                 </div>
+                <div className=" space-y-2">
+                  <Label
+                    htmlFor="banner"
+                    className="text-sm font-medium font-family-sora"
+                  >
+                    Upload Banner
+                  </Label>
+                  <Input
+                    id="banner"
+                    name="banner"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onloadend = () => {
+                          setFormData({
+                            ...formData,
+                            ...formData,
+                          });
+                        };
+                      }
+                    }}
+                    className="w-full font-family-fredoka"
+                  />
+                </div>
 
                 <div className="space-y-2">
                   <Label
@@ -237,7 +276,7 @@ const ClassManagement = () => {
                 </div>
               </div>
 
-              <DialogFooter className="gap-2">
+              <DialogFooter className="gap-2 font-fredoka">
                 <DialogClose asChild>
                   <Button variant="outline">Cancel</Button>
                 </DialogClose>
@@ -257,8 +296,16 @@ const ClassManagement = () => {
         {classes.map((classItem) => (
           <Card
             key={classItem.id}
-            className="hover:shadow-lg transition-shadow  font-fredoka"
+            className="hover:shadow-lg pt-0 rounded-t-lg transition-shadow  font-fredoka"
           >
+            <Image
+              src="/about.png"
+              alt={classItem.title}
+              width={200}
+              height={100}
+              className="w-full h-40 object-cover rounded-t-lg"
+            />
+
             <CardHeader className="pb-3">
               <div className="flex justify-between items-start">
                 <CardTitle className="text-lg font-semibold font-sora">
@@ -314,14 +361,12 @@ const ClassManagement = () => {
                   size="sm"
                   className="flex-1 bg-transparent"
                 >
+                  <PenLine className="h-4 w-4" />
                   Edit
                 </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="flex-1 bg-transparent"
-                >
-                  View Details
+                <Button variant={"destructive"} size="sm" className="flex-1 ">
+                  <Trash2 className="h-4 w-4" />
+                  <span>Delete</span>
                 </Button>
               </div>
             </CardContent>
