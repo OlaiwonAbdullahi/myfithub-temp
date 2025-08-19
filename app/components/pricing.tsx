@@ -116,7 +116,7 @@ const Pricing: React.FC<PricingProps> = ({ className = "" }) => {
           >
             {plan.popular && (
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <span className="bg-[#234E49] text-white px-4 py-1 rounded-full text-sm font-medium">
+                <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </span>
               </div>
@@ -150,7 +150,7 @@ const Pricing: React.FC<PricingProps> = ({ className = "" }) => {
               <button
                 className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
                   plan.popular
-                    ? "bg-[#234E49] text-white hover:bg-[#234E49] shadow-md hover:shadow-lg"
+                    ? "bg-primary text-white hover:bg-primary shadow-md hover:shadow-lg"
                     : "bg-black text-white hover:bg-gray-800"
                 }`}
               >

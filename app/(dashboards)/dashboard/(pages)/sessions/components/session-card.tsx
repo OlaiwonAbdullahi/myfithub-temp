@@ -129,7 +129,7 @@ export function SessionCard({
             variant="outline"
             size="lg"
             onClick={() => onViewDetails(session)}
-            className="border-[#234E49] w-1/2 cursor-pointer bg-transparent text-[#234E49] hover:bg-[#234E49] hover:text-white transition-all duration-300"
+            className="border-[#234E49] w-1/2 cursor-pointer bg-transparent text-[#234E49] hover:bg-primary hover:text-white transition-all duration-300"
           >
             Details
           </Button>

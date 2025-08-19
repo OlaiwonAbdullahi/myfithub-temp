@@ -40,7 +40,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`bg-[#234E49] font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col ${
+      className={`bg-primary font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col  ${
         isCollapsed ? "w-16" : "w-64"
       }`}
     >
@@ -60,7 +60,7 @@ const Sidebar = () => {
         )}
         <button
           onClick={toggleSidebar}
-          className="p-1 rounded-lg hover:bg-[#234E49]/50 cursor-pointer transition-colors"
+          className="p-1 rounded-lg hover:bg-primary/50 cursor-pointer transition-colors"
         >
           {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
         </button>

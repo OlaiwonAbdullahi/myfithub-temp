@@ -50,7 +50,7 @@ const HowItWork = () => {
               key={step.id}
               className="group relative p-6 space-y-4 border border-[#234E49]/20 rounded-2xl hover:border-[#234E49]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#234E49]/10 rounded-xl flex items-center justify-center text-[#234E49] group-hover:bg-[#234E49] group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-primary/10 rounded-xl flex items-center justify-center text-[#234E49] group-hover:bg-primary group-hover:text-white transition-all duration-300">
                 {step.icon}
               </div>
 

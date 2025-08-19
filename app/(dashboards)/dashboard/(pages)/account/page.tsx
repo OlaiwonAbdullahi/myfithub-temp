@@ -114,7 +114,7 @@ const Page = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="">
-            <Button variant="default" className=" bg-[#234E49] text-white">
+            <Button variant="default" className=" bg-primary text-white">
               Upgrade Subscripsion
             </Button>
           </div>

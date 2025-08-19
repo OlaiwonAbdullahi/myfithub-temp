@@ -360,7 +360,7 @@ const Page = () => {
             <Button
               onClick={resetNutrition}
               variant="outline"
-              className="text-[#234E49] cursor-pointer border-[#234E49]/30 hover:bg-[#234E49]/5 font-fredoka"
+              className="text-[#234E49] cursor-pointer border-[#234E49]/30 hover:bg-primary/5 font-fredoka"
             >
               Calculate New Food
             </Button>
@@ -413,7 +413,7 @@ const Page = () => {
               <button
                 key={index}
                 onClick={() => handleQuickAdd(food)}
-                className="bg-white border border-gray-200 hover:border-[#234E49]/30 hover:bg-[#234E49]/5 text-gray-700 px-4 py-2 flex items-center justify-center rounded-md transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
+                className="bg-white border border-gray-200 hover:border-[#234E49]/30 hover:bg-primary/5 text-gray-700 px-4 py-2 flex items-center justify-center rounded-md transition-all duration-200 whitespace-nowrap shadow-sm hover:shadow-md"
               >
                 {typeof food === "string"
                   ? (food as string).charAt(0).toUpperCase() +
@@ -448,7 +448,7 @@ const Page = () => {
                 className="w-full p-3 pr-12 border border-[#234E49]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#234E49] focus:border-transparent font-fredoka"
               />
               <button
-                className="bg-[#234E49] hover:bg-[#234E49]/80 absolute right-1 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50"
+                className="bg-primary hover:bg-primary/80 absolute right-1 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50"
                 onClick={handleSearch}
                 disabled={searchLoading || !searchInput.trim()}
               >
@@ -507,7 +507,7 @@ const Page = () => {
                                 }}
                                 className={`w-full text-left px-3 py-3 rounded-md transition-all duration-200 text-sm ${
                                   isSelected
-                                    ? "bg-[#234E49] text-white shadow-md"
+                                    ? "bg-primary text-white shadow-md"
                                     : "bg-gray-50 hover:bg-gray-100 text-gray-800 hover:shadow-sm"
                                 }`}
                               >
@@ -626,7 +626,7 @@ const Page = () => {
 
             <div className="mt-6">
               <Button
-                className="w-full bg-[#234E49] cursor-pointer hover:bg-[#234E49]/80 text-white px-4 py-3 font-sora rounded-md font-fredoka disabled:opacity-50"
+                className="w-full bg-primary cursor-pointer hover:bg-primary/80 text-white px-4 py-3 font-sora rounded-md font-fredoka disabled:opacity-50"
                 onClick={handleCheckNutrition}
                 disabled={
                   nutritionLoading ||

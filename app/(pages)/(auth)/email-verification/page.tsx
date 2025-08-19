@@ -46,7 +46,7 @@ const Page = () => {
             </InputOTPGroup>
           </InputOTP>
         </div>
-        <Button className="bg-[#234E49] w-full hover:bg-[#234E49]/90 cursor-pointer">
+        <Button className="bg-primary w-full hover:bg-primary/90 cursor-pointer">
           Verify
         </Button>
       </div>

@@ -24,7 +24,7 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
           onClick={toggleAccordion}
         >
           <div className="flex items-center space-x-4">
-            <div className="flex-shrink-0 w-8 h-8 bg-[#234E49] rounded-full flex items-center justify-center text-white text-sm font-bold">
+            <div className="flex-shrink-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold">
               {String(index + 1).padStart(2, "0")}
             </div>
             <h3 className="text-sm md:text-base font-semibold font-sora text-gray-900 pr-4">

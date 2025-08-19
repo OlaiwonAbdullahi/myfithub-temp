@@ -26,7 +26,7 @@ const Page = () => {
       <Pricing />
       */}
       <button
-        className="fixed bottom-10 cursor-pointer right-4 bg-[#234E49] text-white p-3 rounded-full shadow-lg"
+        className="fixed bottom-10 cursor-pointer right-4 bg-primary text-white p-3 rounded-full shadow-lg"
         onClick={() => setOpen(true)}
       >
         <MessageSquare size={30} className=" cursor-pointer" />

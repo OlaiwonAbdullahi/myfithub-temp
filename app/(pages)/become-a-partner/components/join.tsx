@@ -144,7 +144,7 @@ const Join = () => {
 
           <Button
             type="submit"
-            className="bg-[#234E49] text-white mt-6 w-full hover:bg-[#1d3f3d] transition"
+            className="bg-primary text-white mt-6 w-full hover:bg-[#1d3f3d] transition"
           >
             Submit
           </Button>

@@ -32,7 +32,7 @@ const Heroo = () => {
         <div className="flex flex-col items-center justify-center gap-4 my-8">
           <Link
             href="/signup"
-            className="w-1/2 h-10 rounded-lg flex flex-row justify-center items-center font-fredoka bg-[#234E49] text-white hover:bg-[#1a3b36] transition-colors cursor-pointer duration-300"
+            className="w-1/2 h-10 rounded-lg flex flex-row justify-center items-center font-fredoka bg-primary text-white hover:bg-[#1a3b36] transition-colors cursor-pointer duration-300"
           >
             <Button className="text-white bg-transparent hover:bg-transparent border-0 p-0 h-auto font-fredoka">
               Get Started

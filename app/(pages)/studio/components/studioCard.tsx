@@ -53,14 +53,14 @@ const StudioCard: React.FC<StudioCardProps> = ({
                 {amenities.slice(0, 3).map((item, index) => (
                   <li
                     key={index}
-                    className="text-[#234E49] text-xs border bg-[#234E49]/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
+                    className="text-[#234E49] text-xs border bg-primary/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
                   >
                     {item}
                   </li>
                 ))}
 
                 {amenities.length > 3 && (
-                  <li className="text-[#234E49] text-xs border bg-[#234E49]/10 border-[#234E49]/50 px-2 py-0.5 rounded-full">
+                  <li className="text-[#234E49] text-xs border bg-primary/10 border-[#234E49]/50 px-2 py-0.5 rounded-full">
                     +{amenities.length - 3} more
                   </li>
                 )}
@@ -71,7 +71,7 @@ const StudioCard: React.FC<StudioCardProps> = ({
           <Button
             variant="outline"
             size="sm"
-            className="border-[#234E49] text-[#234E49] font-fredoka hover:bg-[#234E49] hover:text-white transition-colors duration-200"
+            className="border-[#234E49] text-[#234E49] font-fredoka hover:bg-primary hover:text-white transition-colors duration-200"
           >
             View Details
           </Button>

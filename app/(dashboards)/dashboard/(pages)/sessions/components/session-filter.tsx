@@ -67,7 +67,7 @@ export function SessionFilters({
               }
               className={`rounded-md transition-all duration-300 ${
                 filters.type === type.value
-                  ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
+                  ? "bg-primary hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"
               }`}
             >
@@ -94,7 +94,7 @@ export function SessionFilters({
               }
               className={`rounded-md capitalize transition-all duration-300 ${
                 filters.difficulty === difficulty
-                  ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
+                  ? "bg-primary hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"
               }`}
             >
@@ -118,7 +118,7 @@ export function SessionFilters({
               }
               className={`rounded-md: capitalize transition-all duration-300 ${
                 filters.timeSlot === slot
-                  ? "bg-[#234E49] hover:bg-[#1a3a36] text-white"
+                  ? "bg-primary hover:bg-[#1a3a36] text-white"
                   : "border-gray-200 hover:border-[#234E49] hover:text-[#234E49]"
               }`}
             >

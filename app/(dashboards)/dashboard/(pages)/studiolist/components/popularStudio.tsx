@@ -45,7 +45,7 @@ const PopularStudiosCard: React.FC<PopularStudiosCardProps> = ({
                 {amenities.slice(0, 2).map((item, index) => (
                   <li
                     key={index}
-                    className="text-[#234E49] text-[10px] border bg-[#234E49]/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
+                    className="text-[#234E49] text-[10px] border bg-primary/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
                   >
                     {item}
                   </li>
@@ -62,7 +62,7 @@ const PopularStudiosCard: React.FC<PopularStudiosCardProps> = ({
           <Button
             variant="default"
             size="sm"
-            className="bg-[#234E49] cursor-pointer text-white font-fredoka hover:bg-[#234E49]/90 hover:text-white transition-colors duration-200"
+            className="bg-primary cursor-pointer text-white font-fredoka hover:bg-primary/90 hover:text-white transition-colors duration-200"
           >
             View Details
           </Button>

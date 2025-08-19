@@ -444,7 +444,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
             className={`w-1/2 py-3 font-fredoka font-semibold transition-all duration-200 ${
               isBooked
                 ? "bg-green-600 hover:bg-green-700 text-white"
-                : "bg-[#234E49] hover:[#234E49]/80 text-white"
+                : "bg-primary hover:[#234E49]/80 text-white"
             } ${isFullyBooked ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label={
               isFullyBooked

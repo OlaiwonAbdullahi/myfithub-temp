@@ -64,7 +64,7 @@ const Details: React.FC<DetailsProps> = ({
               {amenities.map((amenity, index) => (
                 <li
                   key={index}
-                  className="text-[#234E49]  text-xs border bg-[#234E49]/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
+                  className="text-[#234E49]  text-xs border bg-primary/20 backdrop-blur-2xl border-[#234E49]/50 px-2 py-0.5 rounded-full"
                 >
                   {amenity}
                 </li>

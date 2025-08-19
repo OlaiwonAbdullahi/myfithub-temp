@@ -35,7 +35,7 @@ const Overview = () => {
     {
       title: "Growth Rate",
       value: "24.5%",
-      change: "-8% from last month",
+      change: "-8% from last Week",
       positive: false,
       icon: TrendingUp,
     },
@@ -56,7 +56,7 @@ const Overview = () => {
                 <h2 className="text-sm font-sora font-medium text-[#234E49]">
                   {metric.title}
                 </h2>
-                <div className="border border-[#234E49]/40 rounded-full p-2 h-10 w-10 flex items-center justify-center bg-[#234E49]/5">
+                <div className="border border-[#234E49]/40 rounded-full p-2 h-10 w-10 flex items-center justify-center bg-primary/5">
                   <Icon className="text-[#234E49] h-5 w-5" />
                 </div>
               </div>

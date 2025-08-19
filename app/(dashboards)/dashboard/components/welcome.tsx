@@ -29,7 +29,7 @@ const Welcome = () => {
           </div>
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <div className="px-4 py-2 bg-[#234E49]/10 text-[#234E49] rounded-xl text-sm font-medium">
+          <div className="px-4 py-2 bg-primary/10 text-[#234E49] rounded-xl text-sm font-medium">
             Premium Member
           </div>
         </div>
@@ -53,7 +53,7 @@ const Welcome = () => {
           </div>
           <div className="mt-3 w-full bg-gray-100 rounded-full h-2">
             <div
-              className="bg-[#234E49] h-2 rounded-full"
+              className="bg-primary h-2 rounded-full"
               style={{ width: "75%" }}
             ></div>
           </div>

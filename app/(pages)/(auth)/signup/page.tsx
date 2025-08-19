@@ -230,7 +230,7 @@ const Page = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="text-[#234E49] border-[#234E49] hover:bg-[#234E49]/10 cursor-pointer"
+                className="text-[#234E49] border-[#234E49] hover:bg-primary/10 cursor-pointer"
                 onClick={() => setStep(step - 1)}
               >
                 Back
@@ -238,7 +238,7 @@ const Page = () => {
             )}
             <Button
               type="submit"
-              className="ml-auto bg-[#234E49] text-white hover:bg-[#234E49]/90 cursor-pointer"
+              className="ml-auto bg-primary text-white hover:bg-primary/90 cursor-pointer"
             >
               {step === 2 ? "Create Account" : "Next"}
             </Button>

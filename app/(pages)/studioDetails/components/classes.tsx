@@ -80,8 +80,8 @@ const Classes = () => {
               onClick={() => setActiveFilter(option)}
               className={`p-2 rounded-md min-w-[100px] flex items-center justify-center transition-all duration-200 ${
                 activeFilter === option
-                  ? "bg-[#234E49] text-white hover:bg-[#234E49]/90"
-                  : "bg-white border border-[#234E49] text-[#234E49] hover:bg-[#234E49]/90 hover:text-white"
+                  ? "bg-primary text-white hover:bg-primary/90"
+                  : "bg-white border border-[#234E49] text-[#234E49] hover:bg-primary/90 hover:text-white"
               }`}
               variant={activeFilter === option ? "default" : "outline"}
             >
@@ -145,7 +145,7 @@ const Classes = () => {
                   </span>
                 </div>
                 <div className=" mt-3.5 flex justify-end ">
-                  <Button className=" bg-[#234E49] text-white">Book Now</Button>
+                  <Button className=" bg-primary text-white">Book Now</Button>
                 </div>
               </div>
             </div>

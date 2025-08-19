@@ -67,7 +67,7 @@ const Navbar = () => {
                       onClick={() => setActiveTab(item.id)}
                       className={`flex items-center px-6 py-3 text-left hover:bg-gray-50 border-b-2 transition-colors ${
                         activeTab === item.id
-                          ? "bg-[#234E49]/10 border-[#234E49] text-[#234E49] rounded-t-md"
+                          ? "bg-primary/10 border-[#234E49] text-[#234E49] rounded-t-md"
                           : "border-transparent text-gray-600 hover:text-gray-900"
                       }`}
                     >

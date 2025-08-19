@@ -59,7 +59,7 @@ const CreditFlow = () => {
                 .replace(" ", "-")
                 .toLowerCase()}`}
             >
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#234E49] text-white font-fredoka text-sm px-3 py-1 rounded-full z-10">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white font-fredoka text-sm px-3 py-1 rounded-full z-10">
                 {tier.tier}
               </div>
               <div className="flex items-center space-x-4">

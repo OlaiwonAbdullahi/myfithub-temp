@@ -12,7 +12,7 @@ const Loader = () => {
         {balls.map((_, i) => (
           <motion.span
             key={i}
-            className="w-4 h-4 bg-[#234E49] rounded-full"
+            className="w-4 h-4 bg-primary rounded-full"
             animate={{
               y: [0, -20, 0],
             }}

@@ -63,7 +63,7 @@ const Procedure = () => {
             <div className=" flex flex-row relative">
               {item.icon}
 
-              <span className="bg-[#234E49] text-white rounded-full w-4 h-4 text-xs -right-1 absolute font-fredoka flex justify-center items-center ">
+              <span className="bg-primary text-white rounded-full w-4 h-4 text-xs -right-1 absolute font-fredoka flex justify-center items-center ">
                 {idx + 1}
               </span>
             </div>
@@ -75,7 +75,7 @@ const Procedure = () => {
         ))}
       </div>
       <div className="">
-        <Button className="bg-[#234E49] text-white font-fredoka h-10 w-20">
+        <Button className="bg-primary text-white font-fredoka h-10 w-20">
           Join Us
         </Button>
       </div>

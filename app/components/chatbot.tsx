@@ -79,7 +79,7 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
   return (
     <div className="fixed bottom-10 right-4 w-80 bg-white rounded-md border border-[#234E49]/50 shadow-lg transition-all duration-300 z-50">
       {/* Header */}
-      <div className="bg-[#234E49] text-white px-4 py-2 flex justify-between items-center rounded-t-md">
+      <div className="bg-primary text-white px-4 py-2 flex justify-between items-center rounded-t-md">
         <span className="font-semibold font-Sora">MyFitHub Chatbot</span>
         <button onClick={onClose} className="p-1 cursor-pointer">
           <X className="size-5" />
@@ -98,7 +98,7 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
             <div
               className={`px-3 py-2 rounded-md text-sm max-w-[75%] ${
                 msg.sender === "user"
-                  ? "bg-[#234E49] text-white self-end"
+                  ? "bg-primary text-white self-end"
                   : "bg-gray-100 text-gray-800"
               }`}
             >
@@ -126,7 +126,7 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
           onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
         />
         <button
-          className="ml-2 bg-[#234E49] text-white p-2 rounded-md disabled:opacity-50"
+          className="ml-2 bg-primary text-white p-2 rounded-md disabled:opacity-50"
           onClick={handleSendMessage}
           disabled={loading}
         >
