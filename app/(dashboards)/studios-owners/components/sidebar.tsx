@@ -4,7 +4,6 @@ import {
   Home,
   Settings,
   Calendar,
-  Bell,
   ChevronLeft,
   ChevronRight,
   LogOut,
@@ -22,11 +21,10 @@ const Sidebar = () => {
   const menuItems = [
     { id: "", label: "Dashboard", icon: Home },
     { id: "studio", label: "Studio Management", icon: Building },
-    { id: "classes", label: "Classes Management", icon: Calendar },
+    { id: "sessions", label: "Sessions Management", icon: Calendar },
     { id: "instructors", label: "Instructors", icon: Users },
-    { id: "subscriptions", label: "Subscriptions & Plans", icon: CreditCard },
+    { id: "history", label: "Bookings History", icon: CreditCard },
     { id: "payments", label: "Payments & Transactions", icon: Wallet },
-    { id: "notifications", label: "Notifications", icon: Bell },
     { id: "settings", label: "Settings", icon: Settings },
   ];
 

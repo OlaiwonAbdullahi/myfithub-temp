@@ -311,13 +311,13 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-[#F5FAF7] ">
+    <div className="min-h-screen bg-gray-50 flex justify-center flex-col">
+      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-[#F5FAF7] sticky top-0 z-50 ">
         <div className="text-center mb-8">
           <h2 className="md:text-4xl text-2xl capitalize font-bold text-[#234E49] mb-2 font-sora">
             {hasCalculated && selectedFood
-              ? `Nutritions in  ${selectedFood.name}`
-              : "Nutritions in Your Meal"}
+              ? `Nutrients in  ${selectedFood.name}`
+              : "Nutrients in Your Meal"}
           </h2>
           {hasCalculated && selectedFood && (
             <p className="text-sm text-gray-600 font-fredoka ">
@@ -432,7 +432,7 @@ const Page = () => {
       </section>
 
       {openFindFood && (
-        <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
+        <section className=" w-4/6 py-5 px-4 mx-auto space-y-5">
           <div>
             <h2 className="text-lg font-semibold text-[#234E49] mb-3 font-sora">
               Find Food
@@ -541,7 +541,7 @@ const Page = () => {
       )}
 
       {selectedFood && (
-        <section className="max-w-4xl py-5 px-4 mx-auto space-y-5">
+        <section className="w-4/6 py-5 px-4 mx-auto space-y-5">
           <div className="bg-white rounded-lg p-4 border border-[#234E49]/20 shadow-sm">
             <div className="flex justify-between items-start mb-4">
               <div>
