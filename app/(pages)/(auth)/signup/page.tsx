@@ -2,61 +2,52 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
-  const [step, setStep] = useState(1);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState<string | undefined>("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [gender, setGender] = useState("male");
+  const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (step === 1) {
-      setStep(2);
-    } else {
-      try {
-        const res = await fetch(
-          "http://myfithub-backend.onrender.com/api/v1/auth/sign-up",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              firstName,
-              lastName,
-              email,
-              username,
-              phone,
-              password,
-              confirmPassword,
-              gender,
-            }),
-          }
-        );
-
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+    try {
+      const res = await fetch(
+        "http://myfithub-backend.onrender.com/api/v1/auth/sign-up",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            username,
+            password,
+            confirmPassword,
+          }),
         }
+      );
 
-        const data = await res.json();
-        console.log(data);
-      } catch (error) {
-        console.error("Signup failed:", error);
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
       }
+
+      const data = await res.json();
+      console.log("Signup success:", data);
+
+      // Redirect to login after signup
+      router.push("/login");
+    } catch (error) {
+      console.error("Signup failed:", error);
     }
   };
+
   return (
     <div className="flex flex-col md:px-20 sm:px-8 px-6 space-y-7 py-10 justify-center items-center min-h-screen bg-[#EEF7F6]/50 font-fredoka">
       <div className="bg-white p-8 rounded-2xl shadow-md space-y-6 w-full max-w-md">
@@ -84,164 +75,78 @@ const Page = () => {
         <hr className="border-t border-t-[#234E49]/20" />
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {step === 1 ? (
-            <>
-              <div className="space-y-1">
-                <Label
-                  htmlFor="firstName"
-                  className="text-[#234E49] font-medium"
-                >
-                  First Name
-                </Label>
-                <Input
-                  id="firstName"
-                  type="text"
-                  placeholder="Your First Name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
+          <div className="space-y-1">
+            <Label htmlFor="email" className="text-[#234E49] font-medium">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="Enter your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-[#E5E5E5] border-[#E5E5E5]"
+            />
+          </div>
 
-              <div className="space-y-1">
-                <Label
-                  htmlFor="lastName"
-                  className="text-[#234E49] font-medium"
-                >
-                  Last Name
-                </Label>
-                <Input
-                  id="lastName"
-                  type="text"
-                  placeholder="Your Last Name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
+          <div className="space-y-1">
+            <Label htmlFor="username" className="text-[#234E49] font-medium">
+              Username
+            </Label>
+            <Input
+              id="username"
+              type="text"
+              placeholder="Create a Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="bg-[#E5E5E5] border-[#E5E5E5]"
+            />
+          </div>
 
-              <div className="space-y-1">
-                <Label htmlFor="email" className="text-[#234E49] font-medium">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
+          <div className="space-y-1">
+            <Label htmlFor="password" className="text-[#234E49] font-medium">
+              Password
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Create a Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="bg-[#E5E5E5] border-[#E5E5E5]"
+            />
+          </div>
 
-              <div className="space-y-1">
-                <Label
-                  htmlFor="username"
-                  className="text-[#234E49] font-medium"
-                >
-                  Username
-                </Label>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="Create a Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="space-y-1">
-                <Label htmlFor="phone" className="text-[#234E49] font-medium">
-                  Phone Number
-                </Label>
-                <PhoneInput
-                  defaultCountry="NG"
-                  value={phone}
-                  onChange={setPhone}
-                  placeholder="8012345678"
-                  className="px-2 border border-[#E5E5E5] bg-[#E5E5E5] focus:outline-none rounded-lg text-sm"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <Label
-                  htmlFor="password"
-                  className="text-[#234E49] font-medium"
-                >
-                  Password
-                </Label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder="Create a Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
-              <div className="space-y-1">
-                <Label
-                  htmlFor="confirmPassword"
-                  className="text-[#234E49] font-medium"
-                >
-                  Password
-                </Label>
-                <Input
-                  id="confirmPassword"
-                  type="password"
-                  placeholder="Confirm Your Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                  className="bg-[#E5E5E5] border-[#E5E5E5]"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <Label className="text-[#234E49] font-medium">Gender</Label>
-                <RadioGroup
-                  defaultValue="male"
-                  className="flex gap-4"
-                  onValueChange={(value) => setGender(value)}
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="male" id="male" />
-                    <Label htmlFor="male">Male</Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="female" id="female" />
-                    <Label htmlFor="female">Female</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-            </>
-          )}
-
-          <div className="flex justify-between">
-            {step > 1 && (
-              <Button
-                type="button"
-                variant="outline"
-                className="text-[#234E49] border-[#234E49] hover:bg-primary/10 cursor-pointer"
-                onClick={() => setStep(step - 1)}
-              >
-                Back
-              </Button>
-            )}
-            <Button
-              type="submit"
-              className="ml-auto bg-primary text-white hover:bg-primary/90 cursor-pointer"
+          <div className="space-y-1">
+            <Label
+              htmlFor="confirmPassword"
+              className="text-[#234E49] font-medium"
             >
-              {step === 2 ? "Create Account" : "Next"}
-            </Button>
+              Confirm Password
+            </Label>
+            <Input
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirm Your Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              className="bg-[#E5E5E5] border-[#E5E5E5]"
+            />
+          </div>
+
+          <div className="flex justify-end">
+            <Link href="/email-verification">
+              <Button
+                type="submit"
+                className="ml-auto bg-primary text-white hover:bg-primary/90 cursor-pointer"
+              >
+                Create Account
+              </Button>
+            </Link>
           </div>
         </form>
 

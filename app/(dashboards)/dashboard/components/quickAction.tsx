@@ -29,7 +29,7 @@ const QuickAction = () => {
       title: "Calories Tracker",
       description: "Track your calories in Real-time",
       icon: Activity,
-      link: "/dashboard/studiolist",
+      link: "/dashboard/calories-tracker",
     },
     {
       id: "my-favorites",
@@ -50,7 +50,7 @@ const QuickAction = () => {
       title: "AI Fitness Coach",
       description: "Talk to MyFithub Coach",
       icon: BotMessageSquare,
-      link: "/dashboard/studiolist",
+      link: "/dashboard/fitness-coach",
     },
   ];
 

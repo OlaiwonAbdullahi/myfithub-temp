@@ -46,9 +46,11 @@ const Page = () => {
             </InputOTPGroup>
           </InputOTP>
         </div>
-        <Button className="bg-primary w-full hover:bg-primary/90 cursor-pointer">
-          Verify
-        </Button>
+        <Link href={"/auth-feedback"}>
+          <Button className="bg-primary w-full hover:bg-primary/90 cursor-pointer">
+            Verify
+          </Button>
+        </Link>
       </div>
     </div>
   );
