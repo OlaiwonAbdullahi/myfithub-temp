@@ -38,8 +38,8 @@ const Procedure = () => {
     },
     {
       icon: (
-        <span className="p-3 bg-blue-700/30 text-blue-700 rounded-full">
-          <Rocket className="w-6 h-6 text-blue-700" />
+        <span className="p-3 bg-primary/30 text-primary rounded-full">
+          <Rocket className="w-6 h-6 text-primary" />
         </span>
       ),
       title: "Grow Your Business",

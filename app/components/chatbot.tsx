@@ -1,6 +1,7 @@
 "use client";
+import { Input } from "@/components/ui/input";
 import { Send, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface PageProps {
   open: boolean;
@@ -19,9 +20,31 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
-  const fetchchat = async (prompt: string) => {
+  const fetchchat = async (userMessage: string) => {
     try {
       setLoading(true);
+
+      const requestBody = {
+        user_id: "1",
+        message: userMessage,
+        user_context: {
+          fitness_goals: ["general_fitness"],
+          fitness_level: "beginner",
+          subscription_tier: "basic",
+          recent_bookings: "No recent bookings",
+          preferred_times: "flexible",
+          preferred_areas: ["lagos"],
+          last_interaction: "first interaction",
+          weekly_streak: 0,
+        },
+        support_context: {
+          issue_type: "general_inquiry",
+          previous_tickets: 0,
+          account_status: "guest",
+          urgency_level: "low",
+        },
+      };
+
       const response = await fetch(
         "https://myfithub-ai-api.onrender.com/api/chat",
         {
@@ -29,20 +52,24 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ prompt }),
+          body: JSON.stringify(requestBody),
         }
       );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
       console.log(data);
 
-      /* setMessages((prev) => [
+      setMessages((prev) => [
         ...prev,
         {
-          text: data.reply || "Sorry, I couldn't understand that.",
+          text: data.response || "Sorry, I couldn't understand that.",
           sender: "bot",
         },
-      ]
-        );*/
+      ]);
     } catch (error) {
       console.error(error);
       setMessages((prev) => [
@@ -58,36 +85,41 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
   };
 
   const handleSendMessage = () => {
-    if (!input.trim()) return;
+    if (!input.trim() || loading) return;
+
+    const userInput = input.trim();
 
     // Append user message
-    setMessages((prev) => [...prev, { text: input, sender: "user" }]);
-    const userInput = input;
+    setMessages((prev) => [...prev, { text: userInput, sender: "user" }]);
     setInput("");
 
-    // Call API
+    // Call API with the user input
     fetchchat(userInput);
   };
 
-  // Optional: greet on first render
-  useEffect(() => {
-    fetchchat("Hello");
-  }, []);
+  // Remove the initial fetch on component mount since we already have a greeting
+  // useEffect(() => {
+  //   fetchchat("Hello");
+  // }, []);
 
   if (!open) return null;
 
   return (
-    <div className="fixed bottom-10 right-4 w-80 bg-white rounded-md border border-[#234E49]/50 shadow-lg transition-all duration-300 z-50">
+    <div className="fixed bottom-10 font-fredoka right-4 w-80 bg-white rounded-md border border-gray-300 shadow-lg transition-all duration-300 z-50">
       {/* Header */}
-      <div className="bg-primary text-white px-4 py-2 flex justify-between items-center rounded-t-md">
-        <span className="font-semibold font-Sora">MyFitHub Chatbot</span>
-        <button onClick={onClose} className="p-1 cursor-pointer">
-          <X className="size-5" />
+      <div className="bg-primary text-white px-4 py-3 flex justify-between items-center rounded-t-md">
+        <span className="font-semibold font-family-sora">
+          MyFitHub Customer Support
+        </span>
+        <button
+          onClick={onClose}
+          className="p-1 cursor-pointer hover:bg-primary rounded"
+        >
+          <X className="w-5 h-5" />
         </button>
       </div>
 
-      {/* Messages */}
-      <div className="p-3 h-64 overflow-y-auto flex flex-col gap-2 font-fredoka scrollbar-hide">
+      <div className="p-3 h-64 overflow-y-auto flex flex-col gap-2 scrollbar-hide bg-white">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -96,10 +128,10 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
             }`}
           >
             <div
-              className={`px-3 py-2 rounded-md text-sm max-w-[75%] ${
+              className={`px-3 py-2 rounded-lg text-sm max-w-[75%] ${
                 msg.sender === "user"
-                  ? "bg-primary text-white self-end"
-                  : "bg-gray-100 text-gray-800"
+                  ? "bg-primary text-white"
+                  : "bg-white text-gray-800 border"
               }`}
             >
               {msg.text}
@@ -108,29 +140,29 @@ const Chatbot: React.FC<PageProps> = ({ open, onClose }) => {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="px-3 py-2 rounded-md text-sm bg-gray-100 text-gray-500">
+            <div className="px-3 py-2 rounded-lg text-sm bg-gray-200 text-gray-600 animate-pulse">
               Typing...
             </div>
           </div>
         )}
       </div>
 
-      {/* Input */}
-      <div className="border-t flex items-center p-2 bg-gray-50 rounded-b-xl font-fredoka">
-        <input
+      <div className="border-t flex items-center p-3 bg-white rounded-b-md">
+        <Input
           type="text"
-          className="flex-1 border rounded-md px-3 py-2 focus:outline-none text-sm"
+          className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none text-sm"
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+          disabled={loading}
         />
         <button
-          className="ml-2 bg-primary text-white p-2 rounded-md disabled:opacity-50"
+          className="ml-2 bg-primary hover:bg-primary text-white p-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           onClick={handleSendMessage}
-          disabled={loading}
+          disabled={loading || !input.trim()}
         >
-          <Send className="size-5" />
+          <Send className="w-4 h-4" />
         </button>
       </div>
     </div>
