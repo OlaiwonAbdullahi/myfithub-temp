@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
+import { LocateFixed, MapPin } from "lucide-react";
 import type { FormData } from "../page";
 
 interface Props {
@@ -111,14 +111,19 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
           <Label htmlFor="address" className="text-sm font-medium">
             Primary Location
           </Label>
-          <div className="flex gap-2 mt-2">
-            <Input
-              id="address"
-              placeholder="Enter your address or area"
-              value={addressInput}
-              onChange={(e) => setAddressInput(e.target.value)}
-              onBlur={(e) => handleAddressChange(e.target.value)}
-            />
+          <div className="flex gap-2 mt-2 items-center">
+            <div className="relative flex-1">
+              <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+              <Input
+                id="address"
+                placeholder="Enter your address or area"
+                value={addressInput}
+                onChange={(e) => setAddressInput(e.target.value)}
+                onBlur={(e) => handleAddressChange(e.target.value)}
+                className="pl-10 w-full"
+              />
+            </div>
+
             <Button
               type="button"
               variant="outline"
@@ -126,7 +131,7 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
               onClick={getCurrentLocation}
               title="Use current location"
             >
-              <MapPin className="w-4 h-4" />
+              <LocateFixed className="w-4 h-4" />
             </Button>
           </div>
         </div>

@@ -169,8 +169,8 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
   }
 
   return (
-    <div className=" flex justify-between gap-6">
-      <div className=" w-3/5 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+    <div className="flex justify-center gap-6 mx-auto max-w-7xl py-10">
+      <div className=" w-4/6 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
         <div className="relative h-64 overflow-hidden">
           <img
             src={imageUrl || FALLBACK_IMAGE}
@@ -472,7 +472,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
           )}
         </div>
       </div>
-      <div className="w-2/5">
+      <div className="w-2/6 flex justify-center  ">
         <RelatedSessions />
       </div>
     </div>

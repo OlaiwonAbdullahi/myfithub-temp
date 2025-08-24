@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 interface AllStudiosCardProps {
@@ -16,8 +17,7 @@ const AllStudiosCard: React.FC<AllStudiosCardProps> = ({
   amenities = [],
 }) => {
   return (
-    <div>
-      {" "}
+    <Link href={"/studioDetails"}>
       <div className="w-full h-72 bg-white border border-[#234E49]/40 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
         <div className="relative">
           <img
@@ -74,7 +74,7 @@ const AllStudiosCard: React.FC<AllStudiosCardProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

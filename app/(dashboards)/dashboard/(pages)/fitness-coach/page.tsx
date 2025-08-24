@@ -25,7 +25,6 @@ export default function AIChat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // initialize with one conversation
   useEffect(() => {
     if (conversations.length === 0) {
       const first: Conversation = {
@@ -75,15 +74,31 @@ export default function AIChat() {
     setIsLoading(true);
 
     try {
+      const requestBody = {
+        user_id: "1",
+        message: input,
+        user_context: {
+          fitness_goals: ["general_fitness"],
+          fitness_level: "beginner",
+          subscription_tier: "basic",
+          recent_bookings: "No recent bookings",
+          preferred_times: "flexible",
+          preferred_areas: ["lagos"],
+          last_interaction: "first interaction",
+          weekly_streak: 0,
+        },
+        support_context: {
+          issue_type: "general_inquiry",
+          previous_tickets: "0",
+          account_status: "guest",
+          urgency_level: "low",
+        },
+      };
+
       const res = await fetch("https://myfithub-ai-api.onrender.com/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [...activeConversation.messages, userMessage].map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-        }),
+        body: JSON.stringify(requestBody),
       });
 
       const data = await res.json();
@@ -139,13 +154,12 @@ export default function AIChat() {
 
   return (
     <div className="min-h-screen font-family-fredoka bg-background flex flex-col justify-center items-center">
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 ">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* History Sidebar */}
           <div className="lg:col-span-1">
-            <Card className="h-[600px] flex flex-col">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
+            <Card className="h-[560px] flex flex-col ">
+              <CardHeader className="border-b py-0">
+                <CardTitle className="flex items-center gap-x-2 text-lg font-sora ">
                   <History className="w-4 h-4" />
                   History
                 </CardTitle>
@@ -169,7 +183,7 @@ export default function AIChat() {
                     ))}
                   </div>
                 </ScrollArea>
-                <div className="pt-2 border-t mt-2">
+                <div className="pt-2 border-t mt-2 fixed">
                   <Button
                     onClick={startNewConversation}
                     className="w-full"
@@ -183,8 +197,8 @@ export default function AIChat() {
           </div>
 
           <div className="lg:col-span-3">
-            <Card className="h-[600px] flex flex-col">
-              <CardHeader className="flex-shrink-0">
+            <Card className="h-[560px] flex flex-col">
+              <CardHeader className="flex-shrink-0 border-b ">
                 <CardTitle className=" font-family-sora flex items-center gap-2">
                   <MessageCircle className="w-5 h-5" />
                   Chat with Your AI Coach
@@ -194,7 +208,7 @@ export default function AIChat() {
               <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
                 <div className="flex-1 overflow-hidden">
                   <ScrollArea className="h-full font-fredoka">
-                    <div className="space-y-4 p-4">
+                    <div className="space-y-4 px-4">
                       {activeConversation?.messages.map((message) => (
                         <div
                           key={message.id}
@@ -254,8 +268,7 @@ export default function AIChat() {
                   </ScrollArea>
                 </div>
 
-                {/* Input Area - fixed height at bottom */}
-                <div className="border-t border-border p-4 flex-shrink-0">
+                <div className="border-t border-border p-4 ">
                   <div className="flex gap-2">
                     <Input
                       value={input}

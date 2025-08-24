@@ -92,7 +92,7 @@ const Navbar = () => {
                 />
             </div>
              */}
-            <button className="relative p-2 hover:bg-gray-100 rounded-lg">
+            <button className="relative p-2 cursor-not-allowed hover:bg-gray-100 rounded-lg">
               <Heart className="h-5 w-5" />
             </button>
             <Link href="/dashboard/account">

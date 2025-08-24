@@ -238,17 +238,20 @@ const Page = () => {
       </div>
 
       <Card className=" max-w-4xl mx-auto ">
-        <CardHeader>
+        <CardHeader className="">
           <div className="flex items-center justify-between mb-4">
             <CardTitle>Step {currentStep} of 7</CardTitle>
             <div className="text-sm text-muted-foreground">
               {Math.round((currentStep / 7) * 100)}% Completed
             </div>
           </div>
-          <Progress value={(currentStep / 7) * 100} className="w-full" />
+          <Progress
+            value={(currentStep / 7) * 100}
+            className="w-full pb-0 mb-0"
+          />
         </CardHeader>
 
-        <CardContent className="p-6">
+        <CardContent className="px-6 pb-6">
           {renderStep()}
 
           <div className="flex justify-between mt-8">

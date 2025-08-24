@@ -14,7 +14,7 @@ const RelatedSessionsCard = ({
   amenities: string[];
 }) => {
   return (
-    <div>
+    <div className=" mx-auto">
       <div className="w-[360px] h-42 flex-shrink-0 bg-white flex border border-[#234E49]/40 rounded-md shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
         <div className="relative w-1/3">
           <img

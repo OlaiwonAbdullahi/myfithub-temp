@@ -3,7 +3,7 @@ import RelatedSessionsCard from "./relatedSessionsCard";
 
 const RelatedSessions = () => {
   return (
-    <div>
+    <div className="">
       <RelatedSessionsCard
         imageUrl="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=300&fit=crop&crop=center"
         name="Beginner's Pilates"
