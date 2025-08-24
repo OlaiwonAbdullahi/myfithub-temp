@@ -12,7 +12,12 @@ export default function RootLayoutClient({
 }) {
   const pathname = usePathname();
 
-  const hidePaths = ["/login", "/signup", "/email-verification"];
+  const hidePaths = [
+    "/login",
+    "/signup",
+    "/email-verification",
+    "/complete-profile",
+  ];
   const hidePrefixes = ["/dashboard", "/studios-owners"];
 
   const hideNavbar =

@@ -49,7 +49,8 @@
 .font-courierPrime {
   font-family: var(--font-courierPrime);
 }
-.font-sora {
+.font-sora,
+h2 {
   font-family: var(--font-sora);
 }
 .PhoneInputCountryIcon--border {
