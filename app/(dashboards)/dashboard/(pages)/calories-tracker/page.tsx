@@ -89,7 +89,6 @@ const Page = () => {
       icon: Flame,
       label: "Calories",
       value: nutritionResult.calories?.toFixed(0) || "0",
-
       unit: "Kcal",
       color: "text-orange-500",
       bgColor: "bg-orange-50",
@@ -312,7 +311,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center flex-col">
-      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-[#F5FAF7] sticky top-0 z-50 ">
+      <div className="max-w-4xl py-12 px-4 mx-auto h-fit rounded-b-4xl border-b border-[#234E49]/30 shadow-md bg-[#F5FAF7]">
         <div className="text-center mb-8">
           <h2 className="md:text-4xl text-2xl capitalize font-bold text-[#234E49] mb-2 font-sora">
             {hasCalculated && selectedFood
