@@ -159,7 +159,7 @@ export function SessionDetailsModal({
                 <Badge
                   key={index}
                   variant="secondary"
-                  className="bg-[#234E49]/10 text-[#234E49] hover:bg-[#234E49]/20"
+                  className="bg-primary/10 text-[#234E49] hover:bg-primary/20"
                 >
                   {item}
                 </Badge>

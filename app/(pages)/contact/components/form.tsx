@@ -88,7 +88,7 @@ const Form = () => {
             <div className="flex justify-end pt-4">
               <Button
                 icon={Send}
-                className="bg-[#234E49] hover:bg-[#1a3a36] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
+                className="bg-primary hover:bg-[#1a3a36] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
               >
                 Send Message
               </Button>

@@ -11,16 +11,18 @@ export default function RootLayoutClient({
   children: ReactNode;
 }) {
   const pathname = usePathname();
-  const hideNavbar = [
+
+  const hidePaths = [
     "/login",
     "/signup",
     "/email-verification",
-    "/dashboard",
-    "/dashboard/bookings",
-    "/dashboard/studiolist",
-    "/dashboard/findStudio",
-    "/dashboard/account",
-  ].includes(pathname);
+    "/complete-profile",
+  ];
+  const hidePrefixes = ["/dashboard", "/studios-owners"];
+
+  const hideNavbar =
+    hidePaths.includes(pathname) ||
+    hidePrefixes.some((prefix) => pathname.startsWith(prefix));
 
   return (
     <>

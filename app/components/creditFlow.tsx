@@ -48,7 +48,7 @@ const CreditFlow = () => {
   ];
 
   return (
-    <section className="bg-gray-50 px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-20 lg:py-16">
+    <section className=" px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12 lg:px-20 lg:py-16">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {tiers.map((tier, index) => (
@@ -59,7 +59,7 @@ const CreditFlow = () => {
                 .replace(" ", "-")
                 .toLowerCase()}`}
             >
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#234E49] text-white font-fredoka text-sm px-3 py-1 rounded-full z-10">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white font-fredoka text-sm px-3 py-1 rounded-full z-10">
                 {tier.tier}
               </div>
               <div className="flex items-center space-x-4">

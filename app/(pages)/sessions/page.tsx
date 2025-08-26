@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Calendar, TrendingUp, Users, Award } from "lucide-react";
+import { Calendar } from "lucide-react";
 import type { FitnessSession, SessionFilter } from "../../types/session";
 import { SessionFilters } from "./components/session-filter";
 import { SessionCard } from "./components/session-card";
@@ -233,16 +233,6 @@ export default function FitnessSessionsPage() {
     setSelectedSession(session);
     setIsModalOpen(true);
   };
-
-  const totalSessions = sampleSessions.length;
-  const totalEnrolled = sampleSessions.reduce(
-    (sum, session) => sum + session.enrolled,
-    0
-  );
-  const avgPrice = Math.round(
-    sampleSessions.reduce((sum, session) => sum + session.price, 0) /
-      totalSessions
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100">

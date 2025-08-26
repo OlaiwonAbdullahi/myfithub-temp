@@ -24,8 +24,8 @@ const Header = () => {
             onClick={() => setActiveFilter(option)}
             className={`p-2 rounded-md w-1/6 flex items-center justify-center transition-all duration-200 ${
               activeFilter === option
-                ? "bg-[#234E49] text-white hover:bg-[#234E49]/90"
-                : "bg-white border border-[#234E49] text-[#234E49] hover:bg-[#234E49]/90 hover:text-white"
+                ? "bg-primary text-white hover:bg-primary/90"
+                : "bg-white border border-[#234E49] text-[#234E49] hover:bg-primary/90 hover:text-white"
             }`}
             variant={activeFilter === option ? "default" : "outline"}
           >

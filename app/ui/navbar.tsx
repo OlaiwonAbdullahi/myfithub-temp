@@ -39,7 +39,7 @@ const Navbar = () => {
                   className={`cursor-pointer  py-1.5 ${
                     isActive(link.href)
                       ? " font-medium border-[#234E49]/50 border-b-2 px-2"
-                      : "hover:bg-[#234E49]/10 rounded-lg px-3"
+                      : "hover:bg-primary/10 rounded-lg px-3"
                   }`}
                 >
                   {link.name}
@@ -54,7 +54,7 @@ const Navbar = () => {
             <button className="cursor-pointer">Login</button>
           </Link>
           <Link href="/signup">
-            <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 rounded-lg">
+            <button className="cursor-pointer bg-primary text-white px-4 py-2 rounded-lg">
               Get Started
             </button>
           </Link>
@@ -98,8 +98,8 @@ const Navbar = () => {
                 <li
                   className={`cursor-pointer py-3 rounded-lg transition-colors ${
                     isActive(link.href)
-                      ? "bg-[#234E49]/20 font-semibold text-[#234E49]"
-                      : "hover:bg-[#234E49]/10 text-gray-700"
+                      ? "bg-primary/20 font-semibold text-[#234E49]"
+                      : "hover:bg-primary/10 text-gray-700"
                   }`}
                 >
                   {link.name}
@@ -109,12 +109,12 @@ const Navbar = () => {
           </ul>
           <div className="flex  gap-3 items-center mt-auto justify-center">
             <Link href="/login" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[80px] rounded-lg hover:bg-[#234E49]/5 transition-colors">
+              <button className="cursor-pointer border border-[#234E49] text-[#234E49] px-4 py-2 w-[80px] rounded-lg hover:bg-primary/5 transition-colors">
                 Login
               </button>
             </Link>
             <Link href="/signup" onClick={() => setMenuOpen(false)}>
-              <button className="cursor-pointer bg-[#234E49] text-white px-4 py-2 w-[120px] whitespace-nowrap rounded-lg hover:bg-[#234E49]/90 transition-colors">
+              <button className="cursor-pointer bg-primary text-white px-4 py-2 w-[120px] whitespace-nowrap rounded-lg hover:bg-primary/90 transition-colors">
                 Get Started
               </button>
             </Link>

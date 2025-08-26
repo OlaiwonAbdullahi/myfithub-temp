@@ -17,14 +17,13 @@ const Intro = () => {
     <section className="bg-white px-6 py-12 md:px-20 md:py-20">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          {/* Image Section */}
           <div className="w-full md:w-1/2 relative p-8">
             <div className="relative flex flex-col ">
               <div className="relative self-start">
                 <div className="">
                   <img
                     src="https://tapback.co/api/avatar/johndoe"
-                    alt="Fitness Community Member"
+                    alt="MyFitHub CoFounder"
                     className="w-42 h-42 md:w-60 md:h-60 rounded-full object-cover shadow-lg border-4 border-white"
                   />
                   <div className=" flex justify-center items-center flex-col">
@@ -36,17 +35,17 @@ const Intro = () => {
                     </span>
                   </div>
                 </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#234E49] rounded-full"></div>
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full"></div>
               </div>
 
               <div className="relative self-end">
                 <img
                   src="https://tapback.co/api/avatar/janedoe"
-                  alt="Fitness Community Member"
+                  alt="MyFitHub CoFounder"
                   className="w-38 h-38 md:w-56 md:h-56 rounded-full object-cover shadow-lg border-4 border-white"
                 />
 
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-[#234E49] rounded-full"></div>
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-primary rounded-full"></div>
                 <div className=" flex justify-center items-center flex-col">
                   <h2 className="text-base font-sora text-[#234E49] font-bold">
                     Onosetale Phyl-Arhedo
@@ -58,8 +57,8 @@ const Intro = () => {
               </div>
 
               {/* Background decorative elements */}
-              <div className="absolute top-0 left-0 w-20 h-20 bg-[#234E49]/10 rounded-full -z-10"></div>
-              <div className="absolute bottom-0 right-0 w-16 h-16 bg-[#234E49]/10 rounded-full -z-10"></div>
+              <div className="absolute top-0 left-0 w-20 h-20 bg-primary/10 rounded-full -z-10"></div>
+              <div className="absolute bottom-0 right-0 w-16 h-16 bg-primary/10 rounded-full -z-10"></div>
             </div>
           </div>
 

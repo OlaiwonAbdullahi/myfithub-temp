@@ -16,7 +16,7 @@ const WhyPartner = () => {
             key={idx}
             className="w-60 h-60 border border-[#c5c5c5] rounded-lg bg-white p-2.5 gap-1 flex flex-col items-center text-center justify-start"
           >
-            <span className="p-2 bg-[#234E49]/30 text-[#234E49] rounded-full">
+            <span className="p-2 bg-primary/30 text-[#234E49] rounded-full">
               <item.icon />
             </span>
             <h2 className="text-xl font-bold font-sora text-[#234E49]">

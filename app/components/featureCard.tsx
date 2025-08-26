@@ -22,7 +22,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   return (
     <div
       className={`h-[400px] w-[485px] relative flex flex-col items-start justify-between p-6 rounded-lg transition-all duration-300 border group ${
-        isHovered ? "bg-[#234E49] shadow-xl transform scale-105" : "bg-white "
+        isHovered ? "bg-primary shadow-xl transform scale-105" : "bg-white "
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
