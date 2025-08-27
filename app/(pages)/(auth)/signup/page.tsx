@@ -5,46 +5,67 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 const Page = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const router = useRouter();
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     try {
       const res = await fetch(
-        "http://myfithub-backend.onrender.com/api/v1/auth/sign-up",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user/sign-up`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            username,
-            password,
-            confirmPassword,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
         }
       );
 
+      const responseText = await res.text();
+
       if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
+        let errorMessage = `HTTP ${res.status}`;
+        try {
+          const errorData = JSON.parse(responseText);
+          errorMessage =
+            errorData.message ||
+            errorData.error ||
+            errorData.details ||
+            errorMessage;
+          toast.error(errorMessage);
+        } catch {
+          errorMessage = responseText || errorMessage;
+        }
+        throw new Error(errorMessage);
       }
 
-      const data = await res.json();
+      const data = JSON.parse(responseText);
       console.log("Signup success:", data);
+      toast.success("Account created successfully!");
 
-      // Redirect to login after signup
-      router.push("/login");
+      setShowModal(true);
     } catch (error) {
       console.error("Signup failed:", error);
+      setError(
+        error instanceof Error ? error.message : "An unexpected error occurred"
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -74,6 +95,12 @@ const Page = () => {
 
         <hr className="border-t border-t-[#234E49]/20" />
 
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-1">
             <Label htmlFor="email" className="text-[#234E49] font-medium">
@@ -83,8 +110,8 @@ const Page = () => {
               id="email"
               type="email"
               placeholder="Enter your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
               className="bg-[#E5E5E5] border-[#E5E5E5]"
             />
@@ -98,8 +125,8 @@ const Page = () => {
               id="username"
               type="text"
               placeholder="Create a Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={form.username}
+              onChange={(e) => setForm({ ...form, username: e.target.value })}
               required
               className="bg-[#E5E5E5] border-[#E5E5E5]"
             />
@@ -113,40 +140,21 @@ const Page = () => {
               id="password"
               type="password"
               placeholder="Create a Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="bg-[#E5E5E5] border-[#E5E5E5]"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <Label
-              htmlFor="confirmPassword"
-              className="text-[#234E49] font-medium"
-            >
-              Confirm Password
-            </Label>
-            <Input
-              id="confirmPassword"
-              type="password"
-              placeholder="Confirm Your Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={form.password}
+              onChange={(e) => setForm({ ...form, password: e.target.value })}
               required
               className="bg-[#E5E5E5] border-[#E5E5E5]"
             />
           </div>
 
           <div className="flex justify-end">
-            <Link href="/email-verification">
-              <Button
-                type="submit"
-                className="ml-auto bg-primary text-white hover:bg-primary/90 cursor-pointer"
-              >
-                Create Account
-              </Button>
-            </Link>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="ml-auto w-full bg-primary text-white hover:bg-primary/90 cursor-pointer disabled:opacity-50"
+            >
+              {isLoading ? "Creating Account..." : "Create Account"}
+            </Button>
           </div>
         </form>
 
@@ -160,6 +168,28 @@ const Page = () => {
           </Link>
         </div>
       </div>
+
+      <Dialog open={showModal} onOpenChange={setShowModal}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="text-xl text-[#234E49]">
+              Verify Your Email
+            </DialogTitle>
+            <DialogDescription className="text-gray-600 font-family-fredoka">
+              We’ve sent a verification link to <b>{form.email}</b>. Please
+              check your inbox (and spam folder) to verify your account.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              onClick={() => setShowModal(false)}
+              className="bg-primary font-family-fredoka cursor-pointer"
+            >
+              Okay, Got It
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -61,15 +61,14 @@ const Page = () => {
   };
 
   return (
-    <div>
-      <Card>
+    <div className="">
+      <Card className="w-9/12 mx-auto my-10">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CalendarIcon className="h-5 w-5" />
-            Book New Session
+          <CardTitle className="flex text-3xl font-sora text-primary items-center gap-2">
+            Selected Session Details
           </CardTitle>
-          <CardDescription>
-            Schedule a new session by filling out the form below
+          <CardDescription className=" text-xl font-family-fredoka">
+            Checkout you selected Session
           </CardDescription>
         </CardHeader>
         <CardContent>
