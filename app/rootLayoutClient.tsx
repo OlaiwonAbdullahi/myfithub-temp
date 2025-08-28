@@ -18,6 +18,8 @@ export default function RootLayoutClient({
     "/email-verification",
     "/complete-profile",
     "/verify-email",
+    "/studio-login",
+    "/studio-signup",
   ];
   const hidePrefixes = ["/dashboard", "/studios-owners"];
 
