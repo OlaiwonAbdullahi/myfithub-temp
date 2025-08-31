@@ -4,7 +4,13 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { LocateFixed, MapPin } from "lucide-react";
 import type { FormData } from "../page";
@@ -13,6 +19,23 @@ interface Props {
   data: FormData;
   updateData: (updates: Partial<FormData>) => void;
 }
+
+const TIME_PREFERENCES = [
+  { id: "morning", label: "Morning" },
+  { id: "afternoon", label: "Afternoon" },
+  { id: "evening", label: "Evening" },
+  { id: "late_night", label: "Late Night" },
+];
+
+const FLEXIBILITY_OPTIONS = [
+  { id: "high", label: "Very Flexible", description: "Can workout anytime" },
+  {
+    id: "medium",
+    label: "Somewhat Flexible",
+    description: "Prefer certain times but can adjust",
+  },
+  { id: "low", label: "Not Flexible", description: "Only specific times work" },
+];
 
 const LAGOS_AREAS = [
   "Victoria Island",
@@ -27,7 +50,7 @@ const LAGOS_AREAS = [
   "Magodo",
 ];
 
-export function LocationPreferencesStep({ data, updateData }: Props) {
+export function LocationScheduleStep({ data, updateData }: Props) {
   const [addressInput, setAddressInput] = useState(
     data.location_preferences.primary_location?.address || ""
   );
@@ -50,6 +73,10 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
     }
   };
 
+  const handleTimeChange = (timeId: string) => {
+    updateData({ preferred_times: [timeId] });
+  };
+
   const handleDistanceChange = (distance: number[]) => {
     updateData({
       location_preferences: {
@@ -59,17 +86,17 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
     });
   };
 
-  const handleAreaChange = (areaId: string, checked: boolean) => {
-    const updatedAreas = checked
-      ? [...data.location_preferences.preferred_areas, areaId]
-      : data.location_preferences.preferred_areas.filter((id) => id !== areaId);
-
+  const handleAreaChange = (area: string) => {
     updateData({
       location_preferences: {
         ...data.location_preferences,
-        preferred_areas: updatedAreas,
+        preferred_areas: [area],
       },
     });
+  };
+
+  const handleFlexibilityChange = (flexibility: string) => {
+    updateData({ schedule_flexibility: flexibility });
   };
 
   const getCurrentLocation = () => {
@@ -99,14 +126,14 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
     <div className="space-y-8">
       <div>
         <h2 className="text-xl font-semibold text-foreground mb-2">
-          Where are you located and how far are you willing to travel?
+          Where are you located and when do you prefer to work out?
         </h2>
         <p className="text-muted-foreground text-sm">
-          Help us find fitness studios near you.
+          Help us find fitness studios near you at your preferred times.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         <div>
           <Label htmlFor="address" className="text-sm font-medium">
             Primary Location
@@ -156,32 +183,89 @@ export function LocationPreferencesStep({ data, updateData }: Props) {
             </div>
           </div>
         </div>
+
+        <div>
+          <Label className="text-sm font-medium mb-2 block">
+            Preferred Area in Lagos (Optional)
+          </Label>
+          <Select
+            value={data.location_preferences.preferred_areas?.[0] || ""}
+            onValueChange={handleAreaChange}
+          >
+            <SelectTrigger className="w-full py-6">
+              <SelectValue placeholder="Select your preferred area" />
+            </SelectTrigger>
+            <SelectContent>
+              {LAGOS_AREAS.map((area) => (
+                <SelectItem key={area} value={area} className="font-fredoka">
+                  {area}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <div>
-        <Label className="text-sm font-medium mb-4 block">
-          Preferred Areas in Lagos (Optional)
-        </Label>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {LAGOS_AREAS.map((area) => (
-            <div
-              key={area}
-              className="flex items-center space-x-2 p-2 rounded border hover:bg-accent/50 transition-colors"
+        <h3 className="text-lg font-medium text-foreground mb-4">
+          Schedule Preferences
+        </h3>
+
+        <div className="space-y-6">
+          <div>
+            <Label className="text-sm font-medium mb-2 block">
+              Preferred Workout Time
+            </Label>
+            <Select
+              value={data.preferred_times[0] || ""}
+              onValueChange={handleTimeChange}
             >
-              <Checkbox
-                id={area}
-                checked={data.location_preferences.preferred_areas.includes(
-                  area
-                )}
-                onCheckedChange={(checked) =>
-                  handleAreaChange(area, checked as boolean)
-                }
-              />
-              <label htmlFor={area} className="text-sm cursor-pointer flex-1">
-                {area}
-              </label>
-            </div>
-          ))}
+              <SelectTrigger className="w-full py-6">
+                <SelectValue placeholder="Select your preferred workout time" />
+              </SelectTrigger>
+              <SelectContent>
+                {TIME_PREFERENCES.map((time) => (
+                  <SelectItem
+                    key={time.id}
+                    value={time.id}
+                    className="font-fredoka"
+                  >
+                    {time.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label className="text-sm font-medium mb-2 block">
+              How flexible is your schedule?
+            </Label>
+            <Select
+              value={data.schedule_flexibility}
+              onValueChange={handleFlexibilityChange}
+            >
+              <SelectTrigger className="w-full py-6">
+                <SelectValue placeholder="Select your schedule flexibility" />
+              </SelectTrigger>
+              <SelectContent>
+                {FLEXIBILITY_OPTIONS.map((option) => (
+                  <SelectItem
+                    key={option.id}
+                    value={option.id}
+                    className="font-fredoka"
+                  >
+                    <div className="flex flex-col text-start">
+                      <span className="font-medium">{option.label}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {option.description}
+                      </span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
     </div>

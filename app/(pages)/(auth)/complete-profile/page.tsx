@@ -5,28 +5,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { BadgeCheck, ChevronLeft, ChevronRight } from "lucide-react";
-import { ProfileSetupStep } from "./components/about";
-import { FitnessGoalsStep } from "./components/fitness-goal-step";
-import { ActivityPreferencesStep } from "./components/activity-prefrence";
-import { FitnessLevelStep } from "./components/fitness-level-step";
-import { SchedulePreferencesStep } from "./components/schedule-preference-step";
-import { LocationPreferencesStep } from "./components/location-preference-step";
-import { BudgetPreferencesStep } from "./components/budget-prefrence-step";
-import { AdditionalPreferencesStep } from "./components/additional-prefrence";
 import Link from "next/link";
+import { ProfileSetupStep } from "./components/profile-setup";
+import { FitnessGoalsActivitiesStep } from "./components/fitness-goals-activities";
+import { LocationScheduleStep } from "./components/location-schedule";
+import { BudgetAdditionalStep } from "./components/budget-additional";
 
 export interface FormData {
-  // New profile data fields
   profile: {
     first_name: string;
     last_name: string;
-    email: string;
-    avatar_url: string;
     date_of_birth: string;
     gender: string;
-    bio: string;
   };
-  // Existing fitness questionnaire fields
   fitness_goals: string[];
   activity_preferences: string[];
   fitness_level: string;
@@ -56,11 +47,8 @@ const INITIAL_DATA: FormData = {
   profile: {
     first_name: "",
     last_name: "",
-    email: "",
-    avatar_url: "",
     date_of_birth: "",
     gender: "",
-    bio: "",
   },
   fitness_goals: [],
   activity_preferences: [],
@@ -84,14 +72,13 @@ const INITIAL_DATA: FormData = {
 };
 
 const STORAGE_KEY = "fitness-questionnaire-progress";
-const TOTAL_STEPS = 8;
+const TOTAL_STEPS = 4;
 
 const Page = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(INITIAL_DATA);
   const [isComplete, setIsComplete] = useState(false);
 
-  // Load saved progress on mount
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -105,7 +92,6 @@ const Page = () => {
     }
   }, []);
 
-  // Save progress whenever data changes
   useEffect(() => {
     if (!isComplete) {
       localStorage.setItem(
@@ -171,7 +157,6 @@ const Page = () => {
 
   const handleComplete = async () => {
     try {
-      // Update user profile with final data before completing
       await updateUserProfile(formData);
 
       setIsComplete(true);
@@ -179,8 +164,6 @@ const Page = () => {
       console.log("Final form data:", formData);
     } catch (error) {
       console.error("Failed to save profile:", error);
-      // Optionally show an error message to the user
-      // For now, we'll still mark as complete
       setIsComplete(true);
       localStorage.removeItem(STORAGE_KEY);
     }
@@ -188,29 +171,25 @@ const Page = () => {
 
   const isStepValid = (step: number): boolean => {
     switch (step) {
-      case 1: // New profile setup step
+      case 1: // Profile setup
         return (
           formData.profile.first_name.trim() !== "" &&
-          formData.profile.last_name.trim() !== "" &&
-          formData.profile.email.trim() !== ""
+          formData.profile.last_name.trim() !== ""
         );
-      case 2: // Fitness goals (previously step 1)
-        return formData.fitness_goals.length > 0;
-      case 3: // Activity preferences (previously step 2)
-        return formData.activity_preferences.length > 0;
-      case 4: // Fitness level (previously step 3)
-        return formData.fitness_level !== "";
-      case 5: // Schedule preferences (previously step 4)
+      case 2: // Combined fitness goals and activity preferences
         return (
+          formData.fitness_goals.length > 0 &&
+          formData.activity_preferences.length > 0 &&
+          formData.fitness_level !== ""
+        );
+      case 3: // Location and schedule preferences
+        return (
+          formData.location_preferences.primary_location !== null &&
           formData.preferred_times.length > 0 &&
           formData.schedule_flexibility !== ""
         );
-      case 6: // Location preferences (previously step 5)
-        return formData.location_preferences.primary_location !== null;
-      case 7: // Budget preferences (previously step 6)
+      case 4: // Budget and additional preferences
         return formData.budget_tier !== "";
-      case 8: // Additional preferences (previously step 7)
-        return true;
       default:
         return false;
     }
@@ -262,40 +241,19 @@ const Page = () => {
       case 1:
         return <ProfileSetupStep data={formData} updateData={updateFormData} />;
       case 2:
-        return <FitnessGoalsStep data={formData} updateData={updateFormData} />;
+        return (
+          <FitnessGoalsActivitiesStep
+            data={formData}
+            updateData={updateFormData}
+          />
+        );
       case 3:
         return (
-          <ActivityPreferencesStep
-            data={formData}
-            updateData={updateFormData}
-          />
+          <LocationScheduleStep data={formData} updateData={updateFormData} />
         );
       case 4:
-        return <FitnessLevelStep data={formData} updateData={updateFormData} />;
-      case 5:
         return (
-          <SchedulePreferencesStep
-            data={formData}
-            updateData={updateFormData}
-          />
-        );
-      case 6:
-        return (
-          <LocationPreferencesStep
-            data={formData}
-            updateData={updateFormData}
-          />
-        );
-      case 7:
-        return (
-          <BudgetPreferencesStep data={formData} updateData={updateFormData} />
-        );
-      case 8:
-        return (
-          <AdditionalPreferencesStep
-            data={formData}
-            updateData={updateFormData}
-          />
+          <BudgetAdditionalStep data={formData} updateData={updateFormData} />
         );
       default:
         return null;
@@ -307,19 +265,11 @@ const Page = () => {
       case 1:
         return "Profile Setup";
       case 2:
-        return "Fitness Goals";
+        return "Fitness Goals & Activities";
       case 3:
-        return "Activity Preferences";
+        return "Location & Schedule";
       case 4:
-        return "Fitness Level";
-      case 5:
-        return "Schedule Preferences";
-      case 6:
-        return "Location Preferences";
-      case 7:
-        return "Budget Preferences";
-      case 8:
-        return "Additional Preferences";
+        return "Budget & Preferences";
       default:
         return "";
     }

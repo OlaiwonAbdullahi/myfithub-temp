@@ -1,35 +1,79 @@
+"use client";
+import { useState, useEffect } from "react";
 import { Clock, MapPin, Calendar } from "lucide-react";
 
 const RecentBookings = () => {
-  const bookings = [
-    {
-      id: 1,
-      className: "HIIT Training",
-      studio: "FitZone Studio",
-      date: "Today",
-      time: "6:00 PM",
-      status: "confirmed",
-      location: "Downtown",
-    },
-    {
-      id: 2,
-      className: "Yoga Flow",
-      studio: "Zen Wellness",
-      date: "Tomorrow",
-      time: "8:00 AM",
-      status: "confirmed",
-      location: "Midtown",
-    },
-    {
-      id: 3,
-      className: "Strength Training",
-      studio: "Iron Gym",
-      date: "Jan 15",
-      time: "7:00 PM",
-      status: "pending",
-      location: "Uptown",
-    },
-  ];
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchBookingHistory = async () => {
+    const token =
+      typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
+
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings/me`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const data = await response.json();
+      setBookings(data.data);
+      console.log("User Bookings Data:", data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    fetchBookingHistory();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="space-y-3">
+            <div className="h-16 bg-gray-200 rounded"></div>
+            <div className="h-16 bg-gray-200 rounded"></div>
+            <div className="h-16 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="text-center py-8">
+          <p className="text-red-600 mb-4">{error}</p>
+          <button
+            onClick={fetchBookingHistory}
+            className="bg-[#234E49] text-white px-4 py-2 rounded-lg hover:bg-[#1a3b36] transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-sm">
@@ -42,46 +86,52 @@ const RecentBookings = () => {
         </button>
       </div>
       <div className="space-y-4">
-        {bookings.map((booking) => (
-          <div
-            key={booking.id}
-            className="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition-shadow font-fredoka"
-          >
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <h3 className="font-sora font-medium text-gray-900 mb-1">
-                  {booking.className}
-                </h3>
-                <p className="text-sm text-gray-600 mb-2 font-fredoka">
-                  {booking.studio}
-                </p>
-                <div className="flex items-center gap-4 text-xs text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    {booking.date}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" />
-                    {booking.time}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <MapPin className="h-3 w-3" />
-                    {booking.location}
+        {bookings.length === 0 ? (
+          <p className="text-gray-500 text-center py-8">
+            No recent bookings found
+          </p>
+        ) : (
+          bookings.map((booking) => (
+            <div
+              key={booking.id}
+              className="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition-shadow font-fredoka"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="font-sora font-medium text-gray-900 mb-1">
+                    {booking.className}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-2 font-fredoka">
+                    {booking.studio}
+                  </p>
+                  <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      {booking.date}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {booking.time}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {booking.location}
+                    </div>
                   </div>
                 </div>
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    booking.status === "confirmed"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}
+                >
+                  {booking.status}
+                </span>
               </div>
-              <span
-                className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  booking.status === "confirmed"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-yellow-100 text-yellow-800"
-                }`}
-              >
-                {booking.status}
-              </span>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

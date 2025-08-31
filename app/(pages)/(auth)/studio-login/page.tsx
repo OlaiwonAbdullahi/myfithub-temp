@@ -36,7 +36,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user/sign-in`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/studio/login-studio`,
         {
           method: "POST",
           headers: {
@@ -57,7 +57,6 @@ const Page = () => {
         throw new Error(errorMessage);
       }
 
-      // Check for token in various possible response structures
       const token =
         data?.token ||
         data?.accessToken ||
@@ -70,16 +69,7 @@ const Page = () => {
         throw new Error("Authentication token not received from server");
       }
 
-      // Extract user data safely
-      const userData = data?.user || data?.data?.user;
-
-      if (!userData) {
-        console.warn("No user data found in response:", data);
-      }
-
       console.log("Token received:", token);
-      console.log("User data:", userData);
-      console.log("User role:", userData?.role);
 
       // Store token safely
       if (typeof window !== "undefined") {
@@ -98,10 +88,9 @@ const Page = () => {
         }
       }
 
-      // Store user data if available
-      if (userData && typeof window !== "undefined") {
+      if (data?.user && typeof window !== "undefined") {
         try {
-          localStorage.setItem("userData", JSON.stringify(userData));
+          localStorage.setItem("userData", JSON.stringify(data.user));
         } catch (userDataError) {
           console.warn("Failed to store user data:", userDataError);
         }
@@ -109,13 +98,7 @@ const Page = () => {
 
       toast.success("Logged in successfully!");
 
-      // Route based on role with safe access
-      const userRole = userData?.role;
-      if (userRole === "admin") {
-        router.push("/admin");
-      } else {
-        router.push("/dashboard");
-      }
+      router.push("/studios-owners");
     } catch (err: unknown) {
       console.error("Login error:", err);
       let errorMessage = "Something went wrong. Please try again.";
@@ -148,7 +131,7 @@ const Page = () => {
             </Link>
           </div>
           <h2 className="text-2xl font-bold text-[#234E49] font-sora">
-            Log In
+            Log In as a Studio Owner
           </h2>
           <span className="text-base text-gray-600 font-fredoka">
             Welcome Back

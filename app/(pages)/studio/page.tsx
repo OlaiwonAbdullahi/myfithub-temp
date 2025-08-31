@@ -15,7 +15,6 @@ interface Studio {
   image: string;
   rating: number;
   amenities: string[];
-  priceRange: number;
 }
 
 const Page: React.FC = () => {

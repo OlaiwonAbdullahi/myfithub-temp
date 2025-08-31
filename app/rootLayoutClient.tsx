@@ -18,8 +18,10 @@ export default function RootLayoutClient({
     "/email-verification",
     "/complete-profile",
     "/verify-email",
+    "/studio-login",
+    "/studio-signup",
   ];
-  const hidePrefixes = ["/dashboard", "/studios-owners"];
+  const hidePrefixes = ["/dashboard", "/studios-owners", "/admin"];
 
   const hideNavbar =
     hidePaths.includes(pathname) ||
