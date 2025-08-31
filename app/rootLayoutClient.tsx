@@ -21,7 +21,7 @@ export default function RootLayoutClient({
     "/studio-login",
     "/studio-signup",
   ];
-  const hidePrefixes = ["/dashboard", "/studios-owners"];
+  const hidePrefixes = ["/dashboard", "/studios-owners", "/admin"];
 
   const hideNavbar =
     hidePaths.includes(pathname) ||

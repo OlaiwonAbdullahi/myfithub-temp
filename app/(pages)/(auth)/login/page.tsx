@@ -70,7 +70,16 @@ const Page = () => {
         throw new Error("Authentication token not received from server");
       }
 
+      // Extract user data safely
+      const userData = data?.user || data?.data?.user;
+
+      if (!userData) {
+        console.warn("No user data found in response:", data);
+      }
+
       console.log("Token received:", token);
+      console.log("User data:", userData);
+      console.log("User role:", userData?.role);
 
       // Store token safely
       if (typeof window !== "undefined") {
@@ -89,9 +98,10 @@ const Page = () => {
         }
       }
 
-      if (data?.user && typeof window !== "undefined") {
+      // Store user data if available
+      if (userData && typeof window !== "undefined") {
         try {
-          localStorage.setItem("userData", JSON.stringify(data.user));
+          localStorage.setItem("userData", JSON.stringify(userData));
         } catch (userDataError) {
           console.warn("Failed to store user data:", userDataError);
         }
@@ -99,7 +109,13 @@ const Page = () => {
 
       toast.success("Logged in successfully!");
 
-      router.push("/dashboard");
+      // Route based on role with safe access
+      const userRole = userData?.role;
+      if (userRole === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
     } catch (err: unknown) {
       console.error("Login error:", err);
       let errorMessage = "Something went wrong. Please try again.";
