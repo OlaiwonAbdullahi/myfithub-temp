@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bell, Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -20,11 +21,10 @@ const Navbar = () => {
           <Bell className="h-5 w-5" />
         </button>
         <Link href="/dashboard/account">
-          <img
-            src="https://tapback.co/api/avatar/johndoe"
-            alt="User Avatar"
-            className="h-10 w-10 rounded-full  shadow-lg "
-          />
+          <Avatar className="h-10 w-10 rounded-full  shadow-lg ">
+            <AvatarImage src="https://tapback.co/api/avatar/johndoe" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
         </Link>
       </div>
     </div>

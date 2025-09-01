@@ -1,177 +1,153 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Calendar as CalendarIcon } from "lucide-react";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { Clock, MapPin, Calendar } from "lucide-react";
 
-const Page = () => {
-  const [bookingForm, setBookingForm] = useState({
-    clientName: "",
-    clientEmail: "",
-    sessionType: "",
-    date: null,
-    time: "",
-    notes: "",
-  });
+const Bookings = () => {
+  interface Booking {
+    id: string;
+    className: string;
+    studio: string;
+    date: string;
+    time: string;
+    location: string;
+    status: string;
+  }
 
-  const timeSlots = [
-    "09:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-  ];
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [loading] = useState(true);
+  const [error] = useState(null);
 
-  const sessionTypes = [
-    { value: "consultation", label: "Consultation (60 min)", duration: 60 },
-    { value: "therapy", label: "Therapy Session (90 min)", duration: 90 },
-    { value: "workshop", label: "Workshop (120 min)", duration: 120 },
-    { value: "follow-up", label: "Follow-up (30 min)", duration: 30 },
-  ];
+  const fetchBookingHistory = async () => {
+    const token =
+      typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
-  const handleSubmit = () => {
-    console.log("Booking form submitted:", bookingForm);
-    // Here you would typically send the data to your backend
-    alert("Session booked successfully!");
+    if (!token) {
+      throw new Error("No authentication token found");
+    }
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings/me`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+
+      const data = await response.json();
+      setBookings(data.data);
+      console.log("User Bookings Data:", data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      return null;
+    }
   };
 
-  const handleInputChange = (field, value) => {
-    setBookingForm((prev) => ({ ...prev, [field]: value }));
-  };
+  useEffect(() => {
+    fetchBookingHistory();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="bg-white rounded-lg p-6 shadow-sm m-6">
+        <div className="animate-pulse">
+          <div className=" flex flex-row justify-between">
+            <div className="h-[20px] bg-gray-200 rounded w-1/5 mb-4"></div>
+            <div className=" bg-gray-200 rounded w-[100px] h-[20px] mb-4"></div>
+          </div>
+          <div className="space-y-3">
+            <div className="h-16 bg-gray-200 rounded"></div>
+            <div className="h-16 bg-gray-200 rounded"></div>
+            <div className="h-16 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-white rounded-lg p-6 shadow-sm">
+        <div className="text-center py-8">
+          <p className="text-red-600 mb-4">{error}</p>
+          <button
+            onClick={fetchBookingHistory}
+            className="bg-[#234E49] text-white px-4 py-2 rounded-lg hover:bg-[#1a3b36] transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="">
-      <Card className="w-9/12 mx-auto my-10">
-        <CardHeader>
-          <CardTitle className="flex text-3xl font-sora text-primary items-center gap-2">
-            Selected Session Details
-          </CardTitle>
-          <CardDescription className=" text-xl font-family-fredoka">
-            Checkout you selected Session
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="clientName">Client Name *</Label>
-                <Input
-                  id="clientName"
-                  placeholder="Enter client name"
-                  value={bookingForm.clientName}
-                  onChange={(e) =>
-                    handleInputChange("clientName", e.target.value)
-                  }
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="clientEmail">Client Email *</Label>
-                <Input
-                  id="clientEmail"
-                  type="email"
-                  placeholder="Enter client email"
-                  value={bookingForm.clientEmail}
-                  onChange={(e) =>
-                    handleInputChange("clientEmail", e.target.value)
-                  }
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="sessionType">Session Type *</Label>
-              <Select
-                value={bookingForm.sessionType}
-                onValueChange={(value) =>
-                  handleInputChange("sessionType", value)
-                }
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select session type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {sessionTypes.map((type) => (
-                    <SelectItem key={type.value} value={type.value}>
-                      {type.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>Select Date *</Label>
-                <Calendar
-                  mode="single"
-                  selected={bookingForm.date}
-                  onSelect={(date) => handleInputChange("date", date)}
-                  disabled={(date) => date < new Date()}
-                  className="rounded-md border"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="time">Select Time *</Label>
-                <Select
-                  value={bookingForm.time}
-                  onValueChange={(value) => handleInputChange("time", value)}
+    <div className="bg-white rounded-lg p-6 shadow-sm mt-6">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-sora text-xl font-semibold text-gray-900">
+          Recent Bookings
+        </h2>
+        <button className="text-[#234E49] text-sm font-medium hover:underline font-fredoka">
+          View All
+        </button>
+      </div>
+      <div className="space-y-4">
+        {bookings.length === 0 ? (
+          <p className="text-gray-500 text-center py-8">
+            No recent bookings found
+          </p>
+        ) : (
+          bookings.map((booking) => (
+            <div
+              key={booking.id}
+              className="border border-gray-100 rounded-lg p-4 hover:shadow-sm transition-shadow font-fredoka"
+            >
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <h3 className="font-sora font-medium text-gray-900 mb-1">
+                    {booking.className}
+                  </h3>
+                  <p className="text-sm text-gray-600 mb-2 font-fredoka">
+                    {booking.studio}
+                  </p>
+                  <div className="flex items-center gap-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      {booking.date}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-3 w-3" />
+                      {booking.time}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {booking.location}
+                    </div>
+                  </div>
+                </div>
+                <span
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    booking.status === "confirmed"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-yellow-100 text-yellow-800"
+                  }`}
                 >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select time slot" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {timeSlots.map((time) => (
-                      <SelectItem key={time} value={time}>
-                        {time}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                  {booking.status}
+                </span>
               </div>
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="notes">Additional Notes</Label>
-              <Textarea
-                id="notes"
-                placeholder="Any special requirements or notes..."
-                rows={3}
-                value={bookingForm.notes}
-                onChange={(e) => handleInputChange("notes", e.target.value)}
-              />
-            </div>
-
-            <Button type="button" className="w-full" onClick={handleSubmit}>
-              Book Session
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+          ))
+        )}
+      </div>
     </div>
   );
 };
 
-export default Page;
+export default Bookings;

@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Calendar, Clock, Star, TrendingUp } from "lucide-react";
 
 const Welcome = () => {
@@ -6,11 +7,10 @@ const Welcome = () => {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-6">
           <div className="relative">
-            <img
-              src="https://tapback.co/api/avatar/johndoe"
-              alt="User Avatar"
-              className="h-20 w-20 rounded-full border-2 border-[#234E49]/40 shadow-lg "
-            />
+            <Avatar className="h-20 w-20 rounded-full border-2 border-[#234E49]/40 shadow-lg ">
+              <AvatarImage src="https://tapback.co/api/avatar/johndoe" />
+              <AvatarFallback>JD</AvatarFallback>
+            </Avatar>
             <div className="absolute -bottom-2 -right-2 bg-green-500 h-6 w-6 rounded-full border-3 border-white flex items-center justify-center">
               <div className="h-2 w-2 bg-white rounded-full"></div>
             </div>

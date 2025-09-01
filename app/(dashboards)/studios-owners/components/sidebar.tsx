@@ -13,10 +13,11 @@ import {
   Wallet,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeItem, setActiveItem] = useState("");
+  const pathname = usePathname();
 
   const menuItems = [
     { id: "", label: "Dashboard", icon: Home },
@@ -28,20 +29,15 @@ const Sidebar = () => {
     { id: "settings", label: "Settings", icon: Settings },
   ];
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const handleItemClick = (itemId: string) => {
-    setActiveItem(itemId);
-  };
+  const toggleSidebar = () => setIsCollapsed((v) => !v);
 
   return (
     <div
-      className={`bg-primary font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col  ${
+      className={`bg-primary font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col ${
         isCollapsed ? "w-16" : "w-64"
       }`}
     >
+      {/* Header */}
       <div className="p-6 border-b border-[#E5E5E5] flex items-center justify-between">
         {!isCollapsed && (
           <div className="flex items-center">
@@ -59,34 +55,41 @@ const Sidebar = () => {
         <button
           onClick={toggleSidebar}
           className="p-1 rounded-lg hover:bg-primary/50 cursor-pointer transition-colors"
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
         </button>
       </div>
 
+      {/* Menu */}
       <nav className="flex-1 px-2 py-4">
         <ul className="space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
-            const isActive = activeItem === item.id;
+            const href = item.id
+              ? `/studios-owners/${item.id}`
+              : "/studios-owners";
+
+            const isActive =
+              pathname === href ||
+              pathname === `${href}/` ||
+              pathname.startsWith(`${href}/`);
 
             return (
-              <li key={item.id}>
-                <Link href={`/studios-owners/${item.id}`}>
-                  <button
-                    onClick={() => handleItemClick(item.id)}
-                    className={`w-full cursor-pointer whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors ${
-                      isActive
-                        ? "border border-[#E5E5E5] text-white"
-                        : "text-[#E5E5E5] hover:bg-[#] hover:text-white"
-                    }`}
-                    title={isCollapsed ? item.label : ""}
-                  >
-                    <Icon size={20} className="flex-shrink-0" />
-                    {!isCollapsed && (
-                      <span className="ml-3 font-medium">{item.label}</span>
-                    )}
-                  </button>
+              <li key={href}>
+                <Link
+                  href={href}
+                  title={isCollapsed ? item.label : ""}
+                  className={`w-full whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors ${
+                    isActive
+                      ? "bg-white/10 border border-white/30 text-white"
+                      : "text-[#E5E5E5] hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <Icon size={20} className="flex-shrink-0" />
+                  {!isCollapsed && (
+                    <span className="ml-3 font-medium">{item.label}</span>
+                  )}
                 </Link>
               </li>
             );
@@ -94,6 +97,7 @@ const Sidebar = () => {
         </ul>
       </nav>
 
+      {/* Footer */}
       <div className="border-t border-[#E5E5E5] p-4">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-[#E5E5E5] to-[#234E49] rounded-full flex items-center justify-center flex-shrink-0">

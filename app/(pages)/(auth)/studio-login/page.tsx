@@ -2,6 +2,7 @@
 import Button from "@/app/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
@@ -144,7 +145,13 @@ const Page = () => {
             className="w-full h-9 mb-4 border text-sm border-[#E5E5E5] flex"
             type="button"
           >
-            <img src="/google.svg" alt="Google" className="z-20 h-5 w-5 mr-2" />
+            <Image
+              src="/google.svg"
+              alt="Google"
+              width={20}
+              height={20}
+              className="z-20 h-5 w-5 mr-2"
+            />
             Continue With Google
           </Button>
         </div>

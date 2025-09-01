@@ -5,20 +5,28 @@ import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  SelectArrow,
+  SelectGroup,
+  SelectTrigger,
+} from "@radix-ui/react-select";
 
 const Join = () => {
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
     lastName: "",
-    business: "",
+    studio: "",
     website: "",
     phone: "",
+    serviceType: "",
   });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,8 +35,10 @@ const Join = () => {
   };
 
   return (
-    <section className="h-auto px-20 mt-20  md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka">
-      {/* Left Content */}
+    <section
+      id="join"
+      className="h-auto px-20 mt-20  md:h-screen flex flex-col md:flex-row justify-between bg-white text-[#234E49] p-6 w-full font-fredoka"
+    >
       <div className="md:w-1/2 w-full flex flex-col items-start space-y-5">
         <h2 className="text-3xl md:text-4xl font-bold font-sora leading-snug md:w-9/12 w-full text-center md:text-start">
           Ready to Boost Your Business?
@@ -41,7 +51,7 @@ const Join = () => {
         </p>
       </div>
 
-      <div className="md:w-1/2 w-full bg-white p-6 rounded-lg border border-[#f5f5f5]  mt-8 md:mt-0">
+      <div className="md:w-1/2 w-full bg-white h-fit p-6 rounded-lg border border-[#f5f5f5]  mt-8 md:mt-0">
         <div className=" py-4">
           <h2 className="text-lg md:text-xl font-bold font-sora leading-snug ">
             Join MyFitHub Today
@@ -58,7 +68,9 @@ const Join = () => {
               type="email"
               id="email"
               value={formData.email}
-              onChange={handleChange}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value || "" })
+              }
               placeholder="Enter your email"
               className="h-10"
               required
@@ -67,51 +79,30 @@ const Join = () => {
 
           <div className="flex flex-col md:flex-row gap-4">
             <div className="grid w-full md:w-1/2 items-center gap-2">
-              <Label htmlFor="firstName">First Name</Label>
+              <Label htmlFor="studio">Studio Name</Label>
               <Input
                 type="text"
-                id="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                placeholder="First Name"
-                className="h-10"
-                required
-              />
-            </div>
-            <div className="grid w-full md:w-1/2 items-center gap-2">
-              <Label htmlFor="lastName">Last Name</Label>
-              <Input
-                type="text"
-                id="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="Last Name"
-                className="h-10"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="grid w-full md:w-1/2 items-center gap-2">
-              <Label htmlFor="business">Business Name</Label>
-              <Input
-                type="text"
-                id="business"
-                value={formData.business}
-                onChange={handleChange}
-                placeholder="Business Name"
+                id="studio"
+                value={formData.studio}
+                onChange={(e) =>
+                  setFormData({ ...formData, studio: e.target.value || "" })
+                }
+                placeholder="Studio Name"
                 className="h-10"
               />
             </div>
             <div className="grid w-full md:w-1/2 items-center gap-2">
-              <Label htmlFor="website">Website URL</Label>
+              <Label htmlFor="website">
+                Website URL <span className=" text-xs">(Optional)</span>
+              </Label>
               <Input
                 type="url"
                 id="website"
                 value={formData.website}
-                onChange={handleChange}
-                placeholder="https://yourwebsite.com"
+                onChange={(e) =>
+                  setFormData({ ...formData, website: e.target.value || "" })
+                }
+                placeholder="Enter website URL"
                 className="h-10"
               />
             </div>
@@ -124,7 +115,9 @@ const Join = () => {
             <PhoneInput
               defaultCountry="NG"
               value={formData.phone}
-              onChange={handleChange}
+              onChange={(value) =>
+                setFormData({ ...formData, phone: value || "" })
+              }
               placeholder="8012345678"
               className="px-2 py-1 border border-[#E5E5E5] shadow focus:outline-none rounded-lg text-sm"
             />
@@ -133,18 +126,29 @@ const Join = () => {
             <Label htmlFor="phone" className="text-[#234E49] font-medium">
               Service Type
             </Label>
-            <select className=" border  p-2 w-1/2 rounded-lg shadow">
-              <option value="gym" className=" bg-[#e5e5e5]">
-                Gym
-              </option>
-              <option value="spa">Spa</option>
-              <option value="beauty_salon">Beauty Salon</option>
-            </select>
+            <Select>
+              <SelectTrigger className="w-full border border-[#E5E5E5] h-10 rounded-lg text-sm text-left px-2 py-1 shadow focus:outline-none">
+                <SelectValue
+                  placeholder="Select service type"
+                  className="text-gray-300 placeholder:text-gray-300"
+                />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectArrow />
+                  <SelectItem value="gym" className=" bg-[#e5e5e5]">
+                    Gym
+                  </SelectItem>
+                  <SelectItem value="spa">Spa</SelectItem>
+                  <SelectItem value="beauty_salon">Beauty Salon</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           <Button
             type="submit"
-            className="bg-primary text-white mt-6 w-full hover:bg-[#1d3f3d] transition"
+            className="bg-primary cursor-pointer text-white w-full hover:bg-[#1d3f3d] transition"
           >
             Submit
           </Button>

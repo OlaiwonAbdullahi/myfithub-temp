@@ -8,39 +8,34 @@ import {
   ChevronRight,
   LogOut,
   Building,
-  Users,
   CreditCard,
   Wallet,
   UsersIcon,
+  LayoutTemplate,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeItem, setActiveItem] = useState("");
+  const pathname = usePathname();
 
   const menuItems = [
-    { id: "", label: "Dashboard", icon: Home },
-    { id: "users", label: "All Users", icon: UsersIcon },
-    { id: "studios", label: "All Studios", icon: Building },
-    { id: "sessions", label: "All Sessions", icon: Calendar },
-    { id: "instructors", label: "All Instructors", icon: Users },
+    { id: "#", label: "Dashboard", icon: Home },
+    { id: "users", label: "Manage Users", icon: UsersIcon },
+    { id: "studios", label: "Manage Studios", icon: Building },
+    { id: "sessions", label: "Manage Sessions", icon: Calendar },
+    { id: "website", label: "Manage Myfithub Website", icon: LayoutTemplate },
     { id: "history", label: "All Bookings", icon: CreditCard },
     { id: "payments", label: "Payments & Transactions", icon: Wallet },
     { id: "settings", label: "Settings", icon: Settings },
   ];
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  const handleItemClick = (itemId: string) => {
-    setActiveItem(itemId);
-  };
+  const toggleSidebar = () => setIsCollapsed((v) => !v);
 
   return (
     <div
-      className={`bg-primary font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col  ${
+      className={`bg-primary font-fredoka text-white h-full transition-all duration-300 ease-in-out flex flex-col ${
         isCollapsed ? "w-16" : "w-64"
       }`}
     >
@@ -61,6 +56,7 @@ const Sidebar = () => {
         <button
           onClick={toggleSidebar}
           className="p-1 rounded-lg hover:bg-primary/50 cursor-pointer transition-colors"
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {isCollapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
         </button>
@@ -70,25 +66,29 @@ const Sidebar = () => {
         <ul className="space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
-            const isActive = activeItem === item.id;
+            const href = item.id ? `/admin/${item.id}` : "/admin";
+            const isActive =
+              pathname === href ||
+              pathname === `${href}/` ||
+              pathname.startsWith(`${href}/`);
 
             return (
-              <li key={item.id}>
-                <Link href={`/admin/${item.id}`}>
-                  <button
-                    onClick={() => handleItemClick(item.id)}
-                    className={`w-full cursor-pointer whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors ${
+              <li key={href}>
+                {/* Use Link directly; no nested button needed */}
+                <Link
+                  href={href}
+                  title={isCollapsed ? item.label : ""}
+                  className={`w-full whitespace-nowrap flex items-center px-3 py-2 rounded-lg transition-colors
+                    ${
                       isActive
-                        ? "border border-[#E5E5E5] text-white"
-                        : "text-[#E5E5E5] hover:bg-[#] hover:text-white"
+                        ? "bg-white/10 border border-white/30 text-white"
+                        : "text-[#E5E5E5] hover:bg-white/10 hover:text-white"
                     }`}
-                    title={isCollapsed ? item.label : ""}
-                  >
-                    <Icon size={20} className="flex-shrink-0" />
-                    {!isCollapsed && (
-                      <span className="ml-3 font-medium">{item.label}</span>
-                    )}
-                  </button>
+                >
+                  <Icon size={20} className="flex-shrink-0" />
+                  {!isCollapsed && (
+                    <span className="ml-3 font-medium">{item.label}</span>
+                  )}
                 </Link>
               </li>
             );

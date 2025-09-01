@@ -75,9 +75,11 @@ const Procedure = () => {
         ))}
       </div>
       <div className="">
-        <Button className="bg-primary text-white font-fredoka h-10 w-20">
-          Join Us
-        </Button>
+        <a href="#join">
+          <Button className="bg-primary cursor-pointer font-family-sora text-white font-fredoka h-10 w-20">
+            Join Us
+          </Button>
+        </a>
       </div>
     </div>
   );

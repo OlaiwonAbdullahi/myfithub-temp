@@ -1,7 +1,12 @@
 import React from "react";
+import Overview from "./components/overview";
 
 const Page = () => {
-  return <div>Admin Dashboard</div>;
+  return (
+    <div>
+      <Overview />
+    </div>
+  );
 };
 
 export default Page;
