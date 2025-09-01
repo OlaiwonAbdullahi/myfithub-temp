@@ -13,7 +13,6 @@ interface Studio {
   location: string;
   description: string;
   image: string;
-  rating: number;
   amenities: string[];
 }
 
@@ -67,7 +66,6 @@ const Page: React.FC = () => {
               location={studio.location}
               description={studio.description}
               imageUrl={studio.image}
-              rating={studio.rating}
               amenities={studio.amenities}
             />
           ))}

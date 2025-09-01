@@ -43,8 +43,7 @@ const Overview = () => {
 
   return (
     <div className="flex flex-row gap-10">
-      {/* Stats Cards */}
-      <div className="w-1/2 grid grid-cols-2 grid-rows-2 gap-6">
+      <div className="w-1/2 grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-6">
         {metrics.map((metric, i) => {
           const Icon = metric.icon;
           return (

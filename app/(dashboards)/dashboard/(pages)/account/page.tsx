@@ -1,13 +1,26 @@
 "use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Camera, Crown, PenLine, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 const Page = () => {
-  const [userData, setUserData] = useState(null);
+  interface UserData {
+    first_name?: string;
+    last_name?: string;
+    email?: string;
+    country?: string;
+    avatar?: string;
+    role?: string;
+    location_preferences?: string;
+    phoneNumber?: string;
+    sessionTier?: string;
+  }
+
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [showCompleteProfileAlert, setShowCompleteProfileAlert] =
     useState(false);
   const router = useRouter();
@@ -52,7 +65,11 @@ const Page = () => {
       setShowCompleteProfileAlert(isProfileIncomplete);
     } catch (error) {
       console.error("Error fetching user data:", error);
-      setError(error.message);
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -164,16 +181,14 @@ const Page = () => {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="flex items-center gap-6">
             <div className="relative">
-              <img
-                src={
-                  userData?.avatar || "https://tapback.co/api/avatar/johndoe"
-                }
-                alt="User Avatar"
-                className="h-20 w-20 rounded-full object-cover"
-                onError={(e) => {
-                  e.target.src = "https://tapback.co/api/avatar/johndoe";
-                }}
-              />
+              <Avatar className="h-20 w-20 rounded-full object-cover">
+                <AvatarImage
+                  src={
+                    userData?.avatar || "https://tapback.co/api/avatar/johndoe"
+                  }
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
               <button
                 onClick={handleAvatarChange}
                 className="absolute -bottom-1 bg-white -right-1 h-6 w-6 rounded-full border-2 border-white flex items-center justify-center shadow-sm hover:bg-gray-50 transition-colors cursor-pointer"

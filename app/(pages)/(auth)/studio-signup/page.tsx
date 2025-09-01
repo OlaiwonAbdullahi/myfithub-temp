@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from "@/components/ui/dialog";
+import Image from "next/image";
 
 const Page = () => {
   const [form, setForm] = useState({
@@ -93,9 +94,16 @@ const Page = () => {
 
         <Button
           variant="outline"
-          className="w-full h-9 mb-4 border text-sm border-[#E5E5E5] flex gap-2 items-center justify-center"
+          className="w-full h-9 mb-4 border text-sm border-[#E5E5E5] flex"
+          type="button"
         >
-          <img src="/google.svg" alt="Google" className="h-5 w-5" />
+          <Image
+            src="/google.svg"
+            alt="Google"
+            width={20}
+            height={20}
+            className="z-20 h-5 w-5 mr-2"
+          />
           Continue With Google
         </Button>
 

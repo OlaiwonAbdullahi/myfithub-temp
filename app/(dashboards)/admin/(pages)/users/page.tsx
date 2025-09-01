@@ -30,17 +30,14 @@ const Page: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const fetchAllUsers = async () => {
-    /* const token =
+    const token =
       typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
     if (!token) {
       setError("No authentication token found");
       setLoading(false);
       return;
-    }*/
-
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidXNlckBleGFtcGxlMS5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NTYwOTUwNTMsImV4cCI6MTc1NjA5ODY1M30.ZS9LX7_wjGTP0sfAhEl6xvs2jm7O56aYUSGo6Fkx52Y";
+    }
 
     try {
       const response = await fetch(

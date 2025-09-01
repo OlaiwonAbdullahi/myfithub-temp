@@ -2,9 +2,9 @@
 
 import { useState, useMemo } from "react";
 import { Calendar } from "lucide-react";
-import type { FitnessSession, SessionFilter } from "../../../types/session";
 import { SessionFilters } from "./components/session-filter";
 import { SessionCard } from "./components/session-card";
+import { FitnessSession, SessionFilter } from "@/app/types/session";
 
 const sampleSessions: FitnessSession[] = [
   {
