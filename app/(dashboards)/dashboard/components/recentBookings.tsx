@@ -4,8 +4,8 @@ import { Clock, MapPin, Calendar } from "lucide-react";
 
 const RecentBookings = () => {
   const [bookings, setBookings] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading] = useState(true);
+  const [error] = useState(null);
 
   const fetchBookingHistory = async () => {
     const token =
