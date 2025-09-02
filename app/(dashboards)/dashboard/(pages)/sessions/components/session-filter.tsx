@@ -3,7 +3,7 @@
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { SessionFilter } from "../../../types/session";
+import { SessionFilter } from "@/app/types/session";
 
 interface SessionFiltersProps {
   filters: SessionFilter;
