@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { CornerDownRight, Dumbbell } from "lucide-react";
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 type FeatureCardProps = {
