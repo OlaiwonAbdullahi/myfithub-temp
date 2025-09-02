@@ -33,6 +33,20 @@ interface SessionFormData {
   available_slots: string;
 }
 
+interface SessionPayload {
+  title: string;
+  description: string;
+  instructor: string;
+  location: string;
+  price: number;
+  available_slots: number;
+  start_time: string; // ISO format
+  end_time: string;   // ISO format
+  image_url?: string;
+  category?: string;
+  tier?: string;
+}
+
 interface AddSessionDialogProps {
   onSessionCreated?: () => void;
 }
@@ -117,7 +131,7 @@ export const AddSessionDialog: React.FC<AddSessionDialogProps> = ({
     const startDateTime = new Date(`${data.start_date}T${data.start_time}`);
     const endDateTime = new Date(`${data.start_date}T${data.end_time}`);
 
-    const sessionData: Record<string, any> = {
+    const sessionData: SessionPayload = {
       title: data.title,
       description: data.description,
       instructor: data.instructor,
@@ -269,7 +283,7 @@ export const AddSessionDialog: React.FC<AddSessionDialogProps> = ({
             </DialogDescription>
           </DialogHeader>
 
-          <div className="grid gap-4 py-4">
+         <div className="grid gap-4 py-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="title">
@@ -473,6 +487,7 @@ export const AddSessionDialog: React.FC<AddSessionDialogProps> = ({
               />
             </div>
           </div>
+
 
           <DialogFooter>
             <DialogClose asChild>
