@@ -2,18 +2,31 @@
 import { useState, useEffect } from "react";
 import { Clock, MapPin, Calendar } from "lucide-react";
 
-const RecentBookings = () => {
-  const [bookings, setBookings] = useState([]);
-  const [loading] = useState(true);
-  const [error] = useState(null);
+interface Booking {
+  id: string;
+  className: string;
+  studio: string;
+  date: string; // ISO or formatted date string from API
+  time: string; // e.g. "10:00 AM"
+  location: string;
+  status: "confirmed" | "pending" | "cancelled"; // adjust if API has more
+}
 
-  const fetchBookingHistory = async () => {
+const RecentBookings = () => {
+  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchBookingHistory = async (): Promise<Booking[] | null> => {
     const token =
       typeof window !== "undefined" ? localStorage.getItem("authToken") : null;
 
     if (!token) {
-      throw new Error("No authentication token found");
+      setError("No authentication token found");
+      setLoading(false);
+      return null;
     }
+
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings/me`,
@@ -30,13 +43,16 @@ const RecentBookings = () => {
         throw new Error("Failed to fetch user data");
       }
 
-      const data = await response.json();
+      const data: { data: Booking[] } = await response.json();
       setBookings(data.data);
-      console.log("User Bookings Data:", data);
-      return data;
-    } catch (error) {
-      console.error("Error fetching user data:", error);
+      setError(null);
+      return data.data;
+    } catch (err) {
+      console.error("Error fetching user data:", err);
+      setError(err instanceof Error ? err.message : "Unknown error occurred");
       return null;
+    } finally {
+      setLoading(false);
     }
   };
 
