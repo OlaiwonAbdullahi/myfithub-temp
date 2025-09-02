@@ -14,10 +14,22 @@ interface Session {
   time: string;
   description: string;
   enrolled: number;
+  banner: string; // Add banner to match AddSessionDialog expectations
+}
+
+// Define the type expected by AddSessionDialog
+interface AddSessionData {
+  title: string;
+  instructor: string;
+  duration: string;
+  capacity: string; // Form input as string
+  date: string;
+  time: string;
+  description: string;
+  banner: string; // Expected by AddSessionDialog
 }
 
 const SessionManagement = () => {
-  // Initialize as empty array instead of undefined
   const [sessions, setSessions] = useState<Session[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,7 +68,8 @@ const SessionManagement = () => {
       const data = await response.json();
       console.log("Sessions Data:", data);
 
-      //setSessions(data.sessions || data || []);
+      // Ensure the API data includes banner; adjust as needed
+      setSessions(data.sessions || data || []);
     } catch (error) {
       console.error("Error fetching sessions:", error);
       setError(
@@ -71,35 +84,20 @@ const SessionManagement = () => {
     fetchSessions();
   }, []);
 
-  const handleAddSession = (sessionData: {
-    title: string;
-    instructor: string;
-    duration: string;
-    capacity: string;
-    date: string;
-    time: string;
-    description: string;
-  }) => {
+  const handleAddSession = (sessionData: AddSessionData) => {
     const newSession: Session = {
       id: sessions.length + 1,
       ...sessionData,
-      capacity: Number.parseInt(sessionData.capacity),
+      capacity: Number.parseInt(sessionData.capacity, 10),
       enrolled: 0,
+      banner: sessionData.banner || "/default-banner.png", // Provide a default if needed
     };
     setSessions([...sessions, newSession]);
   };
 
   const handleEditSession = (
     id: number,
-    updatedData: {
-      title: string;
-      instructor: string;
-      duration: string;
-      capacity: string;
-      date: string;
-      time: string;
-      description: string;
-    }
+    updatedData: AddSessionData // Align with AddSessionData for consistency
   ) => {
     setSessions(
       sessions.map((s) =>
@@ -107,7 +105,8 @@ const SessionManagement = () => {
           ? {
               ...s,
               ...updatedData,
-              capacity: Number.parseInt(updatedData.capacity),
+              capacity: Number.parseInt(updatedData.capacity, 10),
+              banner: updatedData.banner || s.banner, // Preserve or update banner
             }
           : s
       )
