@@ -1,5 +1,6 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useUser } from "@/context/UserContext";
 import {
   BookIcon,
   Dumbbell,
@@ -13,6 +14,10 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
+
+  const { user } = useUser();
+
+  console.log(user);
 
   const menuItems = [
     {
@@ -74,7 +79,7 @@ const Navbar = () => {
                   <Link
                     href={item.link}
                     key={item.id}
-                    className={`flex items-center px-6 py-2 whitespace-nowrap text-left border-b-2 transition-colors ${
+                    className={`flex items-center px-6 py-2  text-left border-b-2 transition-colors ${
                       isActive
                         ? "bg-primary/10 border-[#234E49] text-[#234E49] rounded-t-md"
                         : "border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -88,7 +93,6 @@ const Navbar = () => {
             </nav>
           </div>
 
-          {/* Right side */}
           <div className="flex items-center space-x-4">
             <button className="relative p-2 cursor-not-allowed hover:bg-gray-100 rounded-lg">
               <Heart className="h-5 w-5" />

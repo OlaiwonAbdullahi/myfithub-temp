@@ -1,9 +1,9 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Courier_Prime, Fredoka, Sora } from "next/font/google";
 import "./globals.css";
 import RootLayoutClient from "./rootLayoutClient";
 import { Toaster } from "@/components/ui/sonner";
+import { UserProvider } from "../context/UserContext";
 const courierPrime = Courier_Prime({
   variable: "--font-courier-prime",
   subsets: ["latin"],
@@ -67,7 +67,9 @@ export default function RootLayout({
         className={`${courierPrime.variable} ${fredoka.variable} ${sora.variable} antialiased`}
       >
         <Toaster />
-        <RootLayoutClient>{children}</RootLayoutClient>
+        <UserProvider>
+          <RootLayoutClient>{children}</RootLayoutClient>
+        </UserProvider>
       </body>
     </html>
   );

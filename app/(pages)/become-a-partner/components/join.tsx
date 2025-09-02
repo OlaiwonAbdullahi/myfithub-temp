@@ -3,35 +3,51 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  SelectArrow,
-  SelectGroup,
-  SelectTrigger,
-} from "@radix-ui/react-select";
+import { toast } from "sonner";
 
 const Join = () => {
   const [formData, setFormData] = useState({
     email: "",
-    firstName: "",
-    lastName: "",
-    studio: "",
-    website: "",
-    phone: "",
-    serviceType: "",
+    name: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Submitted Data:", formData);
-    // TODO: Integrate with backend
+
+    const sendMessage = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/partnership`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(
+            errorData.message || `HTTP error! status: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+        toast.success("Partnership form submitted successfully");
+
+        return data;
+      } catch (error) {
+        console.error("Error sending message:", error);
+        toast.error("Error sending message:");
+
+        return null;
+      }
+    };
+    sendMessage();
   };
 
   return (
@@ -69,7 +85,7 @@ const Join = () => {
               id="email"
               value={formData.email}
               onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value || "" })
+                setFormData({ ...formData, email: e.target.value || "" })
               }
               placeholder="Enter your email"
               className="h-10"
@@ -78,20 +94,20 @@ const Join = () => {
           </div>
 
           <div className="flex flex-col md:flex-row gap-4">
-            <div className="grid w-full md:w-1/2 items-center gap-2">
+            <div className="grid w-full  items-center gap-2">
               <Label htmlFor="studio">Studio Name</Label>
               <Input
                 type="text"
                 id="studio"
-                value={formData.studio}
+                value={formData.name}
                 onChange={(e) =>
-                  setFormData({ ...formData, studio: e.target.value || "" })
+                  setFormData({ ...formData, name: e.target.value || "" })
                 }
                 placeholder="Studio Name"
                 className="h-10"
               />
             </div>
-            <div className="grid w-full md:w-1/2 items-center gap-2">
+            {/*<div className="grid w-full md:w-1/2 items-center gap-2">
               <Label htmlFor="website">
                 Website URL <span className=" text-xs">(Optional)</span>
               </Label>
@@ -105,9 +121,9 @@ const Join = () => {
                 placeholder="Enter website URL"
                 className="h-10"
               />
-            </div>
+            </div>*/}
           </div>
-
+          {/*
           <div className="space-y-1">
             <Label htmlFor="phone" className="text-[#234E49] font-medium">
               Phone Number
@@ -144,8 +160,24 @@ const Join = () => {
                 </SelectGroup>
               </SelectContent>
             </Select>
+          </div>*/}
+          <div className="flex flex-col space-y-2">
+            <Label htmlFor="message" className="text-[#234E49] font-medium">
+              Message *
+            </Label>
+            <textarea
+              id="message"
+              placeholder="Your Message"
+              className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#234E49] focus:border-transparent transition-all duration-200  resize-none"
+              value={formData.message}
+              rows={6}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value || "" })
+              }
+              required
+              //disabled={isSubmitting}
+            />
           </div>
-
           <Button
             type="submit"
             className="bg-primary cursor-pointer text-white w-full hover:bg-[#1d3f3d] transition"
