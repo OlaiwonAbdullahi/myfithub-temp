@@ -84,16 +84,7 @@ const SessionManagement = () => {
     fetchSessions();
   }, []);
 
-  const handleAddSession = (sessionData: AddSessionData) => {
-    const newSession: Session = {
-      id: sessions.length + 1,
-      ...sessionData,
-      capacity: Number.parseInt(sessionData.capacity, 10),
-      enrolled: 0,
-      banner: sessionData.banner || "/default-banner.png", // Provide a default if needed
-    };
-    setSessions([...sessions, newSession]);
-  };
+  
 
   const handleEditSession = (
     id: number,
