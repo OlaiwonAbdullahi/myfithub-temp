@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AddSessionDialog } from "./components/add-sessions";
+//import { AddSessionDialog } from "./components/add-sessions";
 import { SessionCard } from "./components/session-card";
 
 // Define the session type for better type safety
@@ -129,7 +129,6 @@ const SessionManagement = () => {
           </p>
         </div>
 
-        <AddSessionDialog onAddSession={handleAddSession} />
       </div>
 
       {/* Loading state */}
