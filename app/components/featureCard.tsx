@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { CornerDownRight } from "lucide-react";
+import { CornerDownRight, Dumbbell } from "lucide-react";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,13 +53,20 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         }`}
       >
         {image && (
-          <Image
-            src={image}
-            alt={title}
-            width={220}
-            height={220}
-            className="object-contain transition-transform duration-300 hover:scale-110"
-          />
+          <>
+            {/*   <Image
+              src={image}
+              alt={title}
+              width={220}
+              height={220}
+              className="object-contain transition-transform duration-300 hover:scale-110"
+            />*/}
+            <Dumbbell
+              size={220}
+              color="#ffffff"
+              className="object-contain transition-transform duration-300 hover:scale-110"
+            />
+          </>
         )}
       </div>
 

@@ -38,6 +38,7 @@ const Join = () => {
 
         const data = await response.json();
         toast.success("Partnership form submitted successfully");
+        setFormData({ email: "", name: "", message: "" });
 
         return data;
       } catch (error) {

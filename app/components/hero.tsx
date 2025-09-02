@@ -24,8 +24,8 @@ const Heroo = () => {
             <span>Everything Fitness.</span>
           </h1>
           <p className="text-center mt-4 text-lg font-fredoka text-neutral-700 px-6">
-            Access top gyms, studios, fitness and wellness centers in Lagos and
-            London with just one subscription
+            Access top gyms, studios, fitness and wellness centers in Lagos with
+            just one subscription
           </p>
         </div>
 
