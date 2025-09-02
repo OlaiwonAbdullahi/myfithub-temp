@@ -13,7 +13,6 @@ const OverviewChart = () => {
       { Day: "Sat", bookings: 16, revenue: 20 },
       { Day: "Sun", bookings: 18, revenue: 20 },
     ],
-
     series: [
       {
         type: "bar",
@@ -36,7 +35,6 @@ const OverviewChart = () => {
         cornerRadius: 4,
       },
     ],
-
     theme: {
       overrides: {
         common: {
@@ -51,7 +49,6 @@ const OverviewChart = () => {
             category: {
               label: {
                 fontFamily: "Fredoka, sans-serif",
-                // Removed border and borderRadius as they are not valid
               },
               gridLine: { enabled: false },
             },
