@@ -15,111 +15,88 @@ import {
 import React, { useState, useMemo } from "react";
 import RelatedSessions from "./components/related-sessions";
 
+// Placeholder for omitted types and constants
 interface SessionDetailsProps {
-  id?: string;
-  title?: string;
-  instructor?: {
+  title: string;
+  instructor: {
     name: string;
     avatar: string;
-    rating: number;
     specialties: string[];
   };
-  schedule?: {
+  schedule: {
     date: string;
     time: string;
     duration: number;
   };
-  location?: {
+  location: {
     studio: string;
     address: string;
     room?: string;
   };
-  details?: {
-    level: "Beginner" | "Intermediate" | "Advanced" | "All Levels";
+  details: {
     category: string;
+    level: string;
     maxCapacity: number;
     currentBookings: number;
-    price: number;
-    equipment?: string[];
-    duration: number;
+    equipment: string[];
   };
-  description?: string;
-  benefits?: string[];
-  imageUrl?: string;
+  description: string;
+  benefits: string[];
+  imageUrl: string;
 }
 
-// Fallback image as a data URL (simple gray placeholder)
-const FALLBACK_IMAGE =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+const FALLBACK_IMAGE = "/images/fallback.jpg"; // Placeholder fallback image URL
 
-// Sample data as a fallback
 const sampleData: SessionDetailsProps = {
-  id: "session-001",
-  title: "High-Intensity Interval Training",
+  title: "Sample Session",
   instructor: {
-    name: "Sarah Johnson",
-    avatar: "https://tapback.co/api/avatar/sarah",
-    rating: 4.8,
-    specialties: ["HIIT", "Strength Training", "Cardio"],
+    name: "John Doe",
+    avatar: "/images/instructor.jpg",
+    specialties: ["Yoga", "Pilates"],
   },
   schedule: {
-    date: "2024-08-15",
-    time: "6:00 PM",
-    duration: 45,
+    date: "2025-09-10",
+    time: "10:00 AM",
+    duration: 60,
   },
   location: {
-    studio: "FitLife Downtown",
-    address: "123 Main Street, Downtown",
+    studio: "Fitness Studio",
+    address: "123 Main St, City",
     room: "Studio A",
   },
   details: {
-    level: "Intermediate",
-    category: "HIIT",
+    category: "Fitness",
+    level: "Beginner",
     maxCapacity: 20,
-    currentBookings: 17,
-    price: 25,
-    equipment: ["Dumbbells", "Exercise Mat", "Water Bottle"],
-    duration: 45,
+    currentBookings: 15,
+    equipment: ["Yoga Mat", "Water Bottle"],
   },
-  description:
-    "Get ready to push your limits in this high-energy HIIT session! This 45-minute workout combines strength training with cardio intervals to maximize calorie burn and build lean muscle. Perfect for those looking to take their fitness to the next level.",
-  benefits: [
-    "Burn up to 400 calories in 45 minutes",
-    "Improve cardiovascular endurance",
-    "Build functional strength",
-    "Boost metabolism for hours after workout",
-    "Learn proper form and technique",
-  ],
-  imageUrl:
-    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+  description: "A beginner-friendly fitness session to improve flexibility and strength.",
+  benefits: ["Improved flexibility", "Increased strength", "Better focus"],
+  imageUrl: "/images/session.jpg",
 };
 
-const Page: React.FC<SessionDetailsProps> = (props) => {
+export default function Page() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isBooked, setIsBooked] = useState(false);
 
-  // Merge provided props with sampleData as fallback
+  // Use fallback data directly
   const {
-    title = sampleData.title,
-    instructor = sampleData.instructor,
-    schedule = sampleData.schedule,
-    location = sampleData.location,
-    details = sampleData.details,
-    description = sampleData.description,
-    benefits = sampleData.benefits,
-    imageUrl = sampleData.imageUrl,
-  } = props;
+    title,
+    instructor,
+    schedule,
+    location,
+    details,
+    description,
+    benefits,
+    imageUrl,
+  } = sampleData;
 
-  // Check if details is undefined (shouldn't happen with fallback, but kept for robustness)
-  const spotsLeft = details
-    ? Math.max(0, details.maxCapacity - details.currentBookings)
-    : 0;
+  const spotsLeft = Math.max(0, details.maxCapacity - details.currentBookings);
   const isFullyBooked = spotsLeft <= 0;
-  const isAlmostFull = details && spotsLeft <= 3 && spotsLeft > 0;
+  const isAlmostFull = spotsLeft <= 3 && spotsLeft > 0;
 
-  // Memoize level color to avoid recomputation
   const levelColor = useMemo(() => {
-    if (!details) return "bg-gray-100 text-gray-800 border-gray-200";
     switch (details.level) {
       case "Beginner":
         return "bg-green-100 text-green-800 border-green-200";
@@ -130,47 +107,24 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
       default:
         return "bg-blue-100 text-blue-800 border-blue-200";
     }
-  }, [details?.level]);
+  }, [details.level]);
 
   const shortDate = useMemo(() => {
-    if (!schedule?.date) return "N/A";
     const date = new Date(schedule.date);
-    if (isNaN(date.getTime())) {
-      return "N/A";
-    }
+    if (isNaN(date.getTime())) return "N/A";
     return date.toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",
     });
-  }, [schedule?.date]);
+  }, [schedule.date]);
 
-  // Placeholder for API call to handle booking
-  const handleBooking = () => {
-    // TODO: Integrate with backend API to book/cancel session
-    setIsBooked(!isBooked);
-  };
-
-  const handleBookmark = () => {
-    // TODO: Integrate with backend API to save/remove bookmark
-    setIsBookmarked(!isBookmarked);
-  };
-
-  if (!details || !instructor || !schedule || !location) {
-    return (
-      <div className=" mx-auto bg-white rounded-2xl shadow-lg border border-slate-200 p-8 text-center">
-        <p className="text-red-600 text-lg font-semibold">
-          Error: Session details are unavailable.
-        </p>
-        <p className="text-slate-600 mt-2">
-          Please try again later or contact support.
-        </p>
-      </div>
-    );
-  }
+  const handleBooking = () => setIsBooked(!isBooked);
+  const handleBookmark = () => setIsBookmarked(!isBookmarked);
 
   return (
     <div className="flex justify-center gap-6 mx-auto max-w-7xl py-10">
-      <div className=" w-4/6 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+      <div className="w-4/6 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+        {/* Image Header */}
         <div className="relative h-64 overflow-hidden">
           <img
             src={imageUrl || FALLBACK_IMAGE}
@@ -184,21 +138,17 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
+          {/* Bookmark and Share Buttons */}
           <div className="absolute top-4 right-4 flex gap-2">
             <button
               onClick={handleBookmark}
               aria-pressed={isBookmarked}
-              aria-label={
-                isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"
-              }
+              aria-label={isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
               className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors shadow-sm"
             >
               <Heart
                 size={20}
-                className={`${
-                  isBookmarked ? "text-red-500 fill-red-500" : "text-slate-600"
-                }`}
+                className={`${isBookmarked ? "text-red-500 fill-red-500" : "text-slate-600"}`}
               />
             </button>
             <button
@@ -208,7 +158,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
               <Share2 size={20} className="text-slate-600" />
             </button>
           </div>
-
+          {/* Category, Level, and Title */}
           <div className="absolute bottom-4 left-4 text-white">
             <div className="flex items-center gap-2 mb-2">
               <span className="px-3 py-1 font-fredoka bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
@@ -223,29 +173,24 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
             <h1 className="text-3xl font-bold mb-1 font-sora">{title}</h1>
           </div>
         </div>
-
+        {/* Main Content */}
         <div className="p-4 sm:p-8 font-fredoka">
+          {/* Session Info Header */}
           <div className="flex justify-around flex-wrap gap-4 mb-8 p-4 bg-slate-50 rounded-xl">
             <div className="flex items-center gap-2">
               <Calendar size={18} className="text-slate-600" />
               <div>
                 <p className="text-xs text-slate-500 font-medium">Date</p>
-                <p className="text-sm font-medium text-slate-900">
-                  {shortDate}
-                </p>
+                <p className="text-sm font-medium text-slate-900">{shortDate}</p>
               </div>
             </div>
-
             <div className="flex items-center gap-2">
               <Clock size={18} className="text-slate-600" />
               <div>
                 <p className="text-xs text-slate-500 font-medium">Time</p>
-                <p className="text-sm font-medium text-slate-900">
-                  {schedule.time}
-                </p>
+                <p className="text-sm font-medium text-slate-900">{schedule.time}</p>
               </div>
             </div>
-
             <div className="flex items-center gap-2">
               <Users size={18} className="text-slate-600" />
               <div>
@@ -256,45 +201,39 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
               </div>
             </div>
           </div>
-
+          {/* Main Content Grid */}
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             <div className="md:col-span-2 space-y-6">
+              {/* About This Session */}
               <div>
                 <h2 className="text-xl font-semibold text-slate-900 mb-3 font-sora">
                   About This Session
                 </h2>
                 <p className="text-slate-700 leading-relaxed">{description}</p>
               </div>
-
+              {/* Session Information */}
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-4 font-sora  ">
+                <h3 className="text-lg font-semibold text-slate-900 mb-4 font-sora">
                   Session Information
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="p-4 bg-slate-50 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock size={16} className="text-slate-600" />
-                      <span className="font-medium font-sora text-slate-900">
-                        Duration
-                      </span>
+                      <span className="font-medium font-sora text-slate-900">Duration</span>
                     </div>
-                    <p className="text-slate-700">
-                      {schedule.duration} minutes
-                    </p>
+                    <p className="text-slate-700">{schedule.duration} minutes</p>
                   </div>
-
                   <div className="p-4 bg-slate-50 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Target size={16} className="text-slate-600" />
-                      <span className="font-medium font-sora text-slate-900">
-                        Intensity
-                      </span>
+                      <span className="font-medium font-sora text-slate-900">Intensity</span>
                     </div>
                     <p className="text-slate-700">{details.level}</p>
                   </div>
                 </div>
               </div>
-
+              {/* Benefits */}
               <div>
                 <h3 className="text-lg font-semibold font-sora text-slate-900 mb-4">
                   What You&apos;ll Get
@@ -310,7 +249,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                   ))}
                 </div>
               </div>
-
+              {/* Equipment Needed */}
               {details.equipment?.length ? (
                 <div>
                   <h3 className="text-lg font-sora font-semibold text-slate-900 mb-3">
@@ -329,12 +268,11 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                 </div>
               ) : null}
             </div>
-
+            {/* Sidebar */}
             <div className="space-y-6">
+              {/* Instructor Info */}
               <div className="bg-slate-50 rounded-xl p-6">
-                <h3 className="font-bold text-slate-900 font-sora mb-4">
-                  Your Instructor
-                </h3>
+                <h3 className="font-bold text-slate-900 font-sora mb-4">Your Instructor</h3>
                 <div className="flex items-center gap-3 mb-4">
                   <img
                     src={instructor.avatar || FALLBACK_IMAGE}
@@ -354,9 +292,7 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-slate-700">
-                    Specialties:
-                  </p>
+                  <p className="text-sm font-medium text-slate-700">Specialties:</p>
                   <div className="flex flex-wrap gap-1">
                     {instructor.specialties.map((specialty, index) => (
                       <span
@@ -369,38 +305,25 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                   </div>
                 </div>
               </div>
-
+              {/* Location */}
               <div className="bg-slate-50 rounded-xl p-6">
-                <h3 className="font-semibold text-slate-900 mb-4 font-sora">
-                  Location
-                </h3>
+                <h3 className="font-semibold text-slate-900 mb-4 font-sora">Location</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-2">
-                    <MapPin
-                      size={16}
-                      className="text-slate-600 mt-1 flex-shrink-0"
-                    />
+                    <MapPin size={16} className="text-slate-600 mt-1 flex-shrink-0" />
                     <div>
-                      <p className="font-semibold font-sora text-slate-900">
-                        {location.studio}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        {location.address}
-                      </p>
+                      <p className="font-semibold font-sora text-slate-900">{location.studio}</p>
+                      <p className="text-sm text-slate-600">{location.address}</p>
                       {location.room && (
-                        <p className="text-sm text-slate-500">
-                          Room: {location.room}
-                        </p>
+                        <p className="text-sm text-slate-500">Room: {location.room}</p>
                       )}
                     </div>
                   </div>
                 </div>
               </div>
-
+              {/* Availability */}
               <div className="bg-slate-50 rounded-xl p-6">
-                <h3 className="font-semibold font-sora text-slate-900 mb-4">
-                  Availability
-                </h3>
+                <h3 className="font-semibold font-sora text-slate-900 mb-4">Availability</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <span className="text-slate-600">Capacity:</span>
@@ -408,24 +331,14 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
                       {details.currentBookings}/{details.maxCapacity}
                     </span>
                   </div>
-
                   <div className="w-full bg-slate-200 rounded-full h-2">
                     <div
                       className={`h-2 rounded-full transition-all duration-300 ${
-                        isFullyBooked
-                          ? "bg-red-500"
-                          : isAlmostFull
-                          ? "bg-amber-500"
-                          : "bg-green-500"
+                        isFullyBooked ? "bg-red-500" : isAlmostFull ? "bg-amber-500" : "bg-green-500"
                       }`}
-                      style={{
-                        width: `${
-                          (details.currentBookings / details.maxCapacity) * 100
-                        }%`,
-                      }}
+                      style={{ width: `${(details.currentBookings / details.maxCapacity) * 100}%` }}
                     />
                   </div>
-
                   {isAlmostFull && !isFullyBooked && (
                     <div className="flex items-center gap-2 text-amber-600 text-sm">
                       <Info size={14} />
@@ -437,46 +350,31 @@ const Page: React.FC<SessionDetailsProps> = (props) => {
             </div>
           </div>
         </div>
-        <div className="space-x-3 p-6 flex ">
+        {/* Booking Buttons */}
+        <div className="space-x-3 p-6 flex">
           <Button
             onClick={handleBooking}
             disabled={isFullyBooked}
             className={`w-1/2 py-3 font-fredoka font-semibold transition-all duration-200 ${
-              isBooked
-                ? "bg-green-600 hover:bg-green-700 text-white"
-                : "bg-primary hover:[#234E49]/80 text-white"
+              isBooked ? "bg-green-600 hover:bg-green-700 text-white" : "bg-primary hover:[#234E49]/80 text-white"
             } ${isFullyBooked ? "opacity-50 cursor-not-allowed" : ""}`}
             aria-label={
-              isFullyBooked
-                ? "Session is fully booked"
-                : isBooked
-                ? "Cancel booking"
-                : "Book session"
+              isFullyBooked ? "Session is fully booked" : isBooked ? "Cancel booking" : "Book session"
             }
           >
-            {isFullyBooked
-              ? "Session Full"
-              : isBooked
-              ? "Cancel Booking"
-              : `Book Now `}
+            {isFullyBooked ? "Session Full" : isBooked ? "Cancel Booking" : "Book Now"}
           </Button>
-
           {!isFullyBooked && (
-            <Button
-              variant="outline"
-              className="w-1/2 font-fredoka"
-              aria-label="Add to waitlist"
-            >
+            <Button variant="outline" className="w-1/2 font-fredoka" aria-label="Add to waitlist">
               Add to Wishlist
             </Button>
           )}
         </div>
       </div>
-      <div className="w-2/6 flex justify-center  ">
+      {/* Related Sessions */}
+      <div className="w-2/6 flex justify-center">
         <RelatedSessions />
       </div>
     </div>
   );
-};
-
-export default Page;
+}
