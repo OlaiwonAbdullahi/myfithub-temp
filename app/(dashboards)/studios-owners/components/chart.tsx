@@ -51,8 +51,7 @@ const OverviewChart = () => {
             category: {
               label: {
                 fontFamily: "Fredoka, sans-serif",
-                borderRadius: 4,
-                border: "none",
+                // Removed border and borderRadius as they are not valid
               },
               gridLine: { enabled: false },
             },
