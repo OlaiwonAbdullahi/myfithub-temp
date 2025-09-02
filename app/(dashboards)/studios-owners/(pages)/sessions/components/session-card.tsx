@@ -18,16 +18,29 @@ interface SessionData {
   title: string;
   instructor: string;
   duration: string;
-  capacity: number;
+  capacity: number; // Keep as number in SessionData
   enrolled: number;
   date: string;
   time: string;
   description: string;
+  banner: string; // Add banner to SessionData
+}
+
+// Define the type expected by EditSessionDialog
+interface EditSessionData {
+  title: string;
+  instructor: string;
+  duration: string;
+  capacity: string; // EditSessionDialog expects string
+  date: string;
+  time: string;
+  description: string;
+  banner: string;
 }
 
 interface SessionCardProps {
   sessionData: SessionData;
-  onEditSession: (id: number, updatedData: Partial<SessionData>) => void;
+  onEditSession: (id: number, updatedData: EditSessionData) => void; // Update to match EditSessionDialog
   onDeleteSession: (id: number) => void;
 }
 
@@ -39,7 +52,7 @@ export const SessionCard = ({
   return (
     <Card className="hover:shadow-lg pt-0 rounded-t-lg transition-shadow font-fredoka">
       <Image
-        src="/about.png"
+        src={sessionData.banner || "/about.png"} // Use banner from sessionData
         alt={sessionData.title}
         width={400}
         height={160}
