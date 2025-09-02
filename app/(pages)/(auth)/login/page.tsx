@@ -52,13 +52,11 @@ const Page = () => {
       console.log("API Response:", data);
 
       if (!response.ok) {
-        // Handle different error scenarios
         const errorMessage =
           data?.message || data?.error || `Login failed: ${response.status}`;
         throw new Error(errorMessage);
       }
 
-      // Check for token in various possible response structures
       const token =
         data?.token ||
         data?.accessToken ||
@@ -71,7 +69,6 @@ const Page = () => {
         throw new Error("Authentication token not received from server");
       }
 
-      // Extract user data safely
       const userData = data?.user || data?.data?.user;
 
       if (!userData) {

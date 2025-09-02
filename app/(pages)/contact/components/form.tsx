@@ -15,10 +15,46 @@ const Form = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
 
+  const sendMessage = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, name, message }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      const data = await response.json();
+      console.log("Send message response:", data);
+
+      // Reset form after success
+      setEmail("");
+      setName("");
+      setMessage("");
+
+      return data;
+    } catch (error) {
+      console.error("Error sending message:", error);
+      return null;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // prevent page reload
+    await sendMessage();
+  };
+
   return (
     <div className="md:max-w-2xl mx-auto px-4 md:py-12 py-7">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-        {/* Header Section */}
         <div className=" px-8 pt-8 ">
           <Heading
             title="Get In Touch"
@@ -26,9 +62,8 @@ const Form = () => {
           />
         </div>
 
-        {/* Form Section */}
         <div className="px-8 py-8">
-          <form className="space-y-6 font-fredoka">
+          <form className="space-y-6 font-fredoka" onSubmit={handleSubmit}>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex flex-col">
                 <label
@@ -41,7 +76,7 @@ const Form = () => {
                   id="name"
                   type="text"
                   placeholder="Enter your full name"
-                  className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none  transition-all duration-200 placeholder-gray-400"
+                  className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none transition-all duration-200 placeholder-gray-400"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -77,7 +112,7 @@ const Form = () => {
               <textarea
                 id="message"
                 placeholder="Your Message"
-                className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none  transition-all duration-200 placeholder-gray-400 resize-none"
+                className="border border-gray-300 bg-white rounded-lg px-4 py-3 focus:outline-none transition-all duration-200 placeholder-gray-400 resize-none"
                 value={message}
                 rows={6}
                 onChange={(e) => setMessage(e.target.value)}
@@ -88,6 +123,7 @@ const Form = () => {
             <div className="flex justify-end pt-4">
               <Button
                 icon={Send}
+                type="submit"
                 className="bg-primary hover:bg-[#1a3a36] text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-xl"
               >
                 Send Message
@@ -96,7 +132,6 @@ const Form = () => {
           </form>
         </div>
 
-        {/* Contact Info Section */}
         <div className="bg-[#EEF7F6]/50 px-8 py-8 border-t border-gray-100">
           <div className="text-center">
             <h3 className="font-semibold font-sora text-gray-800 mb-6 text-lg">
