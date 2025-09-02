@@ -7,7 +7,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { DollarSign, TrendingUp, Calendar, Users } from "lucide-react";
-import OverviewChart from "./chart";
+//import OverviewChart from "./chart";
 
 const Overview = () => {
   const metrics = [
@@ -96,7 +96,7 @@ const Overview = () => {
         </div>
 
         <div className="flex-1  rounded-lg ">
-          <OverviewChart />
+         
         </div>
       </div>
     </div>
