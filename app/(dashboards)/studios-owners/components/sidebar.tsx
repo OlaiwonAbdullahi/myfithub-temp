@@ -20,7 +20,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const menuItems = [
-    { id: "", label: "Dashboard", icon: Home },
+    { id: "#", label: "Dashboard", icon: Home },
     { id: "studio", label: "Studio Management", icon: Building },
     { id: "sessions", label: "Sessions Management", icon: Calendar },
     { id: "instructors", label: "Instructors", icon: Users },

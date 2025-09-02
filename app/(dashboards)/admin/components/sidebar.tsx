@@ -12,13 +12,19 @@ import {
   Wallet,
   UsersIcon,
   LayoutTemplate,
+  MessageSquare,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/context/UserContext";
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
+
+  const { user, logout } = useUser();
+
+  console.log(user);
 
   const menuItems = [
     { id: "#", label: "Dashboard", icon: Home },
@@ -26,6 +32,7 @@ const Sidebar = () => {
     { id: "studios", label: "Manage Studios", icon: Building },
     { id: "sessions", label: "Manage Sessions", icon: Calendar },
     { id: "website", label: "Manage Myfithub Website", icon: LayoutTemplate },
+    { id: "messages", label: "Messages", icon: MessageSquare },
     { id: "history", label: "All Bookings", icon: CreditCard },
     { id: "payments", label: "Payments & Transactions", icon: Wallet },
     { id: "settings", label: "Settings", icon: Settings },
@@ -104,13 +111,16 @@ const Sidebar = () => {
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">
-                John Doe
+                {user?.last_name} {user?.first_name}
               </p>
-              <p className="text-xs text-gray-400 truncate">john@example.com</p>
+              <p className="text-xs text-gray-400 truncate">{user?.email}</p>
             </div>
           )}
           <div className="mt-4 space-y-2">
-            <button className="w-full flex items-center px-3 py-2 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-colors">
+            <button
+              className="w-full flex items-center px-3 py-2 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition-colors"
+              onClick={logout}
+            >
               <LogOut size={20} className="flex-shrink-0" />
             </button>
           </div>
