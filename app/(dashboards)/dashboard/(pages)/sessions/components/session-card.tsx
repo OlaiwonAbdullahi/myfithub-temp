@@ -1,3 +1,5 @@
+"use client";
+
 import { Calendar, Clock, Users, Building } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -25,9 +27,9 @@ export function SessionCard({
   const spotsLeft = session.capacity - session.enrolled;
 
   return (
-    <Link href={"/dashboard/sessions/session-details"}>
-      <Card className="group pt-0 font-fredoka bg-green-50/60 backdrop-blur-2xl border border-green-50 relative overflow-hidden rounded-2xl  transition-all duration-500 hover:shadow-sm hover:-translate-y-1">
-        <div className={`absolute inset-0 bg-gradient-to-br  opacity-5`} />
+    <Link href="/dashboard/sessions/session-details" className="block">
+      <Card className="group pt-0 font-fredoka bg-green-50/60 backdrop-blur-2xl border border-green-50 relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-sm hover:-translate-y-1">
+        <div className="absolute inset-0 bg-gradient-to-br opacity-5" />
 
         <div className="absolute top-4 right-4 z-20">
           <div
