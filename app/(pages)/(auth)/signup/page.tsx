@@ -49,6 +49,7 @@ const Page = () => {
             errorData.details ||
             errorMessage;
           toast.error(errorMessage);
+          console.log(errorMessage);
         } catch {
           errorMessage = responseText || errorMessage;
         }
