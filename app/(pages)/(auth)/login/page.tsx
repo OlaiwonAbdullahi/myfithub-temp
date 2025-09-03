@@ -37,7 +37,7 @@ const Page = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user/sign-in`,
+        "https://myfithub-backend.onrender.com/api/v1/auth/user/sign-in",
         {
           method: "POST",
           headers: {
