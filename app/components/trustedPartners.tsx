@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollVelocity from "../animations/ScrollVelocity";
+//import ScrollVelocity from "../animations/ScrollVelocity";
 
 const TrustedPartners: React.FC = () => {
   const partnerLogos = [
