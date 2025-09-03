@@ -25,13 +25,16 @@ export default function EmailVerification() {
     }
 
     // Send verification request to the endpoint
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user/verify-email`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ token }),
-    })
+    fetch(
+      "https://myfithub-backend.onrender.com/api/v1/auth/user/verify-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("Verification response:", data);

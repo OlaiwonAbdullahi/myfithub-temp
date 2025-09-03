@@ -29,7 +29,7 @@ const RecentBookings = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings/me`,
+        "https://myfithub-backend.onrender.com/api/v1/bookings/me",
         {
           method: "GET",
           headers: {

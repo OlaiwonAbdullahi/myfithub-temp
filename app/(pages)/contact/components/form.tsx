@@ -46,7 +46,7 @@ const Form = () => {
   const sendMessage = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/contact`,
+        "https://myfithub-backend.onrender.com/api/v1/contact",
         {
           method: "POST",
           headers: {

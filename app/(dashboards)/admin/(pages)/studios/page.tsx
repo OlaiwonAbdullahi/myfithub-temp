@@ -41,7 +41,7 @@ const Page: React.FC = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/studio/studios`,
+        "https://myfithub-backend.onrender.com/api/v1/auth/studio/studios",
         {
           method: "GET",
           headers: {

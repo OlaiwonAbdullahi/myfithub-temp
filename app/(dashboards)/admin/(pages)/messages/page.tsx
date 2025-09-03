@@ -44,7 +44,7 @@ const Page = () => {
       }
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/contact`,
+        "https://myfithub-backend.onrender.com/api/v1/contact",
         {
           method: "GET",
           headers: {
@@ -84,7 +84,7 @@ const Page = () => {
       }
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/partnership`,
+        "https://myfithub-backend.onrender.com/api/v1/partnership",
         {
           method: "GET",
           headers: {

@@ -49,7 +49,7 @@ const SessionManagement = () => {
       setError(null);
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/sessions/studio/`,
+        "https://myfithub-backend.onrender.com/api/v1/sessions/studio/",
         {
           method: "GET",
           headers: {
@@ -84,8 +84,6 @@ const SessionManagement = () => {
     fetchSessions();
   }, []);
 
-  
-
   const handleEditSession = (
     id: number,
     updatedData: AddSessionData // Align with AddSessionData for consistency
@@ -119,7 +117,6 @@ const SessionManagement = () => {
             Manage your studio sessions and schedules
           </p>
         </div>
-
       </div>
 
       {/* Loading state */}

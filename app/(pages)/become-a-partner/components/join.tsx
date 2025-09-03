@@ -19,7 +19,7 @@ const Join = () => {
     const sendMessage = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/partnership`,
+          "https://myfithub-backend.onrender.com/api/v1/partnership",
           {
             method: "POST",
             headers: {
