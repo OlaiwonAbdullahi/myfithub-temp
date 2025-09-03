@@ -29,7 +29,7 @@ const Page = () => {
 
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/user/sign-up`,
+        "https://myfithub-backend.onrender.com/api/v1/auth/user/sign-up",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
