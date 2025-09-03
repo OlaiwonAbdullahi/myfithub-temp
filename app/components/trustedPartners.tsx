@@ -17,8 +17,7 @@ const TrustedPartners: React.FC = () => {
       </h2>
       <p className="text-base text-center font-fredoka">...and so should you</p>
       <div>
-        <ScrollVelocity
-          texts={[
+       
             <div
               key="partners-row"
               className="flex md:gap-36 gap-12 mt-10 items-center justify-between"
@@ -32,9 +31,8 @@ const TrustedPartners: React.FC = () => {
                 />
               ))}
             </div>,
-          ]}
-          className="custom-scroll-text"
-        />
+        
+        
       </div>
     </div>
   );
